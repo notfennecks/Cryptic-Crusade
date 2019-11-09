@@ -4,9 +4,9 @@ export (int) var player_speed  #Exported variable for player run speed.
 export (int) var jump_height  #Exported variable for player jump height.
 export (int) var gravity  #Exported variable for gravity applied to player.
 export (int) var max_jumps  #Exported variable for max player jumps.
-var jump_count  #Variable that tracks jump count.
+var jump_count = 0 #Variable that tracks jump count.
 
-var dash_angle
+var dash_angle  #Variable for storing dash line angle in relation to player.
 export (bool) var can_line_dash  #Variable that tracks if the player can line dash.
 onready var dash_line = $PositionHelper/DashLine  #Sets DashLine node as variable.
 
@@ -17,17 +17,19 @@ var velocity = Vector2()  #Variable velocity to store and apply player movement.
 
 func _ready():  #Runs function soon as scene is loaded.
 	change_state(IDLE)  #Changes state to IDLE
-	jump_count = 0
 	
 func change_state(new_state):  #Runs function when state needs to be changed. Taking the new_state as argument.
 	state = new_state  #Sets the state variable to the state it needs to change to.
 	match state:  #Matches the state with its correct name and runs the embedded code.
 		IDLE:
-			print("idle")
+			$Sprite.animation = "Idle"
+			$Sprite.playing = true
 		RUN:
-			print("run")
+			$Sprite.animation = "Run"
+			$Sprite.playing = true
 		JUMP:
-			print("jump")
+			$Sprite.animation = "Run"
+			$Sprite.playing = true
 		DEAD:
 			print("dead")
 			
@@ -41,7 +43,7 @@ func _process(delta):
 	var mouse_pos = get_global_mouse_position()  #Sets the mouse position every frame to a variable.
 	var current_pos = position  #Sets the player position every frame to a variable.
 	dash_line(mouse_pos, current_pos) #Refers to draw_dash function to draw the dash path.
-	dash_direction(mouse_pos, current_pos)
+	dash_direction(mouse_pos, current_pos)  #Refers to dash_direction function to calculate direction.
 	
 func player_input():  #Checks for player input.
 	if state == DEAD:  #If player is dead return. We do not want the player moving while dead.
@@ -105,8 +107,8 @@ func dash_line(mouse, pos):  #Calculates and Executes dash line.
 		dash_line.set_point_position(0, Vector2(0, 0))  #Resets point at first position.
 		dash_line.set_point_position(1, Vector2(0, 0))  #Resets point at second position.
 		
-		$DashCheck.force_raycast_update()
-		if $DashCheck.is_colliding() == false:
+		$DashCheck.force_raycast_update()  #Forces the raycast to update
+		if $DashCheck.is_colliding() == false:  #If raycast is not colliding.
 			$DashTween.start()  #Starts tween.
 			#Interpolates position property from current player position to mouse position.
 			$DashTween.interpolate_property(self, "position", null, mouse, .5, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN, 0)
@@ -117,19 +119,22 @@ func _on_DashTween_tween_completed(object, key):  #Once tween is completed.
 	set_physics_process(true)  #Sets all physics processes back to true.
 	set_process(true)  #Sets all processes back to true.
 	
-func dash_direction(mouse, pos):
-	var x = mouse.x - pos.x
-	var y = mouse.y - pos.y
-	var distance = sqrt(pow(x,2) + pow(y,2))
-	if x == 0:
+func dash_direction(mouse, pos):  #For determining dash direction angle.
+	var x = mouse.x - pos.x  #Stores x difference between mouse_pos Vector and position vector.
+	var y = mouse.y - pos.y  #Stores y difference between mouse_pos Vector and position vector.
+	var distance = sqrt(pow(x,2) + pow(y,2))  #Calculates distance between Vectors.
+	if x == 0:  #If x is zero (so that we do not get divide by zero errors on some occasions).
 		return
-	dash_angle = abs(rad2deg(atan(y/x)))
+	dash_angle = abs(rad2deg(atan(y/x)))  #Uses arc tangent to calculate angle based on x and y component of distance.
+	#--------------------------------
+	#Calculates angle quadrant and add or subtracts. Because arc tangent only outputs numbers less than 90.
 	if x < 0 and y < 0:
 		dash_angle = 180 - dash_angle
 	if x < 0 and y > 0:
 		dash_angle = 180 + dash_angle
 	if x > 0 and y > 0:
 		dash_angle = 360 - dash_angle
-	dash_angle += 90
-	$DashCheck.rotation_degrees = -dash_angle
+	#--------------------------------
+	dash_angle += 90  #Offsets angle because zero angle is going down.
+	$DashCheck.rotation_degrees = -dash_angle  #Inverts angle because negative angles go counter-clockwise.
 	

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/NeutralHood.png-04bd0b8689a382d930ba7c455278fc54.stex"
+path="res://.import/NeutralHoodIdle1.png-5749634d20bef8f1fa0b9cf551b43991.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Characters/NeutralHood.png"
-dest_files=[ "res://.import/NeutralHood.png-04bd0b8689a382d930ba7c455278fc54.stex" ]
+source_file="res://assets/Characters/Idle/NeutralHoodIdle1.png"
+dest_files=[ "res://.import/NeutralHoodIdle1.png-5749634d20bef8f1fa0b9cf551b43991.stex" ]
 
 [params]
 
