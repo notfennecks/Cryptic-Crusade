@@ -6,6 +6,7 @@ export (int) var gravity  #Exported variable for gravity applied to player.
 export (int) var max_jumps  #Exported variable for max player jumps.
 var jump_count  #Variable that tracks jump count.
 
+var dash_angle
 export (bool) var can_line_dash  #Variable that tracks if the player can line dash.
 onready var dash_line = $PositionHelper/DashLine  #Sets DashLine node as variable.
 
@@ -40,6 +41,7 @@ func _process(delta):
 	var mouse_pos = get_global_mouse_position()  #Sets the mouse position every frame to a variable.
 	var current_pos = position  #Sets the player position every frame to a variable.
 	dash_line(mouse_pos, current_pos) #Refers to draw_dash function to draw the dash path.
+	dash_direction(mouse_pos, current_pos)
 	
 func player_input():  #Checks for player input.
 	if state == DEAD:  #If player is dead return. We do not want the player moving while dead.
@@ -94,19 +96,40 @@ func player_input():  #Checks for player input.
 func dash_line(mouse, pos):  #Calculates and Executes dash line.
 	if can_line_dash == false:  #If player can not line dash return.
 		return
+	
 	if Input.is_action_pressed("dashline"):  #If dashline input is pressed.
+		mouse = $DashCheck/Position2D.global_position
 		dash_line.set_point_position(0, pos)  #Sets the first point of line to player position.
 		dash_line.set_point_position(1, mouse)  #Sets the second point of line to mouse position.
 	if Input.is_action_just_released("dashline"):  #If the dashline input is just released.
 		dash_line.set_point_position(0, Vector2(0, 0))  #Resets point at first position.
-		dash_line.set_point_position(1, Vector2(0, 0))  #Resets point at sceond position.
+		dash_line.set_point_position(1, Vector2(0, 0))  #Resets point at second position.
 		
-		$DashTween.start()  #Starts tween.
-		#Interpolates position property from current player position to mouse position.
-		$DashTween.interpolate_property(self, "position", null, mouse, .5, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN, 0)
-		set_physics_process(false)  #Stops all physics processes so that transition does not have gravity,
-		set_process(false)  #Stops process so that game does not calculate alternate dash lines.
+		$DashCheck.force_raycast_update()
+		if $DashCheck.is_colliding() == false:
+			$DashTween.start()  #Starts tween.
+			#Interpolates position property from current player position to mouse position.
+			$DashTween.interpolate_property(self, "position", null, mouse, .5, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN, 0)
+			set_physics_process(false)  #Stops all physics processes so that transition does not have gravity,
+			set_process(false)  #Stops process so that game does not calculate alternate dash lines.
 
 func _on_DashTween_tween_completed(object, key):  #Once tween is completed.
 	set_physics_process(true)  #Sets all physics processes back to true.
 	set_process(true)  #Sets all processes back to true.
+	
+func dash_direction(mouse, pos):
+	var x = mouse.x - pos.x
+	var y = mouse.y - pos.y
+	var distance = sqrt(pow(x,2) + pow(y,2))
+	if x == 0:
+		return
+	dash_angle = abs(rad2deg(atan(y/x)))
+	if x < 0 and y < 0:
+		dash_angle = 180 - dash_angle
+	if x < 0 and y > 0:
+		dash_angle = 180 + dash_angle
+	if x > 0 and y > 0:
+		dash_angle = 360 - dash_angle
+	dash_angle += 90
+	$DashCheck.rotation_degrees = -dash_angle
+	
