@@ -503,7 +503,6 @@ player_speed = 150
 jump_height = -250
 gravity = 750
 max_jumps = 2
-can_line_dash = true
 
 [node name="Grass" type="TileMap" parent="."]
 tile_set = SubResource( 21 )

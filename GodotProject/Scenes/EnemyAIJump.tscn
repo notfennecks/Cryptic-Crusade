@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/AIJump.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/EnemyAI.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -0.895966, -0.909973, 0, 0, 0, 0, 20.3335, -46.0226, 0, 0, 0, 0, 56.8216, -71.896, 0, 0, 0, 0, 114.539, -73.2228, 0, 0, 0, 0, 142.403, -65.9252, 0, 0, 0, 0, 161.642, -52.6568, 0, 0, 0, 0, 183.535, -34.7444, 0, 0, 0, 0, 200.784, -16.1686, 0, 0, 0, 0, 206.755, -0.246552 )
+}
+
+[node name="Path2D" type="Path2D"]
+curve = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2( -0.895966, -0.909973 )
+rotate = false
+loop = false
+
+[node name="KinematicBody2D" parent="PathFollow2D" instance=ExtResource( 2 )]
+speed = 90
