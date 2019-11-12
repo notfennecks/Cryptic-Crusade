@@ -37,7 +37,7 @@ func _physics_process(delta):  #Function for calculating physics for player.
 	velocity.y += gravity * delta  #Applies gravity to player.
 	
 	player_input()  #Refers to player_input() function so that its checking for input every frame.
-	velocity = move_and_slide(velocity, Vector2(0, -1))  #Moves player along a vector. Refer to move_and_slide in manuel.
+	velocity = move_and_slide_with_snap(velocity, Vector2(0, 2), Vector2(0, -1), true, 4, deg2rad(45), true)  #Moves player along a vector. Refer to move_and_slide in manuel.
 	
 func _process(delta):
 	var mouse_pos = get_global_mouse_position()  #Sets the mouse position every frame to a variable.
