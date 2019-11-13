@@ -1,27 +1,91 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Scripts/NeutralHood.gd" type="Script" id=1]
-[ext_resource path="res://assets/Characters/Idle/NeutralHoodIdle1.png" type="Texture" id=2]
-[ext_resource path="res://assets/Characters/Idle/NeutralHoodIdle2.png" type="Texture" id=3]
-[ext_resource path="res://assets/Characters/Idle/NeutralHoodIdle3.png" type="Texture" id=4]
-[ext_resource path="res://assets/Characters/Idle/NeutralHoodIdle4.png" type="Texture" id=5]
-[ext_resource path="res://assets/Characters/Idle/NeutralHoodIdle5.png" type="Texture" id=6]
-[ext_resource path="res://assets/Characters/Run/NeutralHoodIdleRun.png" type="Texture" id=7]
+[ext_resource path="res://assets/Characters/Idle/Light/LightIdle1.png" type="Texture" id=2]
+[ext_resource path="res://assets/Characters/Idle/Light/LightIdle2.png" type="Texture" id=3]
+[ext_resource path="res://assets/Characters/Idle/Light/LightIdle3.png" type="Texture" id=4]
+[ext_resource path="res://assets/Characters/Idle/Light/LightIdle4.png" type="Texture" id=5]
+[ext_resource path="res://assets/Characters/Idle/Light/LightIdle5.png" type="Texture" id=6]
+[ext_resource path="res://assets/Characters/Run/Neutral/NeutralRun1.png" type="Texture" id=7]
+[ext_resource path="res://assets/Characters/Idle/Neutral/NeutralIdle1.png" type="Texture" id=8]
+[ext_resource path="res://assets/Characters/Idle/Neutral/NeutralIdle2.png" type="Texture" id=9]
+[ext_resource path="res://assets/Characters/Idle/Neutral/NeutralIdle3.png" type="Texture" id=10]
+[ext_resource path="res://assets/Characters/Idle/Neutral/NeutralIdle4.png" type="Texture" id=11]
+[ext_resource path="res://assets/Characters/Idle/Neutral/NeutralIdle5.png" type="Texture" id=12]
+[ext_resource path="res://assets/Characters/Run/Light/LightRun1.png" type="Texture" id=13]
+[ext_resource path="res://assets/Characters/Run/Dark/DarkRun1.png" type="Texture" id=14]
+[ext_resource path="res://assets/Characters/Run/Ice/IceRun1.png" type="Texture" id=15]
+[ext_resource path="res://assets/Characters/Run/Fire/FireRun1.png" type="Texture" id=16]
+[ext_resource path="res://assets/Characters/Idle/Fire/FireIdle1.png" type="Texture" id=17]
+[ext_resource path="res://assets/Characters/Idle/Fire/FireIdle2.png" type="Texture" id=18]
+[ext_resource path="res://assets/Characters/Idle/Fire/FireIdle3.png" type="Texture" id=19]
+[ext_resource path="res://assets/Characters/Idle/Fire/FireIdle4.png" type="Texture" id=20]
+[ext_resource path="res://assets/Characters/Idle/Fire/FireIdle5.png" type="Texture" id=21]
+[ext_resource path="res://assets/Characters/Idle/Dark/DarkIdle1.png" type="Texture" id=22]
+[ext_resource path="res://assets/Characters/Idle/Dark/DarkIdle2.png" type="Texture" id=23]
+[ext_resource path="res://assets/Characters/Idle/Dark/DarkIdle3.png" type="Texture" id=24]
+[ext_resource path="res://assets/Characters/Idle/Dark/DarkIdle4.png" type="Texture" id=25]
+[ext_resource path="res://assets/Characters/Idle/Dark/DarkIdle5.png" type="Texture" id=26]
+[ext_resource path="res://assets/Characters/Idle/Ice/IceIdle1.png" type="Texture" id=27]
+[ext_resource path="res://assets/Characters/Idle/Ice/IceIdle2.png" type="Texture" id=28]
+[ext_resource path="res://assets/Characters/Idle/Ice/IceIdle3.png" type="Texture" id=29]
+[ext_resource path="res://assets/Characters/Idle/Ice/IceIdle4.png" type="Texture" id=30]
+[ext_resource path="res://assets/Characters/Idle/Ice/IceIdle5.png" type="Texture" id=31]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
-"name": "Idle",
-"speed": 6.5
+"name": "Idle_Light",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
-"name": "Run",
+"name": "Run_Neutral",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "Idle_Neutral",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "Run_Light",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "Run_Dark",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "Run_Ice",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "Run_Fire",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "Idle_Fire",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ],
+"loop": true,
+"name": "Idle_Dark",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ) ],
+"loop": true,
+"name": "Idle_Ice",
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 8.05135
 height = 15.7307
 
@@ -30,11 +94,11 @@ collision_mask = 31
 script = ExtResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 3 )
-animation = "Idle"
+frames = SubResource( 1 )
+animation = "Run_Light"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -54,6 +118,12 @@ position = Vector2( 0, 60 )
 points = PoolVector2Array( 0, 0, 0, 0 )
 width = 4.0
 default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1059061760
 
 [node name="DashTween" type="Tween" parent="."]
+
+[node name="StanceTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
 [connection signal="tween_completed" from="DashTween" to="." method="_on_DashTween_tween_completed"]
+[connection signal="timeout" from="StanceTimer" to="." method="_on_StanceTimer_timeout"]
