@@ -13,15 +13,17 @@ onready var dash_line = $PositionHelper/DashLine  #Sets DashLine node as variabl
 enum {IDLE, RUN, JUMP, DEAD, DASH}  #Declaring states as enumerated types.
 var state  #Variable state to track current state.
 
-enum {NEUTRAL, FIRE, ICE, DARK, LIGHT}
-var stance
-var can_switch_stance = true
+enum {NEUTRAL, FIRE, ICE, DARK, LIGHT}  #Declaring all possible stances as enumerated types.
+var stance  #Variable for tracking current stance.
+var can_switch_stance = true  #Variable for if the player can change their stance.
+#Dictionary that stores stances and their respective idle animations.
 var stance_idle = {
 	0: "Idle_Neutral", 
 	1: "Idle_Fire", 
 	2: "Idle_Ice", 
 	3: "Idle_Dark", 
 	4: "Idle_Light"}
+#Dictionary that stores stances and their respective run animations.
 var stance_run = {
 	0: "Run_Neutral", 
 	1: "Run_Fire", 
@@ -32,17 +34,18 @@ var stance_run = {
 var velocity = Vector2()  #Variable velocity to store and apply player movement.
 
 func _ready():  #Runs function soon as scene is loaded.
-	change_stance(NEUTRAL)
-	change_state(IDLE)  #Changes state to IDLE
+	change_stance(NEUTRAL)  #Changes stance to NEUTRAL.
+	change_state(IDLE)  #Changes state to IDLE.
 	
 func change_state(new_state):  #Runs function when state needs to be changed. Taking the new_state as argument.
 	state = new_state  #Sets the state variable to the state it needs to change to.
 	match state:  #Matches the state with its correct name and runs the embedded code.
 		IDLE:
-			$Sprite.animation = stance_idle[stance]
+			$Sprite.animation = stance_idle[stance]  #Switches to correct idle animation based on current stance.
 			$Sprite.playing = true
 		RUN:
 			$Sprite.animation = stance_run[stance]
+			#stance_run[stance]  #Switches to correct run animation based on current stance.
 			$Sprite.playing = true
 		JUMP:
 			$Sprite.animation = stance_run[stance]
@@ -50,9 +53,9 @@ func change_state(new_state):  #Runs function when state needs to be changed. Ta
 		DEAD:
 			print("dead")
 			
-func change_stance(new_stance):
-	stance = new_stance
-	match stance:
+func change_stance(new_stance):  #Runs function when stance needs to be changed. Taking new_stance as argument.
+	stance = new_stance  #Sets the stance variable to the stance player wanted to change to.
+	match stance:  #Matches the current stance with its respective name and runs embedded code.
 		NEUTRAL:
 			print("Neutral stance")
 		FIRE:
@@ -68,7 +71,9 @@ func _physics_process(delta):  #Function for calculating physics for player.
 	velocity.y += gravity * delta  #Applies gravity to player.
 	
 	player_input()  #Refers to player_input() function so that its checking for input every frame.
-	velocity = move_and_slide_with_snap(velocity, Vector2(0, 2), Vector2(0, -1), true, 4, deg2rad(45), true)  #Moves player along a vector. Refer to move_and_slide in manuel.
+	#Moves player along a vector. Refer to move_and_slide_with_snap in manuel.
+	velocity = move_and_slide_with_snap(velocity, Vector2(0, 2), Vector2(0, -1), true, 4, float(deg2rad(45)), true)
+	
 	
 func _process(delta):
 	var mouse_pos = get_global_mouse_position()  #Sets the mouse position every frame to a variable.
@@ -127,31 +132,32 @@ func player_input():  #Checks for player input.
 		jump_count = 1
 	#-------------------------------------------------
 	#Stance switches
+	var t = $StanceTimer
 	if Input.is_action_just_pressed("neutral") and can_switch_stance:
 		change_stance(NEUTRAL)
 		change_state(state)
 		can_switch_stance = false
-		$StanceTimer.start()
+		t.start()
 	if Input.is_action_just_pressed("fire") and can_switch_stance:
 		change_stance(FIRE)
 		change_state(state)
 		can_switch_stance = false
-		$StanceTimer.start()
+		t.start()
 	if Input.is_action_just_pressed("ice") and can_switch_stance:
 		change_stance(ICE)
 		change_state(state)
 		can_switch_stance = false
-		$StanceTimer.start()
+		t.start()
 	if Input.is_action_just_pressed("dark") and can_switch_stance:
 		change_stance(DARK)
 		change_state(state)
 		can_switch_stance = false
-		$StanceTimer.start()
+		t.start()
 	if Input.is_action_just_pressed("light") and can_switch_stance:
 		change_stance(LIGHT)
 		change_state(state)
 		can_switch_stance = false
-		$StanceTimer.start()
+		t.start()
 	
 func dash_line(mouse, pos):  #Calculates and Executes dash line.
 	if can_line_dash == false:  #If player can not line dash return.
