@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Scripts/Sword.gd" type="Script" id=1]
-[ext_resource path="res://assets/Weapons+Items/SwordFinal.png" type="Texture" id=2]
+[ext_resource path="res://Sword.gd" type="Script" id=1]
+[ext_resource path="res://assets/Weapons+Items/Sword1.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 41.2231, 10 )
@@ -287,10 +287,7 @@ offset = Vector2( 27.0089, -27.6439 )
 position = Vector2( -40.6245, -35.7022 )
 rotation = -1.56792
 shape = SubResource( 1 )
-<<<<<<< HEAD:GodotProject/Sword.tscn
 disabled = true
-=======
->>>>>>> a1106a452e1c2a3ee0ae183c0bd38929b463af48:GodotProject/Scenes/Sword.tscn
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Attack = SubResource( 2 )
