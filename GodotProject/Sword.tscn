@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Sword.gd" type="Script" id=1]
-[ext_resource path="res://assets/Weapons+Items/Sword1.png" type="Texture" id=2]
+[ext_resource path="res://assets/Weapons+Items/SwordFinal.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 41.2231, 10 )
@@ -277,7 +277,6 @@ tracks/4/keys = {
 script = ExtResource( 1 )
 
 [node name="Sword1" type="Sprite" parent="."]
-visible = false
 position = Vector2( -38.6453, 0.44905 )
 rotation = -0.785398
 texture = ExtResource( 2 )

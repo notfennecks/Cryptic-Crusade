@@ -6,86 +6,86 @@
 [ext_resource path="res://assets/Characters/Idle/Light/LightIdle3.png" type="Texture" id=4]
 [ext_resource path="res://assets/Characters/Idle/Light/LightIdle4.png" type="Texture" id=5]
 [ext_resource path="res://assets/Characters/Idle/Light/LightIdle5.png" type="Texture" id=6]
-[ext_resource path="res://assets/Characters/Run/Dark/DarkRun1.png" type="Texture" id=7]
-[ext_resource path="res://assets/Characters/Run/Dark/DarkRun2.png" type="Texture" id=8]
-[ext_resource path="res://assets/Characters/Run/Dark/DarkRun3.png" type="Texture" id=9]
-[ext_resource path="res://assets/Characters/Run/Dark/DarkRun4.png" type="Texture" id=10]
-[ext_resource path="res://assets/Characters/Run/Dark/DarkRun5.png" type="Texture" id=11]
-[ext_resource path="res://assets/Characters/Run/Dark/DarkRun6.png" type="Texture" id=12]
-[ext_resource path="res://assets/Characters/Run/Dark/DarkRun7.png" type="Texture" id=13]
-[ext_resource path="res://assets/Characters/Run/Dark/DarkRun8.png" type="Texture" id=14]
-[ext_resource path="res://assets/Characters/Run/Dark/DarkRun9.png" type="Texture" id=15]
-[ext_resource path="res://assets/Characters/Run/Dark/DarkRun10.png" type="Texture" id=16]
-[ext_resource path="res://assets/Characters/Run/Dark/DarkRun11.png" type="Texture" id=17]
-[ext_resource path="res://assets/Characters/Run/Dark/DarkRun12.png" type="Texture" id=18]
-[ext_resource path="res://assets/Characters/Idle/Neutral/NeutralIdle1.png" type="Texture" id=19]
-[ext_resource path="res://assets/Characters/Idle/Neutral/NeutralIdle2.png" type="Texture" id=20]
-[ext_resource path="res://assets/Characters/Idle/Neutral/NeutralIdle3.png" type="Texture" id=21]
-[ext_resource path="res://assets/Characters/Idle/Neutral/NeutralIdle4.png" type="Texture" id=22]
-[ext_resource path="res://assets/Characters/Idle/Neutral/NeutralIdle5.png" type="Texture" id=23]
-[ext_resource path="res://assets/Characters/Run/Light/LightRun1.png" type="Texture" id=24]
-[ext_resource path="res://assets/Characters/Run/Light/LightRun2.png" type="Texture" id=25]
-[ext_resource path="res://assets/Characters/Run/Light/LightRun3.png" type="Texture" id=26]
-[ext_resource path="res://assets/Characters/Run/Light/LightRun4.png" type="Texture" id=27]
-[ext_resource path="res://assets/Characters/Run/Light/LightRun5.png" type="Texture" id=28]
-[ext_resource path="res://assets/Characters/Run/Light/LightRun6.png" type="Texture" id=29]
-[ext_resource path="res://assets/Characters/Run/Light/LightRun7.png" type="Texture" id=30]
-[ext_resource path="res://assets/Characters/Run/Light/LightRun8.png" type="Texture" id=31]
-[ext_resource path="res://assets/Characters/Run/Light/LightRun9.png" type="Texture" id=32]
-[ext_resource path="res://assets/Characters/Run/Light/LightRun10.png" type="Texture" id=33]
-[ext_resource path="res://assets/Characters/Run/Light/LightRun11.png" type="Texture" id=34]
-[ext_resource path="res://assets/Characters/Run/Light/LightRun12.png" type="Texture" id=35]
-[ext_resource path="res://assets/Characters/Run/Fire/FireRun1.png" type="Texture" id=36]
-[ext_resource path="res://assets/Characters/Run/Fire/FireRun2.png" type="Texture" id=37]
-[ext_resource path="res://assets/Characters/Run/Fire/FireRun3.png" type="Texture" id=38]
-[ext_resource path="res://assets/Characters/Run/Fire/FireRun4.png" type="Texture" id=39]
-[ext_resource path="res://assets/Characters/Run/Fire/FireRun5.png" type="Texture" id=40]
-[ext_resource path="res://assets/Characters/Run/Fire/FireRun6.png" type="Texture" id=41]
-[ext_resource path="res://assets/Characters/Run/Fire/FireRun7.png" type="Texture" id=42]
-[ext_resource path="res://assets/Characters/Run/Fire/FireRun8.png" type="Texture" id=43]
-[ext_resource path="res://assets/Characters/Run/Fire/FireRun9.png" type="Texture" id=44]
-[ext_resource path="res://assets/Characters/Run/Fire/FireRun10.png" type="Texture" id=45]
-[ext_resource path="res://assets/Characters/Run/Fire/FireRun11.png" type="Texture" id=46]
-[ext_resource path="res://assets/Characters/Run/Fire/FireRun12.png" type="Texture" id=47]
-[ext_resource path="res://assets/Characters/Idle/Dark/DarkIdle1.png" type="Texture" id=48]
-[ext_resource path="res://assets/Characters/Idle/Dark/DarkIdle2.png" type="Texture" id=49]
-[ext_resource path="res://assets/Characters/Idle/Dark/DarkIdle3.png" type="Texture" id=50]
-[ext_resource path="res://assets/Characters/Idle/Dark/DarkIdle4.png" type="Texture" id=51]
-[ext_resource path="res://assets/Characters/Idle/Dark/DarkIdle5.png" type="Texture" id=52]
-[ext_resource path="res://assets/Characters/Run/Neutral/NeutralRun1.png" type="Texture" id=53]
-[ext_resource path="res://assets/Characters/Run/Neutral/NeutralRun2.png" type="Texture" id=54]
-[ext_resource path="res://assets/Characters/Run/Neutral/NeutralRun3.png" type="Texture" id=55]
-[ext_resource path="res://assets/Characters/Run/Neutral/NeutralRun4.png" type="Texture" id=56]
-[ext_resource path="res://assets/Characters/Run/Neutral/NeutralRun5.png" type="Texture" id=57]
-[ext_resource path="res://assets/Characters/Run/Neutral/NeutralRun6.png" type="Texture" id=58]
-[ext_resource path="res://assets/Characters/Run/Neutral/NeutralRun7.png" type="Texture" id=59]
-[ext_resource path="res://assets/Characters/Run/Neutral/NeutralRun8.png" type="Texture" id=60]
-[ext_resource path="res://assets/Characters/Run/Neutral/NeutralRun9.png" type="Texture" id=61]
-[ext_resource path="res://assets/Characters/Run/Neutral/NeutralRun10.png" type="Texture" id=62]
-[ext_resource path="res://assets/Characters/Run/Neutral/NeutralRun11.png" type="Texture" id=63]
-[ext_resource path="res://assets/Characters/Run/Neutral/NeutralRun12.png" type="Texture" id=64]
-[ext_resource path="res://assets/Characters/Run/Ice/IceRun1.png" type="Texture" id=65]
-[ext_resource path="res://assets/Characters/Run/Ice/IceRun2.png" type="Texture" id=66]
-[ext_resource path="res://assets/Characters/Run/Ice/IceRun3.png" type="Texture" id=67]
-[ext_resource path="res://assets/Characters/Run/Ice/IceRun4.png" type="Texture" id=68]
-[ext_resource path="res://assets/Characters/Run/Ice/IceRun5.png" type="Texture" id=69]
-[ext_resource path="res://assets/Characters/Run/Ice/IceRun6.png" type="Texture" id=70]
-[ext_resource path="res://assets/Characters/Run/Ice/IceRun7.png" type="Texture" id=71]
-[ext_resource path="res://assets/Characters/Run/Ice/IceRun8.png" type="Texture" id=72]
-[ext_resource path="res://assets/Characters/Run/Ice/IceRun9.png" type="Texture" id=73]
-[ext_resource path="res://assets/Characters/Run/Ice/IceRun10.png" type="Texture" id=74]
-[ext_resource path="res://assets/Characters/Run/Ice/IceRun11.png" type="Texture" id=75]
-[ext_resource path="res://assets/Characters/Run/Ice/IceRun12.png" type="Texture" id=76]
-[ext_resource path="res://assets/Characters/Idle/Ice/IceIdle1.png" type="Texture" id=77]
-[ext_resource path="res://assets/Characters/Idle/Ice/IceIdle2.png" type="Texture" id=78]
-[ext_resource path="res://assets/Characters/Idle/Ice/IceIdle3.png" type="Texture" id=79]
-[ext_resource path="res://assets/Characters/Idle/Ice/IceIdle4.png" type="Texture" id=80]
-[ext_resource path="res://assets/Characters/Idle/Ice/IceIdle5.png" type="Texture" id=81]
-[ext_resource path="res://assets/Characters/Idle/Fire/FireIdle1.png" type="Texture" id=82]
-[ext_resource path="res://assets/Characters/Idle/Fire/FireIdle2.png" type="Texture" id=83]
-[ext_resource path="res://assets/Characters/Idle/Fire/FireIdle3.png" type="Texture" id=84]
-[ext_resource path="res://assets/Characters/Idle/Fire/FireIdle4.png" type="Texture" id=85]
-[ext_resource path="res://assets/Characters/Idle/Fire/FireIdle5.png" type="Texture" id=86]
+[ext_resource path="res://assets/Characters/Run/Neutral/NeutralRun1.png" type="Texture" id=7]
+[ext_resource path="res://assets/Characters/Run/Neutral/NeutralRun2.png" type="Texture" id=8]
+[ext_resource path="res://assets/Characters/Run/Neutral/NeutralRun3.png" type="Texture" id=9]
+[ext_resource path="res://assets/Characters/Run/Neutral/NeutralRun4.png" type="Texture" id=10]
+[ext_resource path="res://assets/Characters/Run/Neutral/NeutralRun5.png" type="Texture" id=11]
+[ext_resource path="res://assets/Characters/Run/Neutral/NeutralRun6.png" type="Texture" id=12]
+[ext_resource path="res://assets/Characters/Run/Neutral/NeutralRun7.png" type="Texture" id=13]
+[ext_resource path="res://assets/Characters/Run/Neutral/NeutralRun8.png" type="Texture" id=14]
+[ext_resource path="res://assets/Characters/Run/Neutral/NeutralRun9.png" type="Texture" id=15]
+[ext_resource path="res://assets/Characters/Run/Neutral/NeutralRun10.png" type="Texture" id=16]
+[ext_resource path="res://assets/Characters/Run/Neutral/NeutralRun11.png" type="Texture" id=17]
+[ext_resource path="res://assets/Characters/Run/Neutral/NeutralRun12.png" type="Texture" id=18]
+[ext_resource path="res://assets/Characters/Run/Fire/FireRun1.png" type="Texture" id=19]
+[ext_resource path="res://assets/Characters/Run/Fire/FireRun2.png" type="Texture" id=20]
+[ext_resource path="res://assets/Characters/Run/Fire/FireRun3.png" type="Texture" id=21]
+[ext_resource path="res://assets/Characters/Run/Fire/FireRun4.png" type="Texture" id=22]
+[ext_resource path="res://assets/Characters/Run/Fire/FireRun5.png" type="Texture" id=23]
+[ext_resource path="res://assets/Characters/Run/Fire/FireRun6.png" type="Texture" id=24]
+[ext_resource path="res://assets/Characters/Run/Fire/FireRun7.png" type="Texture" id=25]
+[ext_resource path="res://assets/Characters/Run/Fire/FireRun8.png" type="Texture" id=26]
+[ext_resource path="res://assets/Characters/Run/Fire/FireRun9.png" type="Texture" id=27]
+[ext_resource path="res://assets/Characters/Run/Fire/FireRun10.png" type="Texture" id=28]
+[ext_resource path="res://assets/Characters/Run/Fire/FireRun11.png" type="Texture" id=29]
+[ext_resource path="res://assets/Characters/Run/Fire/FireRun12.png" type="Texture" id=30]
+[ext_resource path="res://assets/Characters/Run/Dark/DarkRun1.png" type="Texture" id=31]
+[ext_resource path="res://assets/Characters/Run/Dark/DarkRun2.png" type="Texture" id=32]
+[ext_resource path="res://assets/Characters/Run/Dark/DarkRun3.png" type="Texture" id=33]
+[ext_resource path="res://assets/Characters/Run/Dark/DarkRun4.png" type="Texture" id=34]
+[ext_resource path="res://assets/Characters/Run/Dark/DarkRun5.png" type="Texture" id=35]
+[ext_resource path="res://assets/Characters/Run/Dark/DarkRun6.png" type="Texture" id=36]
+[ext_resource path="res://assets/Characters/Run/Dark/DarkRun7.png" type="Texture" id=37]
+[ext_resource path="res://assets/Characters/Run/Dark/DarkRun8.png" type="Texture" id=38]
+[ext_resource path="res://assets/Characters/Run/Dark/DarkRun9.png" type="Texture" id=39]
+[ext_resource path="res://assets/Characters/Run/Dark/DarkRun10.png" type="Texture" id=40]
+[ext_resource path="res://assets/Characters/Run/Dark/DarkRun11.png" type="Texture" id=41]
+[ext_resource path="res://assets/Characters/Run/Dark/DarkRun12.png" type="Texture" id=42]
+[ext_resource path="res://assets/Characters/Idle/Ice/IceIdle1.png" type="Texture" id=43]
+[ext_resource path="res://assets/Characters/Idle/Ice/IceIdle2.png" type="Texture" id=44]
+[ext_resource path="res://assets/Characters/Idle/Ice/IceIdle3.png" type="Texture" id=45]
+[ext_resource path="res://assets/Characters/Idle/Ice/IceIdle4.png" type="Texture" id=46]
+[ext_resource path="res://assets/Characters/Idle/Ice/IceIdle5.png" type="Texture" id=47]
+[ext_resource path="res://assets/Characters/Run/Ice/IceRun1.png" type="Texture" id=48]
+[ext_resource path="res://assets/Characters/Run/Ice/IceRun2.png" type="Texture" id=49]
+[ext_resource path="res://assets/Characters/Run/Ice/IceRun3.png" type="Texture" id=50]
+[ext_resource path="res://assets/Characters/Run/Ice/IceRun4.png" type="Texture" id=51]
+[ext_resource path="res://assets/Characters/Run/Ice/IceRun5.png" type="Texture" id=52]
+[ext_resource path="res://assets/Characters/Run/Ice/IceRun6.png" type="Texture" id=53]
+[ext_resource path="res://assets/Characters/Run/Ice/IceRun7.png" type="Texture" id=54]
+[ext_resource path="res://assets/Characters/Run/Ice/IceRun8.png" type="Texture" id=55]
+[ext_resource path="res://assets/Characters/Run/Ice/IceRun9.png" type="Texture" id=56]
+[ext_resource path="res://assets/Characters/Run/Ice/IceRun10.png" type="Texture" id=57]
+[ext_resource path="res://assets/Characters/Run/Ice/IceRun11.png" type="Texture" id=58]
+[ext_resource path="res://assets/Characters/Run/Ice/IceRun12.png" type="Texture" id=59]
+[ext_resource path="res://assets/Characters/Run/Light/LightRun1.png" type="Texture" id=60]
+[ext_resource path="res://assets/Characters/Run/Light/LightRun2.png" type="Texture" id=61]
+[ext_resource path="res://assets/Characters/Run/Light/LightRun3.png" type="Texture" id=62]
+[ext_resource path="res://assets/Characters/Run/Light/LightRun4.png" type="Texture" id=63]
+[ext_resource path="res://assets/Characters/Run/Light/LightRun5.png" type="Texture" id=64]
+[ext_resource path="res://assets/Characters/Run/Light/LightRun6.png" type="Texture" id=65]
+[ext_resource path="res://assets/Characters/Run/Light/LightRun7.png" type="Texture" id=66]
+[ext_resource path="res://assets/Characters/Run/Light/LightRun8.png" type="Texture" id=67]
+[ext_resource path="res://assets/Characters/Run/Light/LightRun9.png" type="Texture" id=68]
+[ext_resource path="res://assets/Characters/Run/Light/LightRun10.png" type="Texture" id=69]
+[ext_resource path="res://assets/Characters/Run/Light/LightRun11.png" type="Texture" id=70]
+[ext_resource path="res://assets/Characters/Run/Light/LightRun12.png" type="Texture" id=71]
+[ext_resource path="res://assets/Characters/Idle/Fire/FireIdle1.png" type="Texture" id=72]
+[ext_resource path="res://assets/Characters/Idle/Fire/FireIdle2.png" type="Texture" id=73]
+[ext_resource path="res://assets/Characters/Idle/Fire/FireIdle3.png" type="Texture" id=74]
+[ext_resource path="res://assets/Characters/Idle/Fire/FireIdle4.png" type="Texture" id=75]
+[ext_resource path="res://assets/Characters/Idle/Fire/FireIdle5.png" type="Texture" id=76]
+[ext_resource path="res://assets/Characters/Idle/Dark/DarkIdle1.png" type="Texture" id=77]
+[ext_resource path="res://assets/Characters/Idle/Dark/DarkIdle2.png" type="Texture" id=78]
+[ext_resource path="res://assets/Characters/Idle/Dark/DarkIdle3.png" type="Texture" id=79]
+[ext_resource path="res://assets/Characters/Idle/Dark/DarkIdle4.png" type="Texture" id=80]
+[ext_resource path="res://assets/Characters/Idle/Dark/DarkIdle5.png" type="Texture" id=81]
+[ext_resource path="res://assets/Characters/Idle/Neutral/NeutralIdle1.png" type="Texture" id=82]
+[ext_resource path="res://assets/Characters/Idle/Neutral/NeutralIdle2.png" type="Texture" id=83]
+[ext_resource path="res://assets/Characters/Idle/Neutral/NeutralIdle3.png" type="Texture" id=84]
+[ext_resource path="res://assets/Characters/Idle/Neutral/NeutralIdle4.png" type="Texture" id=85]
+[ext_resource path="res://assets/Characters/Idle/Neutral/NeutralIdle5.png" type="Texture" id=86]
 [ext_resource path="res://Sword.tscn" type="PackedScene" id=87]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -97,47 +97,47 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
 "loop": true,
-"name": "Run_Dark",
+"name": "Run_Neutral",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
-"loop": true,
-"name": "Idle_Neutral",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ) ],
-"loop": true,
-"name": "Run_Light",
-"speed": 15.0
-}, {
-"frames": [ ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ) ],
+"frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ) ],
 "loop": true,
 "name": "Run_Fire",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ) ],
+"frames": [ ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ) ],
 "loop": true,
-"name": "Idle_Dark",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 62 ), ExtResource( 63 ), ExtResource( 64 ) ],
-"loop": true,
-"name": "Run_Neutral",
+"name": "Run_Dark",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 65 ), ExtResource( 66 ), ExtResource( 67 ), ExtResource( 68 ), ExtResource( 69 ), ExtResource( 70 ), ExtResource( 71 ), ExtResource( 72 ), ExtResource( 73 ), ExtResource( 74 ), ExtResource( 75 ), ExtResource( 76 ) ],
-"loop": true,
-"name": "Run_Ice",
-"speed": 15.0
-}, {
-"frames": [ ExtResource( 77 ), ExtResource( 78 ), ExtResource( 79 ), ExtResource( 80 ), ExtResource( 81 ) ],
+"frames": [ ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ) ],
 "loop": true,
 "name": "Idle_Ice",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 82 ), ExtResource( 83 ), ExtResource( 84 ), ExtResource( 85 ), ExtResource( 86 ) ],
+"frames": [ ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 59 ) ],
+"loop": true,
+"name": "Run_Ice",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 60 ), ExtResource( 61 ), ExtResource( 62 ), ExtResource( 63 ), ExtResource( 64 ), ExtResource( 65 ), ExtResource( 66 ), ExtResource( 67 ), ExtResource( 68 ), ExtResource( 69 ), ExtResource( 70 ), ExtResource( 71 ) ],
+"loop": true,
+"name": "Run_Light",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 72 ), ExtResource( 73 ), ExtResource( 74 ), ExtResource( 75 ), ExtResource( 76 ) ],
 "loop": true,
 "name": "Idle_Fire",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 77 ), ExtResource( 78 ), ExtResource( 79 ), ExtResource( 80 ), ExtResource( 81 ) ],
+"loop": true,
+"name": "Idle_Dark",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 82 ), ExtResource( 83 ), ExtResource( 84 ), ExtResource( 85 ), ExtResource( 86 ) ],
+"loop": true,
+"name": "Idle_Neutral",
 "speed": 5.0
 } ]
 
@@ -164,6 +164,7 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 
 [node name="DashCheck" type="RayCast2D" parent="."]
+editor/display_folded = true
 cast_to = Vector2( 0, 60 )
 collision_mask = 2
 collide_with_areas = true
@@ -172,11 +173,13 @@ collide_with_areas = true
 position = Vector2( 0, 60 )
 
 [node name="PositionHelper" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="DashLine" type="Line2D" parent="PositionHelper"]
 points = PoolVector2Array( 0, 0, 0, 0 )
 width = 4.0
 default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1106427217
 
 [node name="DashTween" type="Tween" parent="."]
 
