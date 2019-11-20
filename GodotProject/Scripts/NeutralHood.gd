@@ -10,8 +10,9 @@ var dash_angle  #Variable for storing dash line angle in relation to player.
 export (bool) var can_line_dash  #Variable that tracks if the player can line dash.
 onready var dash_line = $PositionHelper/DashLine  #Sets DashLine node as variable.
 
-enum {IDLE, RUN, JUMP, DEAD, DASH}  #Declaring states as enumerated types.
+enum {IDLE, RUN, JUMP, DEAD, DASH, ATTACK, HURT, ATTACKL}  #Declaring states as enumerated types.
 var state  #Variable state to track current state.
+var health
 
 enum {NEUTRAL, FIRE, ICE, DARK, LIGHT}  #Declaring all possible stances as enumerated types.
 var stance  #Variable for tracking current stance.
@@ -34,6 +35,7 @@ var stance_run = {
 var velocity = Vector2()  #Variable velocity to store and apply player movement.
 
 func _ready():  #Runs function soon as scene is loaded.
+	health = 10
 	change_stance(NEUTRAL)  #Changes stance to NEUTRAL.
 	change_state(IDLE)  #Changes state to IDLE.
 	
@@ -52,6 +54,12 @@ func change_state(new_state):  #Runs function when state needs to be changed. Ta
 			$Sprite.playing = true
 		DEAD:
 			print("dead")
+		ATTACK:
+			$Sword/AnimationPlayer.play("Attack")
+		#HURT:
+			#health -= 1
+		ATTACKL:
+			pass
 			
 func change_stance(new_stance):  #Runs function when stance needs to be changed. Taking new_stance as argument.
 	stance = new_stance  #Sets the stance variable to the stance player wanted to change to.
@@ -73,7 +81,13 @@ func _physics_process(delta):  #Function for calculating physics for player.
 	player_input()  #Refers to player_input() function so that its checking for input every frame.
 	#Moves player along a vector. Refer to move_and_slide_with_snap in manuel.
 	velocity = move_and_slide_with_snap(velocity, Vector2(0, 2), Vector2(0, -1), true, 4, float(deg2rad(45)), true)
-	
+	for idx in range(get_slide_count()):
+		var collision = get_slide_collision(idx)
+		if collision.collider.name == "KinematicBody2D":
+			health -= 1
+			if health == 0:
+				get_tree().reload_current_scene()
+				print("You are dead")
 	
 func _process(delta):
 	var mouse_pos = get_global_mouse_position()  #Sets the mouse position every frame to a variable.
@@ -89,6 +103,7 @@ func player_input():  #Checks for player input.
 	var right = Input.is_action_pressed("right")  #Variable to store right key input.
 	var left = Input.is_action_pressed("left")  #Variable to store left key input.
 	var jump = Input.is_action_just_pressed("jump")  #Variable to store jump key input.
+	var attack = Input.is_action_just_pressed("ui_accept") #variable that stores ui_accept
 	
 	#------------------------------------------------
 	#If player wants to run on floor.
@@ -118,6 +133,13 @@ func player_input():  #Checks for player input.
 	#If player is not on floor set state to JUMP.
 	if state in [IDLE, RUN] and !is_on_floor():
 		change_state(JUMP)
+	#-------------------------------------------------
+	#if player is on floor and attack is triggered set state to ATTACK
+	if attack and is_on_floor():
+		if right:
+			change_state(ATTACK)
+		if left:
+			return
 	#-------------------------------------------------
 	#If player wants to jump.
 	if jump and is_on_floor():
