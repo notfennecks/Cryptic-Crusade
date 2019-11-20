@@ -55,13 +55,11 @@ func change_state(new_state):  #Runs function when state needs to be changed. Ta
 		DEAD:
 			print("dead")
 		ATTACK:
-			$Sword.set_position(Vector2(19,0))
 			$Sword/AnimationPlayer.play("Attack")
 		#HURT:
 			#health -= 1
 		ATTACKL:
-			$Sword.set_position(Vector2(4,0))
-			$Sword/AnimationPlayer.play("Attack_Left")
+			pass
 			
 func change_stance(new_stance):  #Runs function when stance needs to be changed. Taking new_stance as argument.
 	stance = new_stance  #Sets the stance variable to the stance player wanted to change to.
@@ -141,7 +139,7 @@ func player_input():  #Checks for player input.
 		if right:
 			change_state(ATTACK)
 		if left:
-			change_state(ATTACKL)
+			return
 	#-------------------------------------------------
 	#If player wants to jump.
 	if jump and is_on_floor():
