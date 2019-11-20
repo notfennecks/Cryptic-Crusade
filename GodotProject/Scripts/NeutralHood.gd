@@ -240,7 +240,6 @@ func _on_StanceTimer_timeout():
 func shoot(cur_pos, dir):
 	if can_shoot:
 		if Input.is_action_pressed("arrow"):
-			print("shot")
 			emit_signal("shoot", cur_pos, dir)
 			can_shoot = false
 			$ArrowTimer.start()
