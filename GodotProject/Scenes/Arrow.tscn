@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Arrow.gd" type="Script" id=1]
+[ext_resource path="res://assets/Weapons+Items/Arrow.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 2.50559
+height = 3.16043
+
+[node name="Arrow" type="Area2D"]
+position = Vector2( 192.733, 204.812 )
+script = ExtResource( 1 )
+arrow_speed = 250
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 12, -0.5 )
+rotation = 1.5708
+shape = SubResource( 1 )

@@ -10,6 +10,11 @@ var dash_angle  #Variable for storing dash line angle in relation to player.
 export (bool) var can_line_dash  #Variable that tracks if the player can line dash.
 onready var dash_line = $PositionHelper/DashLine  #Sets DashLine node as variable.
 
+export (float) var arrow_rate
+var can_shoot = true
+signal shoot
+var mouse_dir
+
 enum {IDLE, RUN, JUMP, DEAD, DASH, ATTACK, HURT, ATTACKL}  #Declaring states as enumerated types.
 var state  #Variable state to track current state.
 var health
@@ -38,6 +43,7 @@ func _ready():  #Runs function soon as scene is loaded.
 	health = 10
 	change_stance(NEUTRAL)  #Changes stance to NEUTRAL.
 	change_state(IDLE)  #Changes state to IDLE.
+	$ArrowTimer.wait_time = arrow_rate
 	
 func change_state(new_state):  #Runs function when state needs to be changed. Taking the new_state as argument.
 	state = new_state  #Sets the state variable to the state it needs to change to.
@@ -96,6 +102,7 @@ func _process(delta):
 	var current_pos = position  #Sets the player position every frame to a variable.
 	dash_line(mouse_pos, current_pos) #Refers to draw_dash function to draw the dash path.
 	dash_direction(mouse_pos, current_pos)  #Refers to dash_direction function to calculate direction.
+	shoot(current_pos, mouse_dir)
 	
 func player_input():  #Checks for player input.
 	if state == DEAD:  #If player is dead return. We do not want the player moving while dead.
@@ -225,6 +232,18 @@ func dash_direction(mouse, pos):  #For determining dash direction angle.
 	#--------------------------------
 	dash_angle += 90  #Offsets angle because zero angle is going down.
 	$DashCheck.rotation_degrees = -dash_angle  #Inverts angle because negative angles go counter-clockwise.
+	mouse_dir = -dash_angle + 90
 	
 func _on_StanceTimer_timeout():
 	can_switch_stance = true
+	
+func shoot(cur_pos, dir):
+	if can_shoot:
+		if Input.is_action_pressed("arrow"):
+			print("shot")
+			emit_signal("shoot", cur_pos, dir)
+			can_shoot = false
+			$ArrowTimer.start()
+			
+func _on_ArrowTimer_timeout():
+	can_shoot = true
