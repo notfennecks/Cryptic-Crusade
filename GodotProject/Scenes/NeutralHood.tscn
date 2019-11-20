@@ -86,7 +86,8 @@
 [ext_resource path="res://assets/Characters/Idle/Dark/DarkIdle3.png" type="Texture" id=84]
 [ext_resource path="res://assets/Characters/Idle/Dark/DarkIdle4.png" type="Texture" id=85]
 [ext_resource path="res://assets/Characters/Idle/Dark/DarkIdle5.png" type="Texture" id=86]
-[ext_resource path="res://Sword.tscn" type="PackedScene" id=87]
+[ext_resource path="res://Scenes/Sword.tscn" type="PackedScene" id=87]
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
