@@ -238,11 +238,13 @@ func _on_StanceTimer_timeout():
 	can_switch_stance = true
 	
 func shoot(cur_pos, dir):
-	if can_shoot:
-		if Input.is_action_pressed("arrow"):
-			emit_signal("shoot", cur_pos, dir)
-			can_shoot = false
-			$ArrowTimer.start()
+	if can_shoot: #if can shoot is available
+		if Input.is_action_pressed("arrow"): #and if the arrow key is pushed
+			emit_signal("shoot", cur_pos, dir) #emit the shoot signal
+			can_shoot = false #the chaacter can no longer shoot
+			$ArrowTimer.start() #triggers the timer
+			$DashCheck/Bow.show() #shows the bow sprite
 			
-func _on_ArrowTimer_timeout():
-	can_shoot = true
+func _on_ArrowTimer_timeout(): #when this timer runs out
+	can_shoot = true #the character can once again shoot
+	$DashCheck/Bow.hide() #hide the bow sprite
