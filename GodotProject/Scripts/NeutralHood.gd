@@ -4,6 +4,7 @@ export (int) var player_speed  #Exported variable for player run speed.
 export (int) var jump_height  #Exported variable for player jump height.
 export (int) var gravity  #Exported variable for gravity applied to player.
 export (int) var max_jumps  #Exported variable for max player jumps.
+export (int) var level = 1#Exported variabe for what level the player is in
 var jump_count = 0 #Variable that tracks jump count.
 
 var dash_angle  #Variable for storing dash line angle in relation to player.
@@ -18,10 +19,14 @@ var mouse_dir
 enum {IDLE, RUN, JUMP, DEAD, DASH, ATTACK, HURT, ATTACKL}  #Declaring states as enumerated types.
 var state  #Variable state to track current state.
 var health
+var experience = 0
+var experience_total = 0
+var experience_required = get_required_experience(level + 1) #experience required is determined by the get required experience function
+signal experience_gained(growth_data) #create experience gained signal
 
-enum {NEUTRAL, FIRE, ICE, DARK, LIGHT}  #Declaring all possible stances as enumerated types.
+enum {NEUTRAL, FIRE, ICE, DARK, LIGHT} #Declaring all possible stances as enumerated types.
 var stance  #Variable for tracking current stance.
-var can_switch_stance = true  #Variable for if the player can change their stance.
+var can_switch_stance = true #Variable for if the player can change their stance.
 #Dictionary that stores stances and their respective idle animations.
 var stance_idle = {
 	0: "Idle_Neutral", 
@@ -248,3 +253,21 @@ func shoot(cur_pos, dir):
 func _on_ArrowTimer_timeout(): #when this timer runs out
 	can_shoot = true #the character can once again shoot
 	$DashCheck/Bow.hide() #hide the bow sprite
+	
+func get_required_experience(level): #get required experience function 
+	return round(pow(level, 1.8) + level * 4) #return this value
+	
+func gain_experience(amount): #gain experience function
+	experience_total += amount #add amount to total experience
+	experience += amount #add amount to experience
+	var growth_data = [] #growth data declared as an array
+	while experience >= experience_required: #while the experience is more than experience required
+		experience -= experience_required #subtract experience by experience_required
+		growth_data.append([experience_required, experience_required]) #store this in growth data
+		level_up() #call the level_up function
+	growth_data.append([experience, experience_required]) #store this in growth data if the player does not level up
+	emit_signal("experience_gained", growth_data) #emit the experience gained signal and pass growth data
+		
+func level_up(): #level up function
+	level += 1 #add one to level variable
+	experience_required = get_required_experience(level + 1) #set the experience requirement to the next level
