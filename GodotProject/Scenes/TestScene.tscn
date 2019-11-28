@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Scenes/TestScene.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Arrow.tscn" type="PackedScene" id=2]
@@ -6,7 +6,8 @@
 [ext_resource path="res://assets/Tilesets/TileSetGrass.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/NeutralHood.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/EnemyAI.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/WoodCollectible.tscn" type="PackedScene" id=7]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/WoodCollectible.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -520,6 +521,7 @@ tile_data = PoolIntArray( -327688, 5, 0, -327687, 5, 0, -327686, 6, 0, -262152, 
 
 [node name="NeutralHood" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2.5094, -57.2824 )
+scale = Vector2( 1, 1 )
 player_speed = 150
 jump_height = -250
 gravity = 750
@@ -530,9 +532,16 @@ arrow_rate = 1.0
 position = Vector2( 45.7732, -38.7311 )
 scale = Vector2( 0.2, 0.2 )
 
-[node name="WoodCollectible" parent="." instance=ExtResource( 7 )]
+[node name="ProgressBar" parent="." instance=ExtResource( 7 )]
+margin_left = -113.049
+margin_top = 14.4866
+margin_right = 86.9508
+margin_bottom = 34.4866
+
+[node name="WoodCollectible" parent="." instance=ExtResource( 8 )]
 position = Vector2( -72.6905, -137.437 )
 collision_layer = 16
 collision_mask = 3
+[connection signal="experience_gained" from="NeutralHood" to="ProgressBar" method="_on_NeutralHood_experience_gained"]
 [connection signal="shoot" from="NeutralHood" to="." method="_on_NeutralHood_shoot"]
 [connection signal="body_entered" from="WoodCollectible" to="." method="_on_WoodCollectible_body_entered"]

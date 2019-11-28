@@ -159,6 +159,8 @@ func player_input():  #Checks for player input.
 	if jump and is_on_floor():
 		velocity.y = jump_height
 		jump_count += 1
+		gain_experience(5)
+		print(level)
 	#Extra jumps.
 	if jump and state == JUMP and jump_count < max_jumps:
 		velocity.y = jump_height

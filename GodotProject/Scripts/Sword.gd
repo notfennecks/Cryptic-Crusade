@@ -1,6 +1,7 @@
 extends Node2D
 
 signal attack_finished #attack finished signal
+var player = get_parent()
 
 onready var animation_player = $AnimationPlayer #declare animation player as a variable
 
