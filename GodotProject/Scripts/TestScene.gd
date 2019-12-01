@@ -17,7 +17,8 @@ var resources = {
 	}
 
 func _ready():
-	bar._init(character.experience_required, character.experience_total)
+#	bar._init(character.experience_required, character.experience_total)
+	pass
 	
 
 func _on_NeutralHood_shoot(pos, dir):
