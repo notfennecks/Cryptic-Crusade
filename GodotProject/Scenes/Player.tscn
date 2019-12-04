@@ -175,6 +175,7 @@ collide_with_areas = true
 position = Vector2( 0, 60 )
 
 [node name="Bow" type="Sprite" parent="DashCheck"]
+editor/display_folded = true
 visible = false
 position = Vector2( -0.0639906, 5.93751 )
 rotation = 1.5708
