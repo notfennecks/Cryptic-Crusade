@@ -22,7 +22,7 @@ func _physics_process(delta):
 			velocity.y = -100 #turn the y velocity to -100
 	for idx in range(get_slide_count()):
 		var collision = get_slide_collision(idx)
-		if collision.collider.name == "NeutralHood":
+		if collision.collider.name == "Player":
 			return
 
 func take_damage():

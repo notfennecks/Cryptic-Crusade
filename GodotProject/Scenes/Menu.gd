@@ -12,3 +12,6 @@ func _on_StartButton_button_down():
 
 func _on_Timer_timeout():
 	get_tree().change_scene("res://Scenes/TestScene.tscn")
+
+func _on_QuitButton_button_up():
+	get_tree().quit()

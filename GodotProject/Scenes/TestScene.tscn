@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Scripts/TestScene.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Arrow.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/EnemyAIRun.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/WoodCollectible.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -521,7 +522,7 @@ tile_data = PoolIntArray( -327688, 5, 0, -327687, 5, 0, -327686, 6, 0, -262152, 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2.5094, -57.2824 )
 player_speed = 150
-jump_height = -280
+jump_height = -250
 gravity = 750
 max_jumps = 2
 arrow_rate = 1.0
@@ -534,11 +535,15 @@ scale = Vector2( 0.2, 0.2 )
 position = Vector2( -72.6905, -137.437 )
 collision_mask = 3
 
-[node name="WoodCollectible2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 17.2899, -138.871 )
-collision_mask = 3
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="WoodCollectible3" parent="." instance=ExtResource( 7 )]
-position = Vector2( 101.176, -111.984 )
-collision_mask = 3
+[node name="HUD" parent="CanvasLayer" instance=ExtResource( 8 )]
+
+[node name="HBoxContainer" parent="CanvasLayer/HUD/HBoxContainer" index="1"]
+margin_right = 139.0
+[connection signal="damage_taken" from="Player" to="CanvasLayer/HUD" method="_on_Player_damage_taken"]
+[connection signal="level_up" from="Player" to="CanvasLayer/HUD" method="_on_Player_level_up"]
 [connection signal="shoot" from="Player" to="." method="_on_NeutralHood_shoot"]
+[connection signal="body_entered" from="WoodCollectible" to="." method="_on_WoodCollectible_body_entered"]
+
+[editable path="CanvasLayer/HUD"]
