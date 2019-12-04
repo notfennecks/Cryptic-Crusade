@@ -38,7 +38,6 @@ margin_bottom = 377.0
 size_flags_vertical = 3
 
 [node name="Buttons" type="VBoxContainer" parent="Menu/Center"]
-editor/display_folded = true
 margin_right = 416.0
 margin_bottom = 231.0
 size_flags_horizontal = 3
@@ -89,4 +88,5 @@ Canton Studios"
 visible = false
 [connection signal="button_down" from="Menu/Center/Buttons/StartButton" to="." method="_on_StartButton_button_down"]
 [connection signal="button_up" from="Menu/Center/Buttons/StartButton" to="." method="_on_StartButton_button_up"]
+[connection signal="button_up" from="Menu/Center/Buttons/QuitButton" to="." method="_on_QuitButton_button_up"]
 [connection signal="timeout" from="Menu/Center/Buttons/Timer" to="." method="_on_Timer_timeout"]

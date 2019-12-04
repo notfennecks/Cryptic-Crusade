@@ -92,6 +92,7 @@ arrow={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+<<<<<<< HEAD
 inventory={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":73,"unicode":0,"echo":false,"script":null)
@@ -102,6 +103,8 @@ crafting={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777218,"unicode":0,"echo":false,"script":null)
  ]
 }
+=======
+>>>>>>> 292006149b48e2142d35ee0deed12017338fa658
 
 [layer_names]
 
@@ -115,5 +118,5 @@ crafting={
 
 [rendering]
 
-environment/default_clear_color=Color( 0.396078, 0.956863, 1, 1 )
+environment/default_clear_color=Color( 0.223529, 0.509804, 1, 1 )
 environment/default_environment="res://default_env.tres"

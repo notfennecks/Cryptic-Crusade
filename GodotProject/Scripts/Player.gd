@@ -15,6 +15,7 @@ export (float) var arrow_rate
 var can_shoot = true
 signal shoot
 var mouse_dir
+signal damage_taken
 
 enum {IDLE, RUN, JUMP, DEAD, DASH, ATTACK, HURT, ATTACKL}  #Declaring states as enumerated types.
 var state  #Variable state to track current state.
@@ -23,6 +24,7 @@ var experience = 0
 var experience_total = 0
 var experience_required = get_required_experience(level + 1) #experience required is determined by the get required experience function
 signal experience_gained(growth_data) #create experience gained signal
+signal level_up #create a signal when you level up
 
 export (bool) var Bow = false
 export (bool) var Sword = false
@@ -107,7 +109,7 @@ func change_stance(new_stance):  #Runs function when stance needs to be changed.
 
 func _physics_process(delta):  #Function for calculating physics for player.
 	velocity.y += gravity * delta  #Applies gravity to player.
-
+	
 	player_input()  #Refers to player_input() function so that its checking for input every frame.
 	#Moves player along a vector. Refer to move_and_slide_with_snap in manuel.
 	velocity = move_and_slide_with_snap(velocity, Vector2(0, 2), Vector2(0, -1), true, 4, float(deg2rad(45)), true)
@@ -115,6 +117,7 @@ func _physics_process(delta):  #Function for calculating physics for player.
 		var collision = get_slide_collision(idx)
 		if collision.collider.name == "KinematicBody2D":
 			health -= 1
+			emit_signal("damage_taken", health)
 			if health == 0:
 				get_tree().reload_current_scene()
 				print("You are dead")
@@ -289,6 +292,7 @@ func gain_experience(amount): #gain experience function
 func level_up(): #level up function
 	level += 1 #add one to level variable
 	experience_required = get_required_experience(level + 1) #set the experience requirement to the next level.
+	emit_signal("level_up", level)
 	
 func resource_collection(amount, type):
 	resources[type] += amount
