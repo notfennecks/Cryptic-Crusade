@@ -21,9 +21,12 @@ func _process(delta):
 			$CanvasLayer/InventoryScreen.hide()
 		else:
 			$CanvasLayer/InventoryScreen.show()
-
+<<<<<<< HEAD
 	if Input.is_action_just_pressed("crafting"):
 		if $CanvasLayer/CraftingScreen.visible:
 			$CanvasLayer/CraftingScreen.hide()
 		else:
 			$CanvasLayer/CraftingScreen.show()
+=======
+#>>>>>>> a27f884598f4f92c446ddec05cc13dea2d2ac194
+>>>>>>> 292006149b48e2142d35ee0deed12017338fa658
