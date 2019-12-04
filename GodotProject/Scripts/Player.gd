@@ -24,6 +24,9 @@ var experience_total = 0
 var experience_required = get_required_experience(level + 1) #experience required is determined by the get required experience function
 signal experience_gained(growth_data) #create experience gained signal
 
+export (bool) var Bow = false
+export (bool) var Sword = false
+
 signal updated_resources(amount, type)
 
 var resources = {
@@ -290,5 +293,9 @@ func level_up(): #level up function
 func resource_collection(amount, type):
 	resources[type] += amount
 	connect("updated_resources", get_parent().get_child(0).get_child(0), "update_resources")
+	emit_signal("updated_resources", resources[type], type)
+	
+func update_player_resources(type, amount):
+	resources[type] -= amount
 	emit_signal("updated_resources", resources[type], type)
 	
