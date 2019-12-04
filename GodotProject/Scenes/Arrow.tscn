@@ -3,7 +3,6 @@
 [ext_resource path="res://Scripts/Arrow.gd" type="Script" id=1]
 [ext_resource path="res://assets/Weapons+Items/Arrow.png" type="Texture" id=2]
 
-
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 2.50559
 height = 3.16043
@@ -14,7 +13,7 @@ gravity_point = true
 collision_layer = 64
 collision_mask = 75
 script = ExtResource( 1 )
-arrow_speed = 250
+arrow_speed = 350
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )

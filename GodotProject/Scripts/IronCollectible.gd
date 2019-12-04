@@ -11,6 +11,6 @@ func _on_Area2D_body_entered(body):
 		$Tween.start()
 		
 func _on_Tween_tween_completed(object, key):
-	emit_signal("resource_collected", 1, "Wood")
+	emit_signal("resource_collected", 1, "Iron")
 	queue_free()
 
