@@ -521,7 +521,7 @@ tile_data = PoolIntArray( -327688, 5, 0, -327687, 5, 0, -327686, 6, 0, -262152, 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2.5094, -57.2824 )
 player_speed = 150
-jump_height = -250
+jump_height = -280
 gravity = 750
 max_jumps = 2
 arrow_rate = 1.0
