@@ -1,6 +1,7 @@
 extends Control
 
-var wood_item = "res://assets/Wood.png"
-
-func _ready():
-	$ItemList.add_item("Wood", null, false)
+func update_resources(amount, type):
+	if type == "Wood":
+		$WoodAmount.text = "x " + str(amount)
+	if type == "Iron":
+		$IronAmount.text = "x " + str(amount)

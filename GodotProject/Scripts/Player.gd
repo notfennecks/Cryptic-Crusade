@@ -26,6 +26,8 @@ var experience_required = get_required_experience(level + 1) #experience require
 signal experience_gained(growth_data) #create experience gained signal
 signal level_up #create a signal when you level up
 
+signal updated_resources(amount, type)
+
 var resources = {
 	"Wood" : 0,
 	"Iron" : 0,
@@ -123,11 +125,6 @@ func _process(delta):
 	dash_line(mouse_pos, current_pos) #Refers to draw_dash function to draw the dash path.
 	dash_direction(mouse_pos, current_pos)  #Refers to dash_direction function to calculate direction.
 	shoot(current_pos, mouse_dir)
-	if Input.is_action_just_pressed("inventory"):
-		if $InventoryScreen.visible:
-			$InventoryScreen.hide()
-		else:
-			$InventoryScreen.show()
 
 func player_input():  #Checks for player input.
 	if state == DEAD:  #If player is dead return. We do not want the player moving while dead.
@@ -180,7 +177,6 @@ func player_input():  #Checks for player input.
 		velocity.y = jump_height
 		jump_count += 1
 		gain_experience(5)
-		print(level)
 	#Extra jumps.
 	if jump and state == JUMP and jump_count < max_jumps:
 		velocity.y = jump_height
@@ -297,4 +293,6 @@ func level_up(): #level up function
 	
 func resource_collection(amount, type):
 	resources[type] += amount
-	print(resources[type])
+	connect("updated_resources", get_parent().get_child(0).get_child(0), "update_resources")
+	emit_signal("updated_resources", resources[type], type)
+	
