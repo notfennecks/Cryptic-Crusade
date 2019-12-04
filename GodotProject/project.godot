@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="BestPlatformer"
-run/main_scene="res://Scenes/TestScene.tscn"
+run/main_scene="res://Scenes/Menu.tscn"
 config/icon="res://icon.png"
 
 [input]
@@ -105,5 +105,5 @@ arrow={
 
 [rendering]
 
-environment/default_clear_color=Color( 0.396078, 0.956863, 1, 1 )
+environment/default_clear_color=Color( 0.223529, 0.509804, 1, 1 )
 environment/default_environment="res://default_env.tres"
