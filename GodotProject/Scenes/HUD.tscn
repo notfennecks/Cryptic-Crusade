@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=2 format=2]
 
-<<<<<<< HEAD
 [ext_resource path="res://assets/HotbarOutline.png" type="Texture" id=1]
 
 [node name="Control" type="Control"]
@@ -52,46 +51,3 @@ texture = ExtResource( 1 )
 [node name="Icon" type="TextureRect" parent="Slot3/Outline"]
 margin_right = 64.0
 margin_bottom = 64.0
-=======
-[ext_resource path="res://Scenes/HUD.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/ATHLS___.TTF" type="DynamicFontData" id=2]
-
-[sub_resource type="DynamicFont" id=1]
-size = 24
-outline_size = 3
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 2 )
-
-[node name="HUD" type="MarginContainer"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 1000.0
-margin_bottom = 60.0
-script = ExtResource( 1 )
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 980.0
-margin_bottom = 40.0
-custom_constants/separation = 20
-
-[node name="Level" type="Label" parent="HBoxContainer"]
-margin_top = 7.0
-margin_right = 53.0
-margin_bottom = 32.0
-custom_fonts/font = SubResource( 1 )
-text = "Level: 1"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
-visible = false
-margin_left = 73.0
-margin_right = 139.0
-margin_bottom = 40.0
-
-[node name="Health" type="Label" parent="HBoxContainer/HBoxContainer"]
-visible = false
-margin_top = 7.0
-margin_right = 66.0
-margin_bottom = 32.0
-custom_fonts/font = SubResource( 1 )
-text = "Health: 10"
->>>>>>> 292006149b48e2142d35ee0deed12017338fa658
