@@ -521,7 +521,7 @@ tile_data = PoolIntArray( -327688, 5, 0, -327687, 5, 0, -327686, 6, 0, -262152, 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2.5094, -57.2824 )
 player_speed = 150
-jump_height = -250
+jump_height = -280
 gravity = 750
 max_jumps = 2
 arrow_rate = 1.0
@@ -532,7 +532,13 @@ scale = Vector2( 0.2, 0.2 )
 
 [node name="WoodCollectible" parent="." instance=ExtResource( 7 )]
 position = Vector2( -72.6905, -137.437 )
-collision_layer = 16
+collision_mask = 3
+
+[node name="WoodCollectible2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 17.2899, -138.871 )
+collision_mask = 3
+
+[node name="WoodCollectible3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 101.176, -111.984 )
 collision_mask = 3
 [connection signal="shoot" from="Player" to="." method="_on_NeutralHood_shoot"]
-[connection signal="body_entered" from="WoodCollectible" to="." method="_on_WoodCollectible_body_entered"]
