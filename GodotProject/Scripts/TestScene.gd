@@ -12,8 +12,8 @@ func _on_NeutralHood_shoot(pos, dir):
 	var a = Arrow.instance()
 	a.start(pos, deg2rad(dir))
 	add_child(a)
-<<<<<<< HEAD
-=======
+#<<<<<<< HEAD
+#=======
 	
 func _process(delta):
 	if Input.is_action_just_pressed("inventory"):
@@ -21,4 +21,4 @@ func _process(delta):
 			$CanvasLayer/InventoryScreen.hide()
 		else:
 			$CanvasLayer/InventoryScreen.show()
->>>>>>> a27f884598f4f92c446ddec05cc13dea2d2ac194
+#>>>>>>> a27f884598f4f92c446ddec05cc13dea2d2ac194
