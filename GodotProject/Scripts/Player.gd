@@ -120,6 +120,11 @@ func _process(delta):
 	dash_line(mouse_pos, current_pos) #Refers to draw_dash function to draw the dash path.
 	dash_direction(mouse_pos, current_pos)  #Refers to dash_direction function to calculate direction.
 	shoot(current_pos, mouse_dir)
+	if Input.is_action_just_pressed("inventory"):
+		if $InventoryScreen.visible:
+			$InventoryScreen.hide()
+		else:
+			$InventoryScreen.show()
 
 func player_input():  #Checks for player input.
 	if state == DEAD:  #If player is dead return. We do not want the player moving while dead.

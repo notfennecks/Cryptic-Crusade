@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=2]
+[gd_scene load_steps=93 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/Characters/Idle/Light/LightIdle1.png" type="Texture" id=2]
@@ -88,6 +88,8 @@
 [ext_resource path="res://assets/Characters/Run/Neutral/NeutralRun12.png" type="Texture" id=86]
 [ext_resource path="res://assets/Weapons+Items/Bow.png" type="Texture" id=87]
 [ext_resource path="res://Scenes/Sword.tscn" type="PackedScene" id=88]
+[ext_resource path="res://Scenes/InventoryScreen.tscn" type="PackedScene" id=89]
+[ext_resource path="res://Scripts/InventoryScreen.gd" type="Script" id=90]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -162,6 +164,7 @@ position = Vector2( -0.149895, 1.79868 )
 shape = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+rotation = 0.523598
 current = true
 zoom = Vector2( 0.5, 0.5 )
 
@@ -206,6 +209,14 @@ rotation = 0.0142153
 scale = Vector2( 0.3, 0.3 )
 
 [node name="ArrowTimer" type="Timer" parent="."]
+
+[node name="InventoryScreen" parent="." instance=ExtResource( 89 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+script = ExtResource( 90 )
 [connection signal="tween_completed" from="DashTween" to="." method="_on_DashTween_tween_completed"]
 [connection signal="timeout" from="StanceTimer" to="." method="_on_StanceTimer_timeout"]
 [connection signal="timeout" from="ArrowTimer" to="." method="_on_ArrowTimer_timeout"]
