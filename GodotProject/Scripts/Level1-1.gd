@@ -5,20 +5,25 @@ onready var character = $Player
 export (PackedScene) var Arrow
 
 func _ready():
-#	bar._init(character.experience_required, character.experience_total)
-	pass
+	$UI/InventoryScreen.hide()
+	$UI/CraftingScreen.hide()
 	
 func _process(delta):
+	check_ui_visibility()
+	if Input.is_action_just_pressed("reload"):
+		get_tree().reload_current_scene()
+
+func check_ui_visibility():
 	if Input.is_action_just_pressed("inventory"):
-		if $CanvasLayer/InventoryScreen.visible:
-			$CanvasLayer/InventoryScreen.hide()
+		if $UI/InventoryScreen.visible:
+			$UI/InventoryScreen.hide()
 		else:
-			$CanvasLayer/InventoryScreen.show()
+			$UI/InventoryScreen.show()
 	if Input.is_action_just_pressed("crafting"):
-		if $CanvasLayer/CraftingScreen.visible:
-			$CanvasLayer/CraftingScreen.hide()
+		if $UI/CraftingScreen.visible:
+			$UI/CraftingScreen.hide()
 		else:
-			$CanvasLayer/CraftingScreen.show()
+			$UI/CraftingScreen.show()
 
 func _on_Player_shoot(pos, dir):
 	var a = Arrow.instance()

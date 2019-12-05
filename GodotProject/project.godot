@@ -19,6 +19,10 @@ config/name="BestPlatformer"
 run/main_scene="res://Scenes/Menu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Scripts/Global.gd"
+
 [input]
 
 ui_accept={
@@ -100,6 +104,11 @@ inventory={
 crafting={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777218,"unicode":0,"echo":false,"script":null)
+ ]
+}
+reload={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"unicode":0,"echo":false,"script":null)
  ]
 }
 

@@ -27,20 +27,6 @@ signal experience_gained(growth_data) #create experience gained signal
 export (bool) var Bow = false
 export (bool) var Sword = false
 
-signal updated_resources(amount, type)
-
-var resources = {
-	"Wood" : 0,
-	"Iron" : 0,
-	"String": 0,
-	"Stone" : 0,
-	"Crystal" : 0,
-	"Life Essence" : 0,
-	"Mana Essence" : 0,
-	"Damage Essence" : 0,
-	"Bottle" : 0
-	}
-
 enum {NEUTRAL, FIRE, ICE, DARK, LIGHT} #Declaring all possible stances as enumerated types.
 var stance  #Variable for tracking current stance.
 var can_switch_stance = true #Variable for if the player can change their stance.
@@ -261,8 +247,10 @@ func _on_StanceTimer_timeout():
 	can_switch_stance = true
 
 func shoot(cur_pos, dir):
+	if Bow == false:
+		return
 	if can_shoot: #if can shoot is available
-		if Input.is_action_pressed("arrow"): #and if the arrow key is pushed
+		if Input.is_action_pressed("arrow"): #and if the arrow shoot key is pressed.
 			emit_signal("shoot", cur_pos, dir) #emit the shoot signal
 			can_shoot = false #the chaacter can no longer shoot
 			$ArrowTimer.start() #triggers the timer
@@ -291,11 +279,5 @@ func level_up(): #level up function
 	experience_required = get_required_experience(level + 1) #set the experience requirement to the next level.
 	
 func resource_collection(amount, type):
-	resources[type] += amount
-	connect("updated_resources", get_parent().get_child(0).get_child(0), "update_resources")
-	emit_signal("updated_resources", resources[type], type)
-	
-func update_player_resources(type, amount):
-	resources[type] -= amount
-	emit_signal("updated_resources", resources[type], type)
+	Global.resources[type] += amount
 	

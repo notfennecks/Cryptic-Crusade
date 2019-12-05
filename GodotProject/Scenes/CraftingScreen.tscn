@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Scenes/CraftingScreen.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/CraftingScreen.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/ATHLS___.TTF" type="DynamicFontData" id=2]
 [ext_resource path="res://Fonts/TYPEWR_B.TTF" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/Weapons+Items/Bow.png" type="Texture" id=4]
@@ -40,7 +40,6 @@ custom_constants/shadow_offset_x = 4
 text = "Crafting"
 
 [node name="Bow" type="Control" parent="."]
-editor/display_folded = true
 
 [node name="BowBuy" type="Button" parent="Bow"]
 margin_left = 665.766
@@ -48,6 +47,7 @@ margin_top = 116.613
 margin_right = 739.766
 margin_bottom = 156.613
 custom_fonts/font = SubResource( 2 )
+disabled = true
 text = "Buy"
 
 [node name="BowIcon" type="TextureRect" parent="Bow"]
@@ -83,7 +83,6 @@ texture = ExtResource( 6 )
 expand = true
 
 [node name="Sword" type="Control" parent="."]
-editor/display_folded = true
 
 [node name="SwordBuy" type="Button" parent="Sword"]
 margin_left = 667.313
@@ -91,6 +90,7 @@ margin_top = 191.67
 margin_right = 741.313
 margin_bottom = 231.67
 custom_fonts/font = SubResource( 2 )
+disabled = true
 text = "Buy"
 
 [node name="SwordIcon" type="TextureRect" parent="Sword"]
