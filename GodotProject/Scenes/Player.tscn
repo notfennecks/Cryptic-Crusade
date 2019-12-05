@@ -166,15 +166,9 @@ rotation = 0.523598
 current = true
 zoom = Vector2( 0.5, 0.5 )
 
-[node name="DashCheck" type="RayCast2D" parent="."]
-cast_to = Vector2( 0, 60 )
-collision_mask = 2
-collide_with_areas = true
+[node name="AngleChecker" type="Node2D" parent="."]
 
-[node name="Position2D" type="Position2D" parent="DashCheck"]
-position = Vector2( 0, 60 )
-
-[node name="Bow" type="Sprite" parent="DashCheck"]
+[node name="Bow" type="Sprite" parent="AngleChecker"]
 editor/display_folded = true
 visible = false
 position = Vector2( -0.0639906, 5.93751 )
@@ -182,7 +176,7 @@ rotation = 1.5708
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 87 )
 
-[node name="ArrowSpawn" type="Position2D" parent="DashCheck/Bow"]
+[node name="ArrowSpawn" type="Position2D" parent="AngleChecker/Bow"]
 position = Vector2( 6, 0 )
 
 [node name="PositionHelper" type="Node" parent="."]

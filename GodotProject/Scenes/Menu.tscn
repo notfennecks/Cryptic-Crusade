@@ -81,9 +81,7 @@ custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 0
-text = "Version 0.1.1
-
-Canton Studios"
+text = "Version 0.1.1"
 
 [node name="Faded" parent="." instance=ExtResource( 7 )]
 visible = false

@@ -7,14 +7,12 @@ export (int) var max_jumps  #Exported variable for max player jumps.
 export (int) var level = 1  #Exported variabe for what level the player is in
 var jump_count = 0 #Variable that tracks jump count.
 
-var dash_angle  #Variable for storing dash line angle in relation to player.
-export (bool) var can_line_dash  #Variable that tracks if the player can line dash.
-onready var dash_line = $PositionHelper/DashLine  #Sets DashLine node as variable.
+var pre_angle  #Variable for storing angle before calculation.
 
-export (float) var arrow_rate
-var can_shoot = true
-signal shoot
-var mouse_dir
+export (float) var arrow_rate  #exported variable for how fast the arrow shoots.
+var can_shoot = true  #If the player can fire an arrow.
+signal shoot  #Signal that tracks if the player shot.
+var angle  #Variable for storing 360 angle in relation between player and mouse.
 
 enum {IDLE, RUN, JUMP, DEAD, DASH, ATTACK, HURT, ATTACKL}  #Declaring states as enumerated types.
 var state  #Variable state to track current state.
@@ -90,7 +88,10 @@ func change_stance(new_stance):  #Runs function when stance needs to be changed.
 			print("Dark stance")
 		LIGHT:
 			print("Light stance")
-
+		
+func _on_StanceTimer_timeout():
+	can_switch_stance = true
+	
 func _physics_process(delta):  #Function for calculating physics for player.
 	velocity.y += gravity * delta  #Applies gravity to player.
 
@@ -108,9 +109,8 @@ func _physics_process(delta):  #Function for calculating physics for player.
 func _process(delta):
 	var mouse_pos = get_global_mouse_position()  #Sets the mouse position every frame to a variable.
 	var current_pos = position  #Sets the player position every frame to a variable.
-	dash_line(mouse_pos, current_pos) #Refers to draw_dash function to draw the dash path.
-	dash_direction(mouse_pos, current_pos)  #Refers to dash_direction function to calculate direction.
-	shoot(current_pos, mouse_dir)
+	angle_check(mouse_pos, current_pos)  #Refers to dash_direction function to calculate direction.
+	shoot(current_pos, angle)
 
 func player_input():  #Checks for player input.
 	if state == DEAD:  #If player is dead return. We do not want the player moving while dead.
@@ -199,54 +199,27 @@ func player_input():  #Checks for player input.
 		can_switch_stance = false
 		t.start()
 
-func dash_line(mouse, pos):  #Calculates and Executes dash line.
-	if can_line_dash == false:  #If player can not line dash return.
-		return
-
-	if Input.is_action_pressed("dashline"):  #If dashline input is pressed.
-		mouse = $DashCheck/Position2D.global_position
-		dash_line.set_point_position(0, pos)  #Sets the first point of line to player position.
-		dash_line.set_point_position(1, mouse)  #Sets the second point of line to mouse position.
-	if Input.is_action_just_released("dashline"):  #If the dashline input is just released.
-		dash_line.set_point_position(0, Vector2(0, 0))  #Resets point at first position.
-		dash_line.set_point_position(1, Vector2(0, 0))  #Resets point at second position.
-
-		$DashCheck.force_raycast_update()  #Forces the raycast to update
-		if $DashCheck.is_colliding() == false:  #If raycast is not colliding.
-			$DashTween.start()  #Starts tween.
-			#Interpolates position property from current player position to mouse position.
-			$DashTween.interpolate_property(self, "position", null, mouse, .5, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN, 0)
-			set_physics_process(false)  #Stops all physics processes so that transition does not have gravity,
-			set_process(false)  #Stops process so that game does not calculate alternate dash lines.
-
-func _on_DashTween_tween_completed(object, key):  #Once tween is completed.
-	set_physics_process(true)  #Sets all physics processes back to true.
-	set_process(true)  #Sets all processes back to true.
-
-func dash_direction(mouse, pos):  #For determining dash direction angle.
+func angle_check(mouse, pos):  #For determining angle in relation to player and mouse.
 	var x = mouse.x - pos.x  #Stores x difference between mouse_pos Vector and position vector.
 	var y = mouse.y - pos.y  #Stores y difference between mouse_pos Vector and position vector.
 	var distance = sqrt(pow(x,2) + pow(y,2))  #Calculates distance between Vectors.
 	if x == 0:  #If x is zero (so that we do not get divide by zero errors on some occasions).
 		return
-	dash_angle = abs(rad2deg(atan(y/x)))  #Uses arc tangent to calculate angle based on x and y component of distance.
+	pre_angle = abs(rad2deg(atan(y/x)))  #Uses arc tangent to calculate angle based on x and y component of distance.
 	#--------------------------------
 	#Calculates angle quadrant and add or subtracts. Because arc tangent only outputs numbers less than 90.
 	if x < 0 and y < 0:
-		dash_angle = 180 - dash_angle
+		pre_angle = 180 - pre_angle
 	if x < 0 and y > 0:
-		dash_angle = 180 + dash_angle
+		pre_angle = 180 + pre_angle
 	if x > 0 and y > 0:
-		dash_angle = 360 - dash_angle
+		pre_angle = 360 - pre_angle
 	#--------------------------------
-	dash_angle += 90  #Offsets angle because zero angle is going down.
-	$DashCheck.rotation_degrees = -dash_angle  #Inverts angle because negative angles go counter-clockwise.
-	mouse_dir = -dash_angle + 90
+	pre_angle += 90  #Offsets angle because zero angle is going down.
+	$AngleChecker.rotation_degrees = -pre_angle  #Inverts angle because negative angles go counter-clockwise.
+	angle = -pre_angle + 90
 
-func _on_StanceTimer_timeout():
-	can_switch_stance = true
-
-func shoot(cur_pos, dir):
+func shoot(cur_pos, dir):  #Function to check for arrow shot.
 	if Bow == false:
 		return
 	if can_shoot: #if can shoot is available
@@ -254,11 +227,11 @@ func shoot(cur_pos, dir):
 			emit_signal("shoot", cur_pos, dir) #emit the shoot signal
 			can_shoot = false #the chaacter can no longer shoot
 			$ArrowTimer.start() #triggers the timer
-			$DashCheck/Bow.show() #shows the bow sprite
+			$AngleChecker/Bow.show() #shows the bow sprite
 
 func _on_ArrowTimer_timeout(): #when this timer runs out
 	can_shoot = true #the character can once again shoot
-	$DashCheck/Bow.hide() #hide the bow sprite
+	$AngleChecker/Bow.hide() #hide the bow sprite
 
 func get_required_experience(level): #get required experience function
 	return round(pow(level, 1.8) + level * 4) #return this value
@@ -274,10 +247,10 @@ func gain_experience(amount): #gain experience function
 	growth_data.append([experience, experience_required]) #store this in growth data if the player does not level up
 	emit_signal("experience_gained", growth_data) #emit the experience gained signal and pass growth data
 
-func level_up(): #level up function
+func level_up():  #level up function
 	level += 1 #add one to level variable
 	experience_required = get_required_experience(level + 1) #set the experience requirement to the next level.
 	
-func resource_collection(amount, type):
+func resource_collection(amount, type):  #Function for resource collection and addition to dictionary.
 	Global.resources[type] += amount
 	

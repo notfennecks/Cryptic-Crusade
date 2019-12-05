@@ -40,6 +40,7 @@ player_speed = 150
 jump_height = -280
 gravity = 750
 max_jumps = 2
+Bow = true
 
 [node name="IronCollectible" parent="." instance=ExtResource( 7 )]
 position = Vector2( 380.674, -69.4472 )
