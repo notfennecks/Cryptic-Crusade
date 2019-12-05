@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Level1-1.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Arrow.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/Tilesets/GrassTileSetBasic.tres" type="TileSet" id=3]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
+
+[node name="Level1-1" type="Node2D"]
+script = ExtResource( 1 )
+Arrow = ExtResource( 2 )
+
+[node name="Background" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+format = 1
+
+[node name="Envirnment" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 2
+collision_mask = 29
+format = 1
+tile_data = PoolIntArray( -15, 1, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 18, 1, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 305.045, -71.2975 )
+player_speed = 150
+jump_height = -280
+gravity = 750
+max_jumps = 2
+[connection signal="shoot" from="Player" to="." method="_on_Player_shoot"]
