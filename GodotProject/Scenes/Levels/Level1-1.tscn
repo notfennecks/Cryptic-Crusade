@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Level1-1.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Arrow.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Collectibles/IronCollectible.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Collectibles/WoodCollectible.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/AI/Slime.tscn" type="PackedScene" id=9]
 
 [node name="Level1-1" type="Node2D"]
 script = ExtResource( 1 )
@@ -40,6 +41,7 @@ player_speed = 150
 jump_height = -280
 gravity = 750
 max_jumps = 2
+arrow_rate = 0.1
 Bow = true
 
 [node name="IronCollectible" parent="." instance=ExtResource( 7 )]
@@ -59,4 +61,8 @@ position = Vector2( 338.662, -98.5979 )
 
 [node name="WoodCollectible3" parent="." instance=ExtResource( 8 )]
 position = Vector2( 246.923, -47.1555 )
+
+[node name="Enemy" parent="." instance=ExtResource( 9 )]
+position = Vector2( 208.982, -11.4159 )
+speed = 50
 [connection signal="shoot" from="Player" to="." method="_on_Player_shoot"]
