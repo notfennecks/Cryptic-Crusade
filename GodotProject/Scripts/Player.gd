@@ -42,6 +42,8 @@ var stance_run = {
 	2: "Run_Ice",
 	3: "Run_Dark",
 	4: "Run_Light"}
+	
+var stance_particles = [ "Fire", "Ice", "Dark", "Light" ]
 
 var velocity = Vector2()  #Variable velocity to store and apply player movement.
 
@@ -80,14 +82,36 @@ func change_stance(new_stance):  #Runs function when stance needs to be changed.
 	match stance:  #Matches the current stance with its respective name and runs embedded code.
 		NEUTRAL:
 			print("Neutral stance")
+			for i in range(stance_particles.size()):
+				get_node(stance_particles[i]).hide()
 		FIRE:
 			print("Fire stance")
+			get_node(stance_particles[0]).show()
+			for i in range(stance_particles.size()):
+				if i == 0:
+					continue
+				get_node(stance_particles[i]).hide()
 		ICE:
 			print("Ice stance")
+			get_node(stance_particles[1]).show()
+			for i in range(stance_particles.size()):
+				if i == 1:
+					continue
+				get_node(stance_particles[i]).hide()
 		DARK:
 			print("Dark stance")
+			get_node(stance_particles[2]).show()
+			for i in range(stance_particles.size()):
+				if i == 2:
+					continue
+				get_node(stance_particles[i]).hide()
 		LIGHT:
 			print("Light stance")
+			get_node(stance_particles[3]).show()
+			for i in range(stance_particles.size()):
+				if i == 3:
+					continue
+				get_node(stance_particles[i]).hide()
 		
 func _on_StanceTimer_timeout():
 	can_switch_stance = true

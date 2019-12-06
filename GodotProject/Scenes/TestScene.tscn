@@ -2,14 +2,18 @@
 
 [ext_resource path="res://Scripts/TestScene.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Arrow.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/InventoryScreen.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/CraftingScreen.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/UI/InventoryScreen.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/UI/CraftingScreen.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/Tilesets/GrassTileSetBasic.tres" type="TileSet" id=5]
 [ext_resource path="res://assets/Tilesets/TileSetGrass.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/EnemyAIRun.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/WoodCollectible.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scenes/IronCollectible.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Collectibles/WoodCollectible.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Collectibles/IronCollectible.tscn" type="PackedScene" id=10]
+
+
+
+
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )

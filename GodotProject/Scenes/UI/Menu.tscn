@@ -6,7 +6,7 @@
 [ext_resource path="res://Scenes/Buttons/QuitButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Textures/Pickaxe.png" type="Texture" id=5]
 [ext_resource path="res://Fonts/TYPEWR__.TTF" type="DynamicFontData" id=6]
-[ext_resource path="res://Scenes/Faded.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/UI/Faded.tscn" type="PackedScene" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
