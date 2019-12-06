@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/Player/Idle/PlayerIdle1.png" type="Texture" id=2]
@@ -25,7 +25,6 @@
 [ext_resource path="res://assets/Player/StanceParticles/FireParticles.tres" type="Material" id=23]
 [ext_resource path="res://assets/Player/StanceParticles/IceParticles.tres" type="Material" id=24]
 [ext_resource path="res://assets/Weapons+Items/Bow.png" type="Texture" id=25]
-[ext_resource path="res://Scenes/Sword.tscn" type="PackedScene" id=26]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -124,13 +123,12 @@ tracks/0/keys = {
 radius = 8.05135
 height = 12.5504
 
-[node name="Player" type="KinematicBody2D" groups=[
-"character",
-]]
+[node name="Player" type="KinematicBody2D"]
 collision_mask = 31
 script = ExtResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
+editor/display_folded = true
 frames = SubResource( 1 )
 animation = "Idle"
 
@@ -235,19 +233,10 @@ texture = ExtResource( 25 )
 [node name="ArrowSpawn" type="Position2D" parent="AngleChecker/Bow"]
 position = Vector2( 6, 0 )
 
-[node name="DashTween" type="Tween" parent="."]
-
 [node name="StanceTimer" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
 
-[node name="Sword" parent="." instance=ExtResource( 26 )]
-visible = false
-position = Vector2( 19, 0 )
-rotation = 0.0142153
-scale = Vector2( 0.3, 0.3 )
-
 [node name="ArrowTimer" type="Timer" parent="."]
-[connection signal="tween_completed" from="DashTween" to="." method="_on_DashTween_tween_completed"]
 [connection signal="timeout" from="StanceTimer" to="." method="_on_StanceTimer_timeout"]
 [connection signal="timeout" from="ArrowTimer" to="." method="_on_ArrowTimer_timeout"]

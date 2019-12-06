@@ -11,7 +11,7 @@ height = 3.16043
 position = Vector2( 192.733, 204.812 )
 gravity_point = true
 collision_layer = 64
-collision_mask = 75
+collision_mask = 11
 script = ExtResource( 1 )
 arrow_speed = 350
 
@@ -22,3 +22,4 @@ texture = ExtResource( 2 )
 position = Vector2( 12, -0.5 )
 rotation = 1.5708
 shape = SubResource( 1 )
+[connection signal="body_entered" from="." to="." method="_on_Arrow_body_entered"]

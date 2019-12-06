@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/AIRun.gd" type="Script" id=1]
-[ext_resource path="res://assets/Slime.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Collectibles/WoodCollectible.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Collectibles/IronCollectible.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Slime.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8.01623, 7.0341 )
@@ -9,22 +11,20 @@ extents = Vector2( 8.01623, 7.0341 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 9.93311, 4.3754 )
 
-[node name="Slime" type="KinematicBody2D" groups=[
-"enemy",
-]]
+[node name="Slime" type="KinematicBody2D"]
 collision_layer = 8
-collision_mask = 33
+collision_mask = 65
 script = ExtResource( 1 )
 speed = 150
 gravity = 500
+Wood = ExtResource( 2 )
+Iron = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=[
-"enemy",
-]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 1 )
 shape = SubResource( 1 )
 

@@ -10,3 +10,7 @@ func start(pos, dir):
 
 func _process(delta):
 	position += velocity * delta
+
+func _on_Arrow_body_entered(body):
+	if body.name == "Slime":
+		body.take_damage()

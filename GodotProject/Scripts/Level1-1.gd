@@ -28,3 +28,5 @@ func _on_Player_shoot(pos, dir):
 	var a = Arrow.instance()
 	a.start(pos, deg2rad(dir))
 	add_child(a)
+
+
