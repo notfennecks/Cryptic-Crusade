@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/Player/Idle/PlayerIdle1.png" type="Texture" id=2]
@@ -17,12 +17,15 @@
 [ext_resource path="res://assets/Player/Run/PlayerRun12.png" type="Texture" id=15]
 [ext_resource path="res://assets/Player/Jump/PlayerJumpUp.png" type="Texture" id=16]
 [ext_resource path="res://assets/Player/Jump/PlayerJumpDown.png" type="Texture" id=17]
-[ext_resource path="res://assets/Player/StanceParticles/DarkParticles.tres" type="Material" id=18]
-[ext_resource path="res://assets/Player/StanceParticles/LightParticles.tres" type="Material" id=19]
-[ext_resource path="res://assets/Player/StanceParticles/FireParticles.tres" type="Material" id=20]
-[ext_resource path="res://assets/Player/StanceParticles/IceParticles.tres" type="Material" id=21]
-[ext_resource path="res://assets/Weapons+Items/Bow.png" type="Texture" id=22]
-[ext_resource path="res://Scenes/Sword.tscn" type="PackedScene" id=23]
+[ext_resource path="res://assets/Player/LandRight.tres" type="Material" id=18]
+[ext_resource path="res://assets/Player/JumpRight.tres" type="Material" id=19]
+[ext_resource path="res://assets/Player/JumpLeft.tres" type="Material" id=20]
+[ext_resource path="res://assets/Player/StanceParticles/DarkParticles.tres" type="Material" id=21]
+[ext_resource path="res://assets/Player/StanceParticles/LightParticles.tres" type="Material" id=22]
+[ext_resource path="res://assets/Player/StanceParticles/FireParticles.tres" type="Material" id=23]
+[ext_resource path="res://assets/Player/StanceParticles/IceParticles.tres" type="Material" id=24]
+[ext_resource path="res://assets/Weapons+Items/Bow.png" type="Texture" id=25]
+[ext_resource path="res://Scenes/Sword.tscn" type="PackedScene" id=26]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -46,6 +49,17 @@ animations = [ {
 "name": "JumpDown",
 "speed": 5.0
 } ]
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 1
+emission_sphere_radius = 2.0
+flag_disable_z = true
+gravity = Vector3( 20, -20, 0 )
+initial_velocity = 20.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 2.0
+scale_random = 1.0
 
 [sub_resource type="Animation" id=2]
 resource_name = "Flip"
@@ -120,6 +134,42 @@ script = ExtResource( 1 )
 frames = SubResource( 1 )
 animation = "Idle"
 
+[node name="LandRight" type="Particles2D" parent="Sprite"]
+position = Vector2( -9, 15 )
+emitting = false
+amount = 6
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.8
+process_material = ExtResource( 18 )
+
+[node name="LandLeft" type="Particles2D" parent="Sprite"]
+position = Vector2( 9, 15 )
+emitting = false
+amount = 6
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.8
+process_material = SubResource( 6 )
+
+[node name="JumpRight" type="Particles2D" parent="Sprite"]
+position = Vector2( -9, 15 )
+emitting = false
+amount = 6
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+process_material = ExtResource( 19 )
+
+[node name="JumpLeft" type="Particles2D" parent="Sprite"]
+position = Vector2( 9, 15 )
+emitting = false
+amount = 6
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+process_material = ExtResource( 20 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/Flip = SubResource( 2 )
 anims/JumpDown = SubResource( 3 )
@@ -132,7 +182,7 @@ amount = 50
 lifetime = 0.8
 speed_scale = 1.2
 explosiveness = 0.1
-process_material = ExtResource( 18 )
+process_material = ExtResource( 21 )
 
 [node name="Light" type="Particles2D" parent="."]
 visible = false
@@ -141,7 +191,7 @@ amount = 50
 lifetime = 0.8
 speed_scale = 1.2
 explosiveness = 0.1
-process_material = ExtResource( 19 )
+process_material = ExtResource( 22 )
 
 [node name="Fire" type="Particles2D" parent="."]
 visible = false
@@ -150,7 +200,7 @@ amount = 50
 lifetime = 0.8
 speed_scale = 1.2
 explosiveness = 0.1
-process_material = ExtResource( 20 )
+process_material = ExtResource( 23 )
 
 [node name="Ice" type="Particles2D" parent="."]
 visible = false
@@ -159,7 +209,7 @@ amount = 50
 lifetime = 0.8
 speed_scale = 1.2
 explosiveness = 0.1
-process_material = ExtResource( 21 )
+process_material = ExtResource( 24 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -180,7 +230,7 @@ visible = false
 position = Vector2( -0.0639906, 5.93751 )
 rotation = 1.5708
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 22 )
+texture = ExtResource( 25 )
 
 [node name="ArrowSpawn" type="Position2D" parent="AngleChecker/Bow"]
 position = Vector2( 6, 0 )
@@ -191,7 +241,7 @@ position = Vector2( 6, 0 )
 wait_time = 0.1
 autostart = true
 
-[node name="Sword" parent="." instance=ExtResource( 23 )]
+[node name="Sword" parent="." instance=ExtResource( 26 )]
 visible = false
 position = Vector2( 19, 0 )
 rotation = 0.0142153
