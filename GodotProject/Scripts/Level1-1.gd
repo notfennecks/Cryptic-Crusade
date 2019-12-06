@@ -36,10 +36,10 @@ func drop_resources(Wood, amount1, Iron, amount2, spawn_center, spawn_area):
 	for a in range(amount1):
 		var w = Wood.instance()
 		w.position = rand_position
-		add_child(w)
+		call_deferred("add_child", w)
 		w.apply_central_impulse(Vector2(rand_range(-50, 50), -50))
 	for b in range(amount2):
 		var i = Iron.instance()
 		i.position = rand_position
-		add_child(i)
+		call_deferred("add_child", i)
 		i.apply_central_impulse(Vector2(rand_range(-50, 50), -50))
