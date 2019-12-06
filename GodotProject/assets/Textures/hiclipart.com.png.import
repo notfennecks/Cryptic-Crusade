@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Pickaxe.png-00d26aaae309eabde7b089b4fd173a1c.stex"
+path="res://.import/hiclipart.com.png-dc3b3fc2351a3198c88c02695045490b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Pickaxe.png"
-dest_files=[ "res://.import/Pickaxe.png-00d26aaae309eabde7b089b4fd173a1c.stex" ]
+source_file="res://assets/Textures/hiclipart.com.png"
+dest_files=[ "res://.import/hiclipart.com.png-dc3b3fc2351a3198c88c02695045490b.stex" ]
 
 [params]
 

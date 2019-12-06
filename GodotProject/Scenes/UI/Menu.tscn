@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
-[ext_resource path="res://Textures/Title.png" type="Texture" id=2]
+[ext_resource path="res://assets/Textures/Title.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Buttons/StartButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Buttons/QuitButton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Textures/Pickaxe.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures/Pickaxe.png" type="Texture" id=5]
 [ext_resource path="res://Fonts/TYPEWR__.TTF" type="DynamicFontData" id=6]
 [ext_resource path="res://Scenes/UI/Faded.tscn" type="PackedScene" id=7]
 

@@ -1,7 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/WoodCollectible.gd" type="Script" id=1]
-[ext_resource path="res://assets/Wood.png" type="Texture" id=2]
+[ext_resource path="res://assets/Weapons+Items/Wood.png" type="Texture" id=2]
+
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 6.00791

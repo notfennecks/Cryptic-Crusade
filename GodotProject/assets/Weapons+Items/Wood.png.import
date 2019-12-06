@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Wood.png-7d27a143209fc8593a7a69e45b4cfc01.stex"
+path="res://.import/Wood.png-a1e00128d66753fcbc80323989f73fcb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Wood.png"
-dest_files=[ "res://.import/Wood.png-7d27a143209fc8593a7a69e45b4cfc01.stex" ]
+source_file="res://assets/Weapons+Items/Wood.png"
+dest_files=[ "res://.import/Wood.png-a1e00128d66753fcbc80323989f73fcb.stex" ]
 
 [params]
 

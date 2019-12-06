@@ -15,12 +15,12 @@
 [ext_resource path="res://assets/Player/Run/PlayerRun10.png" type="Texture" id=13]
 [ext_resource path="res://assets/Player/Run/PlayerRun11.png" type="Texture" id=14]
 [ext_resource path="res://assets/Player/Run/PlayerRun12.png" type="Texture" id=15]
-[ext_resource path="res://assets/Player/PlayerJumpUp.png" type="Texture" id=16]
-[ext_resource path="res://assets/Player/PlayerJumpDown.png" type="Texture" id=17]
-[ext_resource path="res://assets/DarkParticles.tres" type="Material" id=18]
-[ext_resource path="res://assets/LightParticles.tres" type="Material" id=19]
-[ext_resource path="res://assets/FireParticles.tres" type="Material" id=20]
-[ext_resource path="res://assets/IceParticles.tres" type="Material" id=21]
+[ext_resource path="res://assets/Player/Jump/PlayerJumpUp.png" type="Texture" id=16]
+[ext_resource path="res://assets/Player/Jump/PlayerJumpDown.png" type="Texture" id=17]
+[ext_resource path="res://assets/Player/StanceParticles/DarkParticles.tres" type="Material" id=18]
+[ext_resource path="res://assets/Player/StanceParticles/LightParticles.tres" type="Material" id=19]
+[ext_resource path="res://assets/Player/StanceParticles/FireParticles.tres" type="Material" id=20]
+[ext_resource path="res://assets/Player/StanceParticles/IceParticles.tres" type="Material" id=21]
 [ext_resource path="res://assets/Weapons+Items/Bow.png" type="Texture" id=22]
 [ext_resource path="res://Scenes/Sword.tscn" type="PackedScene" id=23]
 
@@ -47,7 +47,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "Flip"
 length = 0.6
 tracks/0/type = "value"
@@ -63,7 +63,7 @@ tracks/0/keys = {
 "values": [ 0.0, 100.0, 250.0, 360.0 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "JumpDown"
 length = 0.3
 tracks/0/type = "value"
@@ -91,8 +91,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 3.3 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "JumpUp"
+[sub_resource type="Animation" id=4]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:scale")
@@ -107,7 +106,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.8, 1.2 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 8.05135
 height = 12.5504
 
@@ -122,9 +121,9 @@ frames = SubResource( 1 )
 animation = "Idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
-anims/Flip = SubResource( 5 )
-anims/JumpDown = SubResource( 4 )
-anims/JumpUp = SubResource( 3 )
+anims/Flip = SubResource( 2 )
+anims/JumpDown = SubResource( 3 )
+anims/JumpUp = SubResource( 4 )
 
 [node name="Dark" type="Particles2D" parent="."]
 visible = false
@@ -165,7 +164,7 @@ process_material = ExtResource( 21 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( -0.149895, 1.79868 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 rotation = 0.523598

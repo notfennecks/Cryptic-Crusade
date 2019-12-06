@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/Tilesets/GrassTileSetBasic.tres" type="TileSet" id=5]
 [ext_resource path="res://assets/Tilesets/TileSetGrass.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/EnemyAIRun.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/AI/EnemyAIRun.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Collectibles/WoodCollectible.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Collectibles/IronCollectible.tscn" type="PackedScene" id=10]
 

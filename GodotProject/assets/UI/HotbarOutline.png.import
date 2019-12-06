@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PlayerFlip1.png-016e36b1afd0669235c4708a6a1b5c0c.stex"
+path="res://.import/HotbarOutline.png-3f84a9af6e67a620c406e74163f3fa26.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Player/PlayerFlip1.png"
-dest_files=[ "res://.import/PlayerFlip1.png-016e36b1afd0669235c4708a6a1b5c0c.stex" ]
+source_file="res://assets/UI/HotbarOutline.png"
+dest_files=[ "res://.import/HotbarOutline.png-3f84a9af6e67a620c406e74163f3fa26.stex" ]
 
 [params]
 

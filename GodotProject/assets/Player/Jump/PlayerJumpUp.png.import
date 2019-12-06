@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/HotbarOutline.png-f4906d39a0dc10a8d1fd44dcb13a4845.stex"
+path="res://.import/PlayerJumpUp.png-a42e8f0a3180ccd967941eea294e462e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/HotbarOutline.png"
-dest_files=[ "res://.import/HotbarOutline.png-f4906d39a0dc10a8d1fd44dcb13a4845.stex" ]
+source_file="res://assets/Player/Jump/PlayerJumpUp.png"
+dest_files=[ "res://.import/PlayerJumpUp.png-a42e8f0a3180ccd967941eea294e462e.stex" ]
 
 [params]
 
