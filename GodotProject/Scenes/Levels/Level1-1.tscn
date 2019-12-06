@@ -39,7 +39,7 @@ player_speed = 150
 jump_height = -280
 gravity = 750
 max_jumps = 2
-arrow_rate = 0.1
+arrow_rate = 0.15
 Bow = true
 
 [node name="Slime" parent="." instance=ExtResource( 7 )]
