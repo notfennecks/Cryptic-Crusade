@@ -6,6 +6,7 @@ export (int) var gravity  #Exported variable for gravity applied to player.
 export (int) var max_jumps  #Exported variable for max player jumps.
 export (int) var level = 1  #Exported variabe for what level the player is in
 var jump_count = 0 #Variable that tracks jump count.
+var just_landed = false
 
 var pre_angle  #Variable for storing angle before calculation.
 
@@ -28,21 +29,7 @@ export (bool) var Sword = false
 enum {NEUTRAL, FIRE, ICE, DARK, LIGHT} #Declaring all possible stances as enumerated types.
 var stance  #Variable for tracking current stance.
 var can_switch_stance = true #Variable for if the player can change their stance.
-#Dictionary that stores stances and their respective idle animations.
-var stance_idle = {
-	0: "Idle_Neutral",
-	1: "Idle_Fire",
-	2: "Idle_Ice",
-	3: "Idle_Dark",
-	4: "Idle_Light"}
-#Dictionary that stores stances and their respective run animations.
-var stance_run = {
-	0: "Run_Neutral",
-	1: "Run_Fire",
-	2: "Run_Ice",
-	3: "Run_Dark",
-	4: "Run_Light"}
-	
+
 var stance_particles = [ "Fire", "Ice", "Dark", "Light" ]
 
 var velocity = Vector2()  #Variable velocity to store and apply player movement.
@@ -57,15 +44,13 @@ func change_state(new_state):  #Runs function when state needs to be changed. Ta
 	state = new_state  #Sets the state variable to the state it needs to change to.
 	match state:  #Matches the state with its correct name and runs the embedded code.
 		IDLE:
-			$Sprite.animation = stance_idle[stance]  #Switches to correct idle animation based on current stance.
+			$Sprite.animation = "Idle"  #Switches to correct idle animation based on current stance.
 			$Sprite.playing = true
 		RUN:
-			$Sprite.animation = stance_run[stance]
-			#stance_run[stance]  #Switches to correct run animation based on current stance.
+			$Sprite.animation = "Run"
 			$Sprite.playing = true
 		JUMP:
-			$Sprite.animation = stance_run[stance]
-			$Sprite.playing = true
+			print("In Air")
 		DEAD:
 			print("dead")
 		ATTACK:
@@ -82,10 +67,12 @@ func change_stance(new_stance):  #Runs function when stance needs to be changed.
 	match stance:  #Matches the current stance with its respective name and runs embedded code.
 		NEUTRAL:
 			print("Neutral stance")
+			$Sprite.self_modulate = Color(1, 1, 1, 1)
 			for i in range(stance_particles.size()):
 				get_node(stance_particles[i]).hide()
 		FIRE:
 			print("Fire stance")
+			$Sprite.self_modulate = Color(1, 0, 0, 1)
 			get_node(stance_particles[0]).show()
 			for i in range(stance_particles.size()):
 				if i == 0:
@@ -93,6 +80,7 @@ func change_stance(new_stance):  #Runs function when stance needs to be changed.
 				get_node(stance_particles[i]).hide()
 		ICE:
 			print("Ice stance")
+			$Sprite.self_modulate = Color(.45, 1, 1, 1)
 			get_node(stance_particles[1]).show()
 			for i in range(stance_particles.size()):
 				if i == 1:
@@ -100,6 +88,7 @@ func change_stance(new_stance):  #Runs function when stance needs to be changed.
 				get_node(stance_particles[i]).hide()
 		DARK:
 			print("Dark stance")
+			$Sprite.self_modulate = Color(.61, .3, 1, 1)
 			get_node(stance_particles[2]).show()
 			for i in range(stance_particles.size()):
 				if i == 2:
@@ -107,6 +96,7 @@ func change_stance(new_stance):  #Runs function when stance needs to be changed.
 				get_node(stance_particles[i]).hide()
 		LIGHT:
 			print("Light stance")
+			$Sprite.self_modulate = Color(1, 1, .42, 1)
 			get_node(stance_particles[3]).show()
 			for i in range(stance_particles.size()):
 				if i == 3:
@@ -151,19 +141,19 @@ func player_input():  #Checks for player input.
 	if right and is_on_floor():
 		change_state(RUN)
 		velocity.x += player_speed
-		$Sprite.flip_h = true
+		$Sprite.flip_h = false
 	if left and is_on_floor():
 		change_state(RUN)
 		velocity.x -= player_speed
-		$Sprite.flip_h = false
+		$Sprite.flip_h = true
 	#------------------------------------------------
 	#If player wants to run in air.
 	if right and state == JUMP:
 		velocity.x += player_speed
-		$Sprite.flip_h = true
+		$Sprite.flip_h = false
 	if left and state == JUMP:
 		velocity.x -= player_speed
-		$Sprite.flip_h = false
+		$Sprite.flip_h = true
 	#-------------------------------------------------
 	#If player is not moving sets state to IDLE.
 	if state == RUN and velocity.x == 0:
@@ -180,13 +170,23 @@ func player_input():  #Checks for player input.
 		if right:
 			change_state(ATTACK)
 		if left:
-			change_state(ATTACKL)
+			change_state(ATTACK)
 	#-------------------------------------------------
 	#If player wants to jump.
 	if jump and is_on_floor():
+		$Sprite/AnimationPlayer.play("JumpUp")
 		velocity.y = jump_height
 		jump_count += 1
 		gain_experience(5)
+	if velocity.y < 0 and !is_on_floor():
+		$Sprite.animation = "JumpUp"
+		just_landed = true
+	if velocity.y > 0 and !is_on_floor():
+		$Sprite.animation = "JumpDown"
+	if is_on_floor() and just_landed:
+		$Sprite/AnimationPlayer.play("JumpDown")
+		print("just landed")
+		just_landed = false
 	#Extra jumps.
 	if jump and state == JUMP and jump_count < max_jumps:
 		velocity.y = jump_height

@@ -1,7 +1,6 @@
 extends Node2D
 
 onready var bar = $ProgressBar
-onready var character = $Player
 export (PackedScene) var Arrow
 
 func _ready():
