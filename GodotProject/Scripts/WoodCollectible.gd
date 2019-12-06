@@ -13,4 +13,3 @@ func _on_Area2D_body_entered(body):
 func _on_Tween_tween_completed(object, key):
 	emit_signal("resource_collected", 1, "Wood")
 	queue_free()
-
