@@ -33,7 +33,6 @@ func drop_resources(Wood, amount1, Iron, amount2, spawn_center, spawn_area):
 	var rand_position = Vector2(0, 0)
 	rand_position.x = (randf() * spawn_area.x) - (spawn_area.x / 2) + spawn_center.x
 	rand_position.y = (randf() * spawn_area.y) - (spawn_area.y / 2) + spawn_center.y
-	print(rand_position)
 	for a in range(amount1):
 		var w = Wood.instance()
 		w.position = rand_position
