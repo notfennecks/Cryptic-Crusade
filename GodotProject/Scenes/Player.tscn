@@ -49,7 +49,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="ParticlesMaterial" id=6]
+[sub_resource type="ParticlesMaterial" id=2]
 emission_shape = 1
 emission_sphere_radius = 2.0
 flag_disable_z = true
@@ -60,8 +60,7 @@ orbit_velocity_random = 0.0
 scale = 2.0
 scale_random = 1.0
 
-[sub_resource type="Animation" id=2]
-resource_name = "Flip"
+[sub_resource type="Animation" id=3]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rotation_degrees")
@@ -76,8 +75,7 @@ tracks/0/keys = {
 "values": [ 0.0, 100.0, 250.0, 360.0 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "JumpDown"
+[sub_resource type="Animation" id=4]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:scale")
@@ -104,7 +102,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 3.3 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:scale")
@@ -119,7 +117,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.8, 1.2 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=5]
+[sub_resource type="CapsuleShape2D" id=6]
 radius = 8.05135
 height = 12.5504
 
@@ -148,7 +146,7 @@ amount = 6
 lifetime = 0.2
 one_shot = true
 explosiveness = 0.8
-process_material = SubResource( 6 )
+process_material = SubResource( 2 )
 
 [node name="JumpRight" type="Particles2D" parent="Sprite"]
 position = Vector2( -9, 15 )
@@ -169,9 +167,9 @@ explosiveness = 1.0
 process_material = ExtResource( 20 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
-anims/Flip = SubResource( 2 )
-anims/JumpDown = SubResource( 3 )
-anims/JumpUp = SubResource( 4 )
+anims/Flip = SubResource( 3 )
+anims/JumpDown = SubResource( 4 )
+anims/JumpUp = SubResource( 5 )
 
 [node name="Dark" type="Particles2D" parent="."]
 visible = false
@@ -212,7 +210,7 @@ process_material = ExtResource( 24 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( -0.149895, 1.79868 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 rotation = 0.523598

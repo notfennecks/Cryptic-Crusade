@@ -10,7 +10,7 @@ var health
 export (PackedScene) var Wood
 export (PackedScene) var Iron
 
-signal resource_dropped(amount1, amount2, spawn_center, spawn_area)
+signal resource_dropped(type1, amount1, type2, amount2, spawn_center, spawn_area)
 
 var spawn_area
 var spawn_center
@@ -37,23 +37,10 @@ func _physics_process(delta):
 			return
 
 func take_damage():
-	emit_signal("resource_dropped", 2, 3, $ResourceSpawnArea.global_position, $ResourceSpawnArea/CollisionShape2D.shape.extents)
+	spawn_center = $ResourceSpawnArea.global_position
+	spawn_area = $ResourceSpawnArea/CollisionShape2D.shape.extents
+	emit_signal("resource_dropped", Wood, 2, Iron, 3, spawn_center, spawn_area)
 	health -= 1
 	$CollisionShape2D.disabled = true
 	set_physics_process(false)
 	queue_free()
-	
-func drop_resources(amount1, amount2):
-	rand_position.x = (randf() * spawn_area.x) - (spawn_area.x / 2) + spawn_center.x
-	rand_position.y = (randf() * spawn_area.y) - (spawn_area.y / 2) + spawn_center.y
-	print(rand_position)
-	for a in range(amount1):
-		var w = Wood.instance()
-		w.position = rand_position
-		add_child(w)
-		w.apply_central_impulse(Vector2(rand_range(-50, 50), -50))
-	for b in range(amount2):
-		var i = Iron.instance()
-		i.position = rand_position
-		add_child(i)
-		i.apply_central_impulse(Vector2(rand_range(-50, 50), -50))
