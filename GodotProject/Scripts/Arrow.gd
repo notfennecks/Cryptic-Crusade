@@ -16,5 +16,5 @@ func _on_Arrow_body_entered(body):
 		velocity = Vector2(0, 0)
 		yield(get_tree().create_timer(1), "timeout")
 		queue_free()
-	if body.name == "Slime":
+	if body.is_in_group("enemies"):
 		body.take_damage()

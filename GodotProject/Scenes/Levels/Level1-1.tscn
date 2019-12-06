@@ -45,4 +45,12 @@ Bow = true
 [node name="Slime" parent="." instance=ExtResource( 7 )]
 position = Vector2( 208.982, -11.4159 )
 speed = 50
+
+[node name="Slime2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 283.552, -38.9743 )
+speed = 50
+
+[node name="Slime3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 419.722, -44.9182 )
+speed = 50
 [connection signal="shoot" from="Player" to="." method="_on_Player_shoot"]
