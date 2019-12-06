@@ -160,6 +160,8 @@ func player_input():  #Checks for player input.
 		change_state(IDLE)
 	if state == JUMP and is_on_floor():
 		change_state(IDLE)
+		if $Sprite/AnimationPlayer.is_playing():
+			print("ok")
 	#-------------------------------------------------
 	#If player is not on floor set state to JUMP.
 	if state in [IDLE, RUN] and !is_on_floor():
@@ -180,17 +182,23 @@ func player_input():  #Checks for player input.
 		gain_experience(5)
 	if velocity.y < 0 and !is_on_floor():
 		$Sprite.animation = "JumpUp"
-		just_landed = true
 	if velocity.y > 0 and !is_on_floor():
 		$Sprite.animation = "JumpDown"
+	if !is_on_floor():
+		just_landed = true
 	if is_on_floor() and just_landed:
 		$Sprite/AnimationPlayer.play("JumpDown")
 		print("just landed")
 		just_landed = false
+		$Sprite.rotation_degrees = 0
 	#Extra jumps.
 	if jump and state == JUMP and jump_count < max_jumps:
 		velocity.y = jump_height
 		jump_count += 1
+		if $Sprite.flip_h == true:
+			$Sprite/AnimationPlayer.play_backwards("Flip")
+		else:
+			$Sprite/AnimationPlayer.play("Flip")
 	#Once player lands reset jump count.
 	if is_on_floor():
 		jump_count = 1
