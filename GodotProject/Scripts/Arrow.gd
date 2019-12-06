@@ -18,3 +18,4 @@ func _on_Arrow_body_entered(body):
 		queue_free()
 	if body.is_in_group("enemies"):
 		body.take_damage()
+		queue_free()

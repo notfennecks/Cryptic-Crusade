@@ -53,9 +53,9 @@ func change_state(new_state):  #Runs function when state needs to be changed. Ta
 			print("In Air")
 		DEAD:
 			print("dead")
-		ATTACK:
-			$Sword.set_position(Vector2(19,0))
-			$Sword/AnimationPlayer.play("Attack")
+		#ATTACK:
+			#$Sword.set_position(Vector2(19,0))
+			#$Sword/AnimationPlayer.play("Attack")
 		#HURT:
 			#health -= 1
 		ATTACKL:
@@ -166,11 +166,11 @@ func player_input():  #Checks for player input.
 		change_state(JUMP)
 	#-------------------------------------------------
 	#if player is on floor and attack is triggered set state to ATTACK
-	if attack and is_on_floor():
-		if right:
-			change_state(ATTACK)
-		if left:
-			change_state(ATTACK)
+	#if attack and is_on_floor():
+		#if right:
+			#change_state(ATTACK)
+		#if left:
+			#change_state(ATTACK)
 	#-------------------------------------------------
 	#If player wants to jump.
 	if jump and is_on_floor():
@@ -180,6 +180,7 @@ func player_input():  #Checks for player input.
 		velocity.y = jump_height
 		jump_count += 1
 		gain_experience(5)
+		print(level)
 	if velocity.y < 0 and !is_on_floor():
 		$Sprite.animation = "JumpUp"
 	if velocity.y > 0 and !is_on_floor():
