@@ -6,7 +6,21 @@
 [ext_resource path="res://Scenes/Buttons/StartButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Buttons/QuitButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/Fonts/MenuButtonFont.tres" type="DynamicFont" id=6]
-[ext_resource path="res://Scenes/UI/Faded.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Fade"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
@@ -77,10 +91,16 @@ custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 5
 text = "Version 0.1.1"
 
-[node name="Faded" parent="." instance=ExtResource( 7 )]
+[node name="FadeTransition" type="ColorRect" parent="."]
 visible = false
-[connection signal="button_down" from="Menu/Center/Buttons/StartButton" to="." method="_on_StartButton_button_down"]
-[connection signal="button_up" from="Menu/Center/Buttons/StartButton" to="." method="_on_StartButton_button_up"]
+modulate = Color( 0, 0, 0, 0 )
+margin_right = 1920.0
+margin_bottom = 1080.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FadeTransition"]
+anims/Fade = SubResource( 1 )
+[connection signal="pressed" from="Menu/Center/Buttons/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="timeout" from="Menu/Center/Buttons/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="animation_finished" from="FadeTransition/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 
 [editable path="Menu/Center/Buttons/StartButton"]

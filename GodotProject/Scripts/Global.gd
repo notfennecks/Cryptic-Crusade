@@ -11,3 +11,5 @@ var resources = {
 	"Damage Essence" : 0,
 	"Bottle" : 0
 	}
+	
+var level1_1 = "res://Scenes/Levels/Level1-1.tscn"

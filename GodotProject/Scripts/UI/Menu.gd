@@ -3,12 +3,9 @@ extends Control
 func _ready():
 	pass
 
-func _on_StartButton_button_up():
-	$Menu/Center/Buttons/Timer.start()
-
-func _on_StartButton_button_down():
-	$Faded.show()
-	$Faded/AnimationPlayer.play("Fading")
-
-func _on_Timer_timeout():
-	get_tree().change_scene("res://Scenes/Levels/Level1-1.tscn")
+func _on_StartButton_pressed():
+	$FadeTransition.show()
+	$FadeTransition/AnimationPlayer.play("Fade")
+	
+func _on_AnimationPlayer_animation_finished(anim_name):
+	get_tree().change_scene(Global.level1_1)
