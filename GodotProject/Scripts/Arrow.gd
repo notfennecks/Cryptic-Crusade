@@ -17,5 +17,7 @@ func _on_Arrow_body_entered(body):
 		yield(get_tree().create_timer(1), "timeout")
 		queue_free()
 	if body.is_in_group("enemies"):
+		if body.invincible == true:
+			return
 		body.take_damage()
 		queue_free()

@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Scripts/CraftingScreen.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/UI/CraftingScreen.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/ATHLS___.TTF" type="DynamicFontData" id=2]
 [ext_resource path="res://Fonts/TYPEWR_B.TTF" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/Weapons+Items/Bow.png" type="Texture" id=4]
@@ -8,6 +8,9 @@
 [ext_resource path="res://assets/UI/HotbarOutline.png" type="Texture" id=6]
 [ext_resource path="res://assets/Weapons+Items/SwordFinal.png" type="Texture" id=7]
 [ext_resource path="res://assets/Weapons+Items/Iron.png" type="Texture" id=8]
+
+
+
 
 
 

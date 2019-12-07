@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="BestPlatformer"
+config/name="CrypticCrusade"
 run/main_scene="res://Scenes/UI/Menu.tscn"
 config/icon="res://icon.png"
 
@@ -129,5 +129,5 @@ reload={
 
 [rendering]
 
-environment/default_clear_color=Color( 0.396078, 0.956863, 1, 1 )
+environment/default_clear_color=Color( 0.466667, 0.580392, 0.588235, 1 )
 environment/default_environment="res://default_env.tres"

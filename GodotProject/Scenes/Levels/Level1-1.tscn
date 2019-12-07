@@ -8,6 +8,8 @@
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/AI/Slime.tscn" type="PackedScene" id=7]
 
+
+
 [node name="Level1-1" type="Node2D"]
 script = ExtResource( 1 )
 Arrow = ExtResource( 2 )
@@ -18,6 +20,10 @@ Arrow = ExtResource( 2 )
 editor/display_folded = true
 
 [node name="InventoryScreen" parent="UI" instance=ExtResource( 4 )]
+margin_left = 4.41052
+margin_top = -35.2844
+margin_right = 1028.41
+margin_bottom = 564.716
 
 [node name="Background" type="TileMap" parent="."]
 tile_set = ExtResource( 5 )
@@ -39,7 +45,7 @@ player_speed = 150
 jump_height = -280
 gravity = 750
 max_jumps = 2
-arrow_rate = 0.15
+arrow_rate = 0.1
 Bow = true
 
 [node name="Slime" parent="." instance=ExtResource( 7 )]

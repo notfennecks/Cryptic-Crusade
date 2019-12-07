@@ -7,6 +7,10 @@ export (int) var max_jumps  #Exported variable for max player jumps.
 export (int) var level = 1  #Exported variabe for what level the player is in
 var jump_count = 0 #Variable that tracks jump count.
 var just_landed = false
+var p_direction = "right"
+
+export (PackedScene) var AfterImage
+var after_image_count = 0
 
 var pre_angle  #Variable for storing angle before calculation.
 
@@ -142,10 +146,12 @@ func player_input():  #Checks for player input.
 		change_state(RUN)
 		velocity.x += player_speed
 		$Sprite.flip_h = false
+		p_direction = "right"
 	if left and is_on_floor():
 		change_state(RUN)
 		velocity.x -= player_speed
 		$Sprite.flip_h = true
+		p_direction = "left"
 	#------------------------------------------------
 	#If player wants to run in air.
 	if right and state == JUMP:
@@ -181,6 +187,10 @@ func player_input():  #Checks for player input.
 		jump_count += 1
 		gain_experience(5)
 		print(level)
+		for i in range(2):
+			after_image_count += 1
+			after_image()
+			
 	if velocity.y < 0 and !is_on_floor():
 		$Sprite.animation = "JumpUp"
 	if velocity.y > 0 and !is_on_floor():
@@ -233,6 +243,20 @@ func player_input():  #Checks for player input.
 		can_switch_stance = false
 		t.start()
 
+func after_image():
+	var a = AfterImage.instance()
+	if p_direction == "left":
+		a.flip_h = true
+	else:
+		a.flip_h = false
+		
+	if after_image_count == 1:
+		yield(get_tree().create_timer(.1), "timeout")
+	a.position = position
+	get_parent().add_child(a)
+	a.fade_away()
+	after_image_count = 0
+		
 func angle_check(mouse, pos):  #For determining angle in relation to player and mouse.
 	var x = mouse.x - pos.x  #Stores x difference between mouse_pos Vector and position vector.
 	var y = mouse.y - pos.y  #Stores y difference between mouse_pos Vector and position vector.
