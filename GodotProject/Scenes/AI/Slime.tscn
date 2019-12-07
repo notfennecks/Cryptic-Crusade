@@ -1,14 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/AI/Slime.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Collectibles/WoodCollectible.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Collectibles/IronCollectible.tscn" type="PackedScene" id=3]
 [ext_resource path="res://RoyaltyFreeAssets/SlimeEnemy/SlimeRun.png" type="Texture" id=4]
 [ext_resource path="res://RoyaltyFreeAssets/SlimeEnemy/SlimeDeath.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/UI/HealthBar.tscn" type="PackedScene" id=6]
 
-
-
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=1]
 resource_name = "Death"
 length = 0.6
 tracks/0/type = "value"
@@ -48,7 +47,7 @@ tracks/2/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=2]
 resource_name = "Run"
 length = 0.75
 loop = true
@@ -90,10 +89,10 @@ tracks/2/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 8, 7 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 9.93311, 4.3754 )
 
 [node name="Slime" type="KinematicBody2D" groups=[
@@ -113,18 +112,29 @@ hframes = 6
 frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
-anims/Death = SubResource( 8 )
-anims/Run = SubResource( 9 )
+anims/Death = SubResource( 1 )
+anims/Run = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 9 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="ResourceSpawnArea" type="Area2D" parent="."]
 position = Vector2( 0, 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ResourceSpawnArea"]
 position = Vector2( 0, -2 )
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 disabled = true
+
+[node name="HealthBar" parent="." instance=ExtResource( 6 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -24.8715
+margin_top = -13.6549
+margin_right = -24.8715
+margin_bottom = -13.6549
+[connection signal="updated_health" from="." to="HealthBar" method="_on_Slime_updated_health"]
 [connection signal="animation_finished" from="Sprite/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

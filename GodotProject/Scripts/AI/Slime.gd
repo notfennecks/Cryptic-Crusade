@@ -5,21 +5,22 @@ export (int) var gravity #export gravity
 
 var velocity = Vector2() #velocity is a Vector2 value
 var facing = 1 #facing has a value of 1
-var health
+var health = 3
 var invincible = false
 
 export (PackedScene) var Wood
 export (PackedScene) var Iron
 
 signal resource_dropped(type1, amount1, type2, amount2, spawn_center, spawn_area)
+signal updated_health
 
 var spawn_area
 var spawn_center
 var rand_position = Vector2(0, 0)
 
 func _ready():
+	emit_signal("updated_health", health)
 	$Sprite/AnimationPlayer.play("Run")
-	health = 1
 	print(get_parent().name)
 	connect("resource_dropped", get_parent(), "drop_resources")
 
@@ -41,11 +42,13 @@ func _physics_process(delta):
 func take_damage():
 	spawn_center = $ResourceSpawnArea.global_position
 	spawn_area = $ResourceSpawnArea/CollisionShape2D.shape.extents
-	emit_signal("resource_dropped", Wood, 2, Iron, 3, spawn_center, spawn_area)
+	emit_signal("resource_dropped", Wood, randi() % 3, Iron, randi() % 3, spawn_center, spawn_area)
 	health -= 1
-	invincible = true
-	set_physics_process(false)
-	$Sprite/AnimationPlayer.play("Death")
+	emit_signal("updated_health", health)
+	if health == 0:
+		invincible = true
+		set_physics_process(false)
+		$Sprite/AnimationPlayer.play("Death")
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Death":

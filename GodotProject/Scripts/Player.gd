@@ -25,7 +25,8 @@ var health
 var experience = 0
 var experience_total = 0
 var experience_required = get_required_experience(level + 1) #experience required is determined by the get required experience function
-signal experience_gained(growth_data) #create experience gained signal
+signal experience_gained #create experience gained signal
+signal level_up
 
 export (bool) var Bow = false
 export (bool) var Sword = false
@@ -118,7 +119,7 @@ func _physics_process(delta):  #Function for calculating physics for player.
 	velocity = move_and_slide_with_snap(velocity, Vector2(0, 2), Vector2(0, -1), true, 4, float(deg2rad(45)), true)
 	for idx in range(get_slide_count()):
 		var collision = get_slide_collision(idx)
-		if collision.collider.name == "KinematicBody2D":
+		if collision.collider.name == "Slime":
 			health -= 1
 			if health == 0:
 				get_tree().reload_current_scene()
@@ -294,20 +295,18 @@ func _on_ArrowTimer_timeout(): #when this timer runs out
 func get_required_experience(level): #get required experience function
 	return round(pow(level, 1.8) + level * 4) #return this value
 
-func gain_experience(amount): #gain experience function
+func gain_experience(amount): #gain experience functiong
 	experience_total += amount #add amount to total experience
 	experience += amount #add amount to experience
-	var growth_data = [] #growth data declared as an array
 	while experience >= experience_required: #while the experience is more than experience required
 		experience -= experience_required #subtract experience by experience_required
-		growth_data.append([experience_required, experience_required]) #store this in growth data
 		level_up() #call the level_up function
-	growth_data.append([experience, experience_required]) #store this in growth data if the player does not level up
-	emit_signal("experience_gained", growth_data) #emit the experience gained signal and pass growth data
+	emit_signal("experience_gained", experience, experience_required) #emit the experience gained signal and pass growth data
 
 func level_up():  #level up function
 	level += 1 #add one to level variable
 	experience_required = get_required_experience(level + 1) #set the experience requirement to the next level.
+	emit_signal("level_up", level)
 	
 func resource_collection(amount, type):  #Function for resource collection and addition to dictionary.
 	Global.resources[type] += amount

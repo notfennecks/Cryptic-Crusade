@@ -3,20 +3,20 @@
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/AfterImage.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/Player/Jump/PlayerJumpUp.png" type="Texture" id=3]
-[ext_resource path="res://assets/Player/Idle/PlayerIdle1.png" type="Texture" id=4]
-[ext_resource path="res://assets/Player/Idle/PlayerIdle2.png" type="Texture" id=5]
-[ext_resource path="res://assets/Player/Run/PlayerRun1.png" type="Texture" id=6]
-[ext_resource path="res://assets/Player/Run/PlayerRun2.png" type="Texture" id=7]
-[ext_resource path="res://assets/Player/Run/PlayerRun3.png" type="Texture" id=8]
-[ext_resource path="res://assets/Player/Run/PlayerRun4.png" type="Texture" id=9]
-[ext_resource path="res://assets/Player/Run/PlayerRun5.png" type="Texture" id=10]
-[ext_resource path="res://assets/Player/Run/PlayerRun6.png" type="Texture" id=11]
-[ext_resource path="res://assets/Player/Run/PlayerRun7.png" type="Texture" id=12]
-[ext_resource path="res://assets/Player/Run/PlayerRun8.png" type="Texture" id=13]
-[ext_resource path="res://assets/Player/Run/PlayerRun9.png" type="Texture" id=14]
-[ext_resource path="res://assets/Player/Run/PlayerRun10.png" type="Texture" id=15]
-[ext_resource path="res://assets/Player/Run/PlayerRun11.png" type="Texture" id=16]
-[ext_resource path="res://assets/Player/Run/PlayerRun12.png" type="Texture" id=17]
+[ext_resource path="res://assets/Player/Run/PlayerRun1.png" type="Texture" id=4]
+[ext_resource path="res://assets/Player/Run/PlayerRun2.png" type="Texture" id=5]
+[ext_resource path="res://assets/Player/Run/PlayerRun3.png" type="Texture" id=6]
+[ext_resource path="res://assets/Player/Run/PlayerRun4.png" type="Texture" id=7]
+[ext_resource path="res://assets/Player/Run/PlayerRun5.png" type="Texture" id=8]
+[ext_resource path="res://assets/Player/Run/PlayerRun6.png" type="Texture" id=9]
+[ext_resource path="res://assets/Player/Run/PlayerRun7.png" type="Texture" id=10]
+[ext_resource path="res://assets/Player/Run/PlayerRun8.png" type="Texture" id=11]
+[ext_resource path="res://assets/Player/Run/PlayerRun9.png" type="Texture" id=12]
+[ext_resource path="res://assets/Player/Run/PlayerRun10.png" type="Texture" id=13]
+[ext_resource path="res://assets/Player/Run/PlayerRun11.png" type="Texture" id=14]
+[ext_resource path="res://assets/Player/Run/PlayerRun12.png" type="Texture" id=15]
+[ext_resource path="res://assets/Player/Idle/PlayerIdle1.png" type="Texture" id=16]
+[ext_resource path="res://assets/Player/Idle/PlayerIdle2.png" type="Texture" id=17]
 [ext_resource path="res://assets/Player/Jump/PlayerJumpDown.png" type="Texture" id=18]
 [ext_resource path="res://assets/Player/LandRight.tres" type="Material" id=19]
 [ext_resource path="res://assets/Player/JumpRight.tres" type="Material" id=20]
@@ -27,8 +27,6 @@
 [ext_resource path="res://assets/Player/StanceParticles/IceParticles.tres" type="Material" id=25]
 [ext_resource path="res://assets/Weapons+Items/Bow.png" type="Texture" id=26]
 
-
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 3 ) ],
@@ -36,15 +34,15 @@ animations = [ {
 "name": "JumpUp",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 2.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
 "loop": true,
 "name": "Run",
 "speed": 14.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 2.0
 }, {
 "frames": [ ExtResource( 18 ) ],
 "loop": true,
