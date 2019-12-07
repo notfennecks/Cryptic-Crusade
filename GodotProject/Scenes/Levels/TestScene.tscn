@@ -1,6 +1,6 @@
 [gd_scene load_steps=32 format=2]
 
-[ext_resource path="res://Scripts/TestScene.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Levels/TestScene.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Arrow.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/UI/InventoryScreen.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/UI/CraftingScreen.tscn" type="PackedScene" id=4]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scenes/AI/Slime.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Collectibles/WoodCollectible.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Collectibles/IronCollectible.tscn" type="PackedScene" id=10]
+
 
 
 

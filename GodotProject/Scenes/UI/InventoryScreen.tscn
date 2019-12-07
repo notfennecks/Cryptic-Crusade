@@ -1,21 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/UI/InventoryScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/Weapons+Items/Wood.png" type="Texture" id=2]
 [ext_resource path="res://assets/Weapons+Items/Iron.png" type="Texture" id=3]
-[ext_resource path="res://Fonts/TYPEWR_B.TTF" type="DynamicFontData" id=4]
-
-
-
-
-
-
-
-
-[sub_resource type="DynamicFont" id=1]
-size = 32
-outline_color = Color( 0.0470588, 0.0470588, 0.0470588, 1 )
-font_data = ExtResource( 4 )
+[ext_resource path="res://assets/Fonts/ResourceAmountFont.tres" type="DynamicFont" id=4]
 
 [node name="InventoryScreen" type="Control"]
 margin_right = 1024.0
@@ -41,7 +29,7 @@ margin_left = 90.0
 margin_top = 50.0
 margin_right = 260.0
 margin_bottom = 90.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "x 0
 "
@@ -51,7 +39,7 @@ margin_left = 90.0
 margin_top = 120.0
 margin_right = 260.0
 margin_bottom = 160.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "x 0
 "

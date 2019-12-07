@@ -1,15 +1,33 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Scenes/UI/ExpBar.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/Montserrat-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scripts/UI/ExpBar.gd" type="Script" id=1]
+[ext_resource path="res://assets/Fonts/LevelFont.tres" type="DynamicFont" id=2]
 
-[sub_resource type="DynamicFont" id=1]
-size = 32
-font_data = ExtResource( 2 )
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.490196, 0, 0.490196, 0.223529 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.184314, 0.184314, 0.184314, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="ExpBar" type="ProgressBar"]
 margin_right = 200.0
-margin_bottom = 14.0
+margin_bottom = 21.0
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
 percent_visible = false
 script = ExtResource( 1 )
 
@@ -24,5 +42,5 @@ margin_left = -38.0
 margin_top = -20.0
 margin_right = 38.0
 margin_bottom = 20.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "LVL: "

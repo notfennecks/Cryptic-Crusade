@@ -1,23 +1,12 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/UI/Menu.gd" type="Script" id=1]
-[ext_resource path="res://Cave.jpg" type="Texture" id=2]
-[ext_resource path="res://Fonts/Montserrat-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/UI/Cave.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/Fonts/GameTitleFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Scenes/Buttons/StartButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Buttons/QuitButton.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/Textures/Pickaxe.png" type="Texture" id=6]
-[ext_resource path="res://Fonts/TYPEWR__.TTF" type="DynamicFontData" id=7]
-[ext_resource path="res://Scenes/UI/Faded.tscn" type="PackedScene" id=8]
-
-[sub_resource type="DynamicFont" id=1]
-size = 75
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 24
-outline_size = 3
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 7 )
+[ext_resource path="res://assets/Fonts/MenuButtonFont.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Scenes/UI/Faded.tscn" type="PackedScene" id=7]
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
@@ -41,63 +30,54 @@ margin_right = 418.75
 margin_bottom = 237.5
 
 [node name="Label" type="Label" parent="Menu"]
-margin_right = 837.0
-margin_bottom = 92.0
-custom_fonts/font = SubResource( 1 )
+margin_right = 875.0
+margin_bottom = 124.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 10
+custom_constants/shadow_offset_y = 5
 text = "Cryptic Crusade"
 align = 1
 
 [node name="Center" type="HBoxContainer" parent="Menu"]
-margin_top = 96.0
-margin_right = 837.0
-margin_bottom = 327.0
+margin_top = 128.0
+margin_right = 875.0
+margin_bottom = 299.0
 size_flags_vertical = 3
 
 [node name="Buttons" type="VBoxContainer" parent="Menu/Center"]
-margin_right = 416.0
-margin_bottom = 231.0
+margin_right = 875.0
+margin_bottom = 171.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 20
 alignment = 1
 
 [node name="StartButton" parent="Menu/Center/Buttons" instance=ExtResource( 4 )]
-margin_top = 45.0
-margin_right = 416.0
-margin_bottom = 105.0
+margin_top = 15.0
+margin_right = 875.0
+margin_bottom = 75.0
 
 [node name="QuitButton" parent="Menu/Center/Buttons" instance=ExtResource( 5 )]
-margin_top = 125.0
-margin_right = 416.0
-margin_bottom = 185.0
+margin_top = 95.0
+margin_right = 875.0
+margin_bottom = 155.0
 
 [node name="Timer" type="Timer" parent="Menu/Center/Buttons"]
 
-[node name="CenterContainer" type="CenterContainer" parent="Menu/Center"]
-margin_left = 420.0
-margin_right = 837.0
-margin_bottom = 231.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Demo" type="TextureRect" parent="Menu/Center/CenterContainer"]
-margin_left = 93.0
-margin_right = 324.0
-margin_bottom = 231.0
-texture = ExtResource( 6 )
-
 [node name="Version" type="Label" parent="Menu"]
-margin_top = 331.0
-margin_right = 837.0
+margin_top = 303.0
+margin_right = 875.0
 margin_bottom = 475.0
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 0
-custom_constants/shadow_offset_y = 0
+custom_constants/shadow_offset_y = 5
 text = "Version 0.1.1"
 
-[node name="Faded" parent="." instance=ExtResource( 8 )]
+[node name="Faded" parent="." instance=ExtResource( 7 )]
 visible = false
 [connection signal="button_down" from="Menu/Center/Buttons/StartButton" to="." method="_on_StartButton_button_down"]
 [connection signal="button_up" from="Menu/Center/Buttons/StartButton" to="." method="_on_StartButton_button_up"]

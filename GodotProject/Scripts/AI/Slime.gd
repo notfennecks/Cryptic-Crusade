@@ -1,22 +1,22 @@
 extends KinematicBody2D
 
-export (int) var speed #export speed
-export (int) var gravity #export gravity
+export (int) var speed  #Export varaible for run speed.
+export (int) var gravity  #Export variable applied gravity.
 
-var velocity = Vector2() #velocity is a Vector2 value
-var facing = 1 #facing has a value of 1
-var health = 3
-var invincible = false
+var velocity = Vector2()  #Sets variable with name "velocity" to empty Vector2().
+var facing = 1  #Variaalbe for storing enemey direction.
+var health = 3  #Variable for storing health
+var invincible = false  #Variable for stroing boolean if the enemy is invincible or not.
 
-export (PackedScene) var Wood
-export (PackedScene) var Iron
+export (PackedScene) var Wood  #Varaible for storing wood resource scene.
+export (PackedScene) var Iron  #Varaible for storing iron resource scene.
 
-signal resource_dropped(type1, amount1, type2, amount2, spawn_center, spawn_area)
-signal updated_health
+signal resource_dropped(type1, amount1, type2, amount2, spawn_center, spawn_area)  #Signal or dropping resources when enemy is killed.
+signal updated_health  #Signal for when the health is changed.
 
-var spawn_area
-var spawn_center
-var rand_position = Vector2(0, 0)
+var spawn_area  #Variable for storing area extents to determine spawn area size.
+var spawn_center  #Varialbe for storing center of spawn area in which resources can spaawn in.
+var rand_position = Vector2(0, 0)  #Variable that will store a random position. Set to empty Vector2() at start to prevent errors.
 
 func _ready():
 	emit_signal("updated_health", health)
@@ -42,10 +42,10 @@ func _physics_process(delta):
 func take_damage():
 	spawn_center = $ResourceSpawnArea.global_position
 	spawn_area = $ResourceSpawnArea/CollisionShape2D.shape.extents
-	emit_signal("resource_dropped", Wood, randi() % 3, Iron, randi() % 3, spawn_center, spawn_area)
 	health -= 1
 	emit_signal("updated_health", health)
-	if health == 0:
+	if health == 0:	
+		emit_signal("resource_dropped", Wood, randi() % 3, Iron, randi() % 3, spawn_center, spawn_area)
 		invincible = true
 		set_physics_process(false)
 		$Sprite/AnimationPlayer.play("Death")

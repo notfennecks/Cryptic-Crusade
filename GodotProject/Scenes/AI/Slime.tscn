@@ -3,8 +3,8 @@
 [ext_resource path="res://Scripts/AI/Slime.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Collectibles/WoodCollectible.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Collectibles/IronCollectible.tscn" type="PackedScene" id=3]
-[ext_resource path="res://RoyaltyFreeAssets/SlimeEnemy/SlimeRun.png" type="Texture" id=4]
-[ext_resource path="res://RoyaltyFreeAssets/SlimeEnemy/SlimeDeath.png" type="Texture" id=5]
+[ext_resource path="res://assets/RoyaltyFreeAssets/SlimeEnemy/SlimeRun.png" type="Texture" id=4]
+[ext_resource path="res://assets/RoyaltyFreeAssets/SlimeEnemy/SlimeDeath.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/UI/HealthBar.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
@@ -132,9 +132,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -24.8715
-margin_top = -13.6549
-margin_right = -24.8715
-margin_bottom = -13.6549
+margin_left = -8.25
+margin_top = -10.0
+margin_right = -8.25
+margin_bottom = -10.0
 [connection signal="updated_health" from="." to="HealthBar" method="_on_Slime_updated_health"]
 [connection signal="animation_finished" from="Sprite/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
