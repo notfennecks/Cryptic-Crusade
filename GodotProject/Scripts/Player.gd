@@ -5,6 +5,7 @@ export (int) var jump_height  #Exported variable for player jump height.
 export (int) var gravity  #Exported variable for gravity applied to player.
 export (int) var max_jumps  #Exported variable for max player jumps.
 export (int) var level = 1  #Exported variabe for what level the player is in
+
 var jump_count = 0 #Variable that tracks jump count.
 var just_landed = false
 var p_direction = "right"
@@ -19,8 +20,9 @@ var can_shoot = true  #If the player can fire an arrow.
 signal shoot  #Signal that tracks if the player shot.
 var angle  #Variable for storing 360 angle in relation between player and mouse.
 
-enum {IDLE, RUN, JUMP, DEAD, DASH, ATTACK, HURT, ATTACKL}  #Declaring states as enumerated types.
+enum {IDLE, RUN, JUMP, DEAD, HURT}  #Declaring states as enumerated types.
 var state  #Variable state to track current state.
+export (int) var max_health = 100
 var health
 var experience = 0
 var experience_total = 0
@@ -38,12 +40,17 @@ var can_switch_stance = true #Variable for if the player can change their stance
 var stance_particles = [ "Fire", "Ice", "Dark", "Light" ]
 
 var velocity = Vector2()  #Variable velocity to store and apply player movement.
+onready var exp_bar = get_parent().get_child(0).get_child(2).get_child(1)
+onready var health_bar = get_parent().get_child(0).get_child(2).get_child(0)
 
 func _ready():  #Runs function soon as scene is loaded.
-	health = 10
+	health = max_health
 	change_stance(NEUTRAL)  #Changes stance to NEUTRAL.
 	change_state(IDLE)  #Changes state to IDLE.
 	$ArrowTimer.wait_time = arrow_rate
+	connect("experience_gained", exp_bar, "gain_experience")
+	connect("level_up", exp_bar, "level_up")
+	health_bar.max_value = max_health
 
 func change_state(new_state):  #Runs function when state needs to be changed. Taking the new_state as argument.
 	state = new_state  #Sets the state variable to the state it needs to change to.
@@ -55,17 +62,12 @@ func change_state(new_state):  #Runs function when state needs to be changed. Ta
 			$Sprite.animation = "Run"
 			$Sprite.playing = true
 		JUMP:
-			print("In Air")
+			print("Jump state")
 		DEAD:
-			print("dead")
-		#ATTACK:
-			#$Sword.set_position(Vector2(19,0))
-			#$Sword/AnimationPlayer.play("Attack")
-		#HURT:
-			#health -= 1
-		ATTACKL:
-			$Sword.set_position(Vector2(4,0))
-			$Sword/AnimationPlayer.play("Attack_Left")
+			get_tree().reload_current_scene()
+		HURT:
+			$Sprite/AnimationPlayer.play("Hurt")
+
 
 func change_stance(new_stance):  #Runs function when stance needs to be changed. Taking new_stance as argument.
 	stance = new_stance  #Sets the stance variable to the stance player wanted to change to.
@@ -117,14 +119,7 @@ func _physics_process(delta):  #Function for calculating physics for player.
 	player_input()  #Refers to player_input() function so that its checking for input every frame.
 	#Moves player along a vector. Refer to move_and_slide_with_snap in manuel.
 	velocity = move_and_slide_with_snap(velocity, Vector2(0, 2), Vector2(0, -1), true, 4, float(deg2rad(45)), true)
-	for idx in range(get_slide_count()):
-		var collision = get_slide_collision(idx)
-		if collision.collider.name == "Slime":
-			health -= 1
-			if health == 0:
-				get_tree().reload_current_scene()
-				print("You are dead")
-
+	
 func _process(delta):
 	var mouse_pos = get_global_mouse_position()  #Sets the mouse position every frame to a variable.
 	var current_pos = position  #Sets the player position every frame to a variable.
@@ -132,7 +127,7 @@ func _process(delta):
 	shoot(current_pos, angle)
 
 func player_input():  #Checks for player input.
-	if state == DEAD:  #If player is dead return. We do not want the player moving while dead.
+	if state == DEAD: #If player is dead return. We do not want the player moving while dead.
 		return
 	velocity.x = 0  #Sets player still so that previous inpots do not effect the next ones.
 
@@ -171,13 +166,6 @@ func player_input():  #Checks for player input.
 	#If player is not on floor set state to JUMP.
 	if state in [IDLE, RUN] and !is_on_floor():
 		change_state(JUMP)
-	#-------------------------------------------------
-	#if player is on floor and attack is triggered set state to ATTACK
-	#if attack and is_on_floor():
-		#if right:
-			#change_state(ATTACK)
-		#if left:
-			#change_state(ATTACK)
 	#-------------------------------------------------
 	#If player wants to jump.
 	if jump and is_on_floor():
@@ -291,6 +279,13 @@ func shoot(cur_pos, dir):  #Function to check for arrow shot.
 func _on_ArrowTimer_timeout(): #when this timer runs out
 	can_shoot = true #the character can once again shoot
 	$AngleChecker/Bow.hide() #hide the bow sprite
+	
+func update_health(amount):
+	health -= amount
+	change_state(HURT)
+	health_bar.value = health
+	if health == 0:
+		change_state(DEAD)
 
 func get_required_experience(level): #get required experience function
 	return round(pow(level, 1.8) + level * 4) #return this value

@@ -1,23 +1,23 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/AfterImage.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/Player/Jump/PlayerJumpUp.png" type="Texture" id=3]
-[ext_resource path="res://assets/Player/Run/PlayerRun1.png" type="Texture" id=4]
-[ext_resource path="res://assets/Player/Run/PlayerRun2.png" type="Texture" id=5]
-[ext_resource path="res://assets/Player/Run/PlayerRun3.png" type="Texture" id=6]
-[ext_resource path="res://assets/Player/Run/PlayerRun4.png" type="Texture" id=7]
-[ext_resource path="res://assets/Player/Run/PlayerRun5.png" type="Texture" id=8]
-[ext_resource path="res://assets/Player/Run/PlayerRun6.png" type="Texture" id=9]
-[ext_resource path="res://assets/Player/Run/PlayerRun7.png" type="Texture" id=10]
-[ext_resource path="res://assets/Player/Run/PlayerRun8.png" type="Texture" id=11]
-[ext_resource path="res://assets/Player/Run/PlayerRun9.png" type="Texture" id=12]
-[ext_resource path="res://assets/Player/Run/PlayerRun10.png" type="Texture" id=13]
-[ext_resource path="res://assets/Player/Run/PlayerRun11.png" type="Texture" id=14]
-[ext_resource path="res://assets/Player/Run/PlayerRun12.png" type="Texture" id=15]
-[ext_resource path="res://assets/Player/Idle/PlayerIdle1.png" type="Texture" id=16]
-[ext_resource path="res://assets/Player/Idle/PlayerIdle2.png" type="Texture" id=17]
-[ext_resource path="res://assets/Player/Jump/PlayerJumpDown.png" type="Texture" id=18]
+[ext_resource path="res://assets/Player/Run/PlayerRun1.png" type="Texture" id=3]
+[ext_resource path="res://assets/Player/Run/PlayerRun2.png" type="Texture" id=4]
+[ext_resource path="res://assets/Player/Run/PlayerRun3.png" type="Texture" id=5]
+[ext_resource path="res://assets/Player/Run/PlayerRun4.png" type="Texture" id=6]
+[ext_resource path="res://assets/Player/Run/PlayerRun5.png" type="Texture" id=7]
+[ext_resource path="res://assets/Player/Run/PlayerRun6.png" type="Texture" id=8]
+[ext_resource path="res://assets/Player/Run/PlayerRun7.png" type="Texture" id=9]
+[ext_resource path="res://assets/Player/Run/PlayerRun8.png" type="Texture" id=10]
+[ext_resource path="res://assets/Player/Run/PlayerRun9.png" type="Texture" id=11]
+[ext_resource path="res://assets/Player/Run/PlayerRun10.png" type="Texture" id=12]
+[ext_resource path="res://assets/Player/Run/PlayerRun11.png" type="Texture" id=13]
+[ext_resource path="res://assets/Player/Run/PlayerRun12.png" type="Texture" id=14]
+[ext_resource path="res://assets/Player/Jump/PlayerJumpUp.png" type="Texture" id=15]
+[ext_resource path="res://assets/Player/Jump/PlayerJumpDown.png" type="Texture" id=16]
+[ext_resource path="res://assets/Player/Idle/PlayerIdle1.png" type="Texture" id=17]
+[ext_resource path="res://assets/Player/Idle/PlayerIdle2.png" type="Texture" id=18]
 [ext_resource path="res://assets/Player/LandRight.tres" type="Material" id=19]
 [ext_resource path="res://assets/Player/JumpRight.tres" type="Material" id=20]
 [ext_resource path="res://assets/Player/JumpLeft.tres" type="Material" id=21]
@@ -29,25 +29,25 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "JumpUp",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": true,
 "name": "Run",
 "speed": 14.0
 }, {
-"frames": [ ExtResource( 16 ), ExtResource( 17 ) ],
+"frames": [ ExtResource( 15 ) ],
 "loop": true,
-"name": "Idle",
-"speed": 2.0
+"name": "JumpUp",
+"speed": 5.0
 }, {
-"frames": [ ExtResource( 18 ) ],
+"frames": [ ExtResource( 16 ) ],
 "loop": true,
 "name": "JumpDown",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 2.0
 } ]
 
 [sub_resource type="ParticlesMaterial" id=2]
@@ -75,6 +75,22 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 100.0, 250.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Hurt"
+length = 2.8
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2, 1.6, 2, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -123,7 +139,9 @@ tracks/0/keys = {
 radius = 8.05135
 height = 12.5504
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"player",
+]]
 collision_mask = 31
 script = ExtResource( 1 )
 AfterImage = ExtResource( 2 )
@@ -170,6 +188,7 @@ process_material = ExtResource( 21 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/Flip = SubResource( 3 )
+anims/Hurt = SubResource( 7 )
 anims/JumpDown = SubResource( 4 )
 anims/JumpUp = SubResource( 5 )
 

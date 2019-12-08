@@ -2,9 +2,9 @@
 
 [ext_resource path="res://Scripts/Levels/Level1-1.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Arrow.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/UI/ExpBar.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/UI/CraftingScreen.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/UI/InventoryScreen.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/UI/CraftingScreen.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/UI/InventoryScreen.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/UI/HUD.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/Tilesets/GrassTileSetBasic.tres" type="TileSet" id=6]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/AI/Slime.tscn" type="PackedScene" id=8]
@@ -15,24 +15,16 @@ Arrow = ExtResource( 2 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="ProgressBar" parent="UI" instance=ExtResource( 3 )]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -300.0
-margin_top = 360.0
-margin_right = 300.0
-margin_bottom = 410.0
-
-[node name="CraftingScreen" parent="UI" instance=ExtResource( 4 )]
+[node name="CraftingScreen" parent="UI" instance=ExtResource( 3 )]
 editor/display_folded = true
 
-[node name="InventoryScreen" parent="UI" instance=ExtResource( 5 )]
+[node name="InventoryScreen" parent="UI" instance=ExtResource( 4 )]
 margin_left = 4.41052
 margin_top = -35.2844
 margin_right = 1028.41
 margin_bottom = 564.716
+
+[node name="HUD" parent="UI" instance=ExtResource( 5 )]
 
 [node name="Background" type="TileMap" parent="."]
 tile_set = ExtResource( 6 )
@@ -68,6 +60,4 @@ speed = 50
 [node name="Slime3" parent="." instance=ExtResource( 8 )]
 position = Vector2( 419.722, -44.9182 )
 speed = 50
-[connection signal="experience_gained" from="Player" to="UI/ProgressBar" method="_on_Player_experience_gained"]
-[connection signal="level_up" from="Player" to="UI/ProgressBar" method="_on_Player_level_up"]
 [connection signal="shoot" from="Player" to="." method="_on_Player_shoot"]
