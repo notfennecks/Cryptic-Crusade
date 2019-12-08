@@ -7,7 +7,7 @@ var velocity = Vector2()  #Sets variable with name "velocity" to empty Vector2()
 var facing = 1  #Variaalbe for storing enemey direction.
 var health = 3  #Variable for storing health
 var invincible = false  #Variable for stroing boolean if the enemy is invincible or not.
-var damage = 50
+var damage = 25
 
 export (PackedScene) var Wood  #Varaible for storing wood resource scene.
 export (PackedScene) var Iron  #Varaible for storing iron resource scene.

@@ -42,6 +42,7 @@ var stance_particles = [ "Fire", "Ice", "Dark", "Light" ]
 var velocity = Vector2()  #Variable velocity to store and apply player movement.
 onready var exp_bar = get_parent().get_child(0).get_child(2).get_child(1)
 onready var health_bar = get_parent().get_child(0).get_child(2).get_child(0)
+onready var hud = get_parent().get_child(0).get_child(2)
 
 func _ready():  #Runs function soon as scene is loaded.
 	health = max_health
@@ -283,7 +284,8 @@ func _on_ArrowTimer_timeout(): #when this timer runs out
 func update_health(amount):
 	health -= amount
 	change_state(HURT)
-	health_bar.value = health
+#	health_bar.value = health
+	hud.health_bar_tween(health)
 	if health == 0:
 		change_state(DEAD)
 
