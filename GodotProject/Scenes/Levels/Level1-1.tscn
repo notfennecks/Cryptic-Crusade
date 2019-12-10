@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Levels/Level1-1.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Arrow.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/AI/Slime.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/AI/BatAI.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/AI/Bat.tscn" type="PackedScene" id=10]
 
 [node name="Level1-1" type="Node2D"]
 script = ExtResource( 1 )
@@ -63,4 +64,6 @@ speed = 50
 
 [node name="BatPath" parent="." instance=ExtResource( 9 )]
 position = Vector2( 419, -400 )
+
+[node name="Bat" parent="." instance=ExtResource( 10 )]
 [connection signal="shoot" from="Player" to="." method="_on_Player_shoot"]
