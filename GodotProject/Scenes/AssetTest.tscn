@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=2]
+[gd_scene load_steps=96 format=2]
 
 [ext_resource path="res://Scripts/AssetTest.gd" type="Script" id=1]
 [ext_resource path="res://assets/RoyaltyFreeAssets/FireSequence/FIRE_00000.png" type="Texture" id=2]
@@ -77,14 +77,17 @@
 [ext_resource path="res://assets/RoyaltyFreeAssets/FireSequence/FIRE_00073.png" type="Texture" id=75]
 [ext_resource path="res://assets/RoyaltyFreeAssets/FireSequence/FIRE_00074.png" type="Texture" id=76]
 [ext_resource path="res://assets/RoyaltyFreeAssets/FireSequence/FIRE_00075.png" type="Texture" id=77]
-[ext_resource path="res://Scenes/AI/Bat.tscn" type="PackedScene" id=78]
-[ext_resource path="res://assets/RoyaltyFreeAssets/GhostEnemy/Ghost_Hit.png" type="Texture" id=79]
-[ext_resource path="res://assets/RoyaltyFreeAssets/GhostEnemy/Ghost_Appear.png" type="Texture" id=80]
-[ext_resource path="res://assets/RoyaltyFreeAssets/GhostEnemy/Ghost_Death.png" type="Texture" id=81]
-[ext_resource path="res://assets/RoyaltyFreeAssets/GhostEnemy/Ghost_Idle.png" type="Texture" id=82]
-[ext_resource path="res://assets/RoyaltyFreeAssets/SlimeEnemy/SlimeDeath.png" type="Texture" id=83]
-[ext_resource path="res://assets/RoyaltyFreeAssets/SlimeEnemy/SlimeRun.png" type="Texture" id=84]
-[ext_resource path="res://assets/RoyaltyFreeAssets/ScorpionEnemy/ScorpionSpriteFrames.tres" type="SpriteFrames" id=85]
+[ext_resource path="res://assets/RoyaltyFreeAssets/BatEnemy/BatFly.png" type="Texture" id=78]
+[ext_resource path="res://assets/RoyaltyFreeAssets/BatEnemy/BatDie.png" type="Texture" id=79]
+[ext_resource path="res://assets/RoyaltyFreeAssets/GhostEnemy/Ghost_Hit.png" type="Texture" id=80]
+[ext_resource path="res://assets/RoyaltyFreeAssets/GhostEnemy/Ghost_Appear.png" type="Texture" id=81]
+[ext_resource path="res://assets/RoyaltyFreeAssets/GhostEnemy/Ghost_Death.png" type="Texture" id=82]
+[ext_resource path="res://assets/RoyaltyFreeAssets/GhostEnemy/Ghost_Idle.png" type="Texture" id=83]
+[ext_resource path="res://assets/RoyaltyFreeAssets/SlimeEnemy/SlimeDeath.png" type="Texture" id=84]
+[ext_resource path="res://assets/RoyaltyFreeAssets/SlimeEnemy/SlimeRun.png" type="Texture" id=85]
+[ext_resource path="res://assets/RoyaltyFreeAssets/ScorpionEnemy/ScorpionSpriteFrames.tres" type="SpriteFrames" id=86]
+
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -95,6 +98,88 @@ animations = [ {
 } ]
 
 [sub_resource type="Animation" id=2]
+resource_name = "Die"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 79 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Fly"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 78 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+
+[sub_resource type="Animation" id=4]
 resource_name = "Appear"
 length = 0.7
 loop = true
@@ -108,7 +193,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 80 ) ]
+"values": [ ExtResource( 81 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:hframes")
@@ -135,7 +220,7 @@ tracks/2/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=5]
 resource_name = "Death"
 length = 0.7
 step = 0.05
@@ -149,7 +234,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 81 ) ]
+"values": [ ExtResource( 82 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:hframes")
@@ -176,7 +261,7 @@ tracks/2/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=6]
 resource_name = "Hit"
 length = 0.01
 tracks/0/type = "value"
@@ -189,7 +274,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 79 ) ]
+"values": [ ExtResource( 80 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:hframes")
@@ -216,7 +301,7 @@ tracks/2/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=7]
 resource_name = "Idle"
 length = 0.75
 loop = true
@@ -231,7 +316,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 82 ) ]
+"values": [ ExtResource( 83 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:hframes")
@@ -258,7 +343,7 @@ tracks/2/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=8]
 resource_name = "Death"
 length = 0.6
 tracks/0/type = "value"
@@ -271,7 +356,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 83 ) ]
+"values": [ ExtResource( 84 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:hframes")
@@ -298,7 +383,7 @@ tracks/2/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=9]
 resource_name = "Run"
 length = 0.75
 loop = true
@@ -313,7 +398,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 84 ) ]
+"values": [ ExtResource( 85 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:hframes")
@@ -352,32 +437,41 @@ animation = "Fire"
 current = true
 zoom = Vector2( 0.1, 0.1 )
 
-[node name="Bat" parent="." instance=ExtResource( 78 )]
+[node name="Bat" type="Sprite" parent="."]
+editor/display_folded = true
+visible = false
+texture = ExtResource( 78 )
+hframes = 6
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bat"]
+anims/Die = SubResource( 2 )
+anims/Fly = SubResource( 3 )
 
 [node name="Ghost" type="Sprite" parent="."]
 editor/display_folded = true
 visible = false
-texture = ExtResource( 79 )
+texture = ExtResource( 80 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Ghost"]
-anims/Appear = SubResource( 2 )
-anims/Death = SubResource( 3 )
-anims/Hit = SubResource( 4 )
-anims/Idle = SubResource( 5 )
+anims/Appear = SubResource( 4 )
+anims/Death = SubResource( 5 )
+anims/Hit = SubResource( 6 )
+anims/Idle = SubResource( 7 )
 
 [node name="Slime" type="Sprite" parent="."]
 editor/display_folded = true
 visible = false
-texture = ExtResource( 83 )
+texture = ExtResource( 84 )
 hframes = 7
 frame = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Slime"]
-anims/Death = SubResource( 6 )
-anims/Run = SubResource( 7 )
+anims/Death = SubResource( 8 )
+anims/Run = SubResource( 9 )
 
 [node name="Scorpion" type="AnimatedSprite" parent="."]
 visible = false
-frames = ExtResource( 85 )
+frames = ExtResource( 86 )
 animation = "Hit"
 frame = 1
