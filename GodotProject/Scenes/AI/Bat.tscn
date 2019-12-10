@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/AI/Bat.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Collectibles/WoodCollectible.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Collectibles/IronCollectible.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/RoyaltyFreeAssets/BatEnemy/BatFly.png" type="Texture" id=4]
-[ext_resource path="res://assets/RoyaltyFreeAssets/BatEnemy/BatDie.png" type="Texture" id=5]
+[ext_resource path="res://assets/RoyaltyFreeAssets/BatEnemy/BatDie.png" type="Texture" id=4]
+[ext_resource path="res://assets/RoyaltyFreeAssets/BatEnemy/BatFly.png" type="Texture" id=5]
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 18.5286
@@ -12,7 +12,6 @@ radius = 18.5286
 [sub_resource type="Animation" id=1]
 resource_name = "Die"
 length = 0.5
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
@@ -23,7 +22,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 5 ) ]
+"values": [ ExtResource( 4 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:frame")
@@ -52,7 +51,6 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "Fly"
-length = 0.5
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:texture")
@@ -64,7 +62,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 4 ) ]
+"values": [ ExtResource( 5 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:frame")
@@ -94,6 +92,9 @@ tracks/2/keys = {
 [sub_resource type="CircleShape2D" id=3]
 radius = 20.1995
 
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 17.6455, 18.3695 )
+
 [node name="Bat" type="KinematicBody2D" groups=[
 "enemies",
 ]]
@@ -108,8 +109,8 @@ shape = SubResource( 4 )
 
 [node name="Bat" type="Sprite" parent="."]
 texture = ExtResource( 4 )
-hframes = 6
-frame = 2
+hframes = 5
+frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Bat"]
 anims/Die = SubResource( 1 )
@@ -117,5 +118,10 @@ anims/Fly = SubResource( 2 )
 
 [node name="BatCollision" type="CollisionShape2D" parent="."]
 shape = SubResource( 3 )
+
+[node name="ResourceSpawnArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ResourceSpawnArea"]
+shape = SubResource( 5 )
 [connection signal="body_entered" from="AreaDamage" to="." method="_on_AreaDamage_body_entered"]
 [connection signal="animation_finished" from="Bat/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

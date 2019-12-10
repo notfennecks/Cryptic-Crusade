@@ -3,8 +3,8 @@
 [ext_resource path="res://Scripts/AI/Slime.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Collectibles/WoodCollectible.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Collectibles/IronCollectible.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/RoyaltyFreeAssets/SlimeEnemy/SlimeRun.png" type="Texture" id=4]
-[ext_resource path="res://assets/RoyaltyFreeAssets/SlimeEnemy/SlimeDeath.png" type="Texture" id=5]
+[ext_resource path="res://assets/RoyaltyFreeAssets/SlimeEnemy/SlimeDeath.png" type="Texture" id=4]
+[ext_resource path="res://assets/RoyaltyFreeAssets/SlimeEnemy/SlimeRun.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/UI/HealthBar.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
@@ -20,7 +20,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 5 ) ]
+"values": [ ExtResource( 4 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:hframes")
@@ -62,7 +62,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 4 ) ]
+"values": [ ExtResource( 5 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:hframes")
@@ -111,8 +111,8 @@ Iron = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 4 )
-hframes = 6
-frame = 1
+hframes = 7
+frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/Death = SubResource( 1 )

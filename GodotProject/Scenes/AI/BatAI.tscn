@@ -18,5 +18,3 @@ rotation = -0.442388
 
 [node name="Bat" parent="BatPathFollow" instance=ExtResource( 2 )]
 position = Vector2( 11.5759, 9.2843 )
-speed = 0
-gravity = 0

@@ -7,4 +7,3 @@ func ready():
 	
 func _process(delta):
 	follow.set_offset(follow.get_offset() + 150 * delta)
-	print(follow.get_offset())
