@@ -19,6 +19,9 @@ var spawn_area  #Variable for storing area extents to determine spawn area size.
 var spawn_center  #Varialbe for storing center of spawn area in which resources can spaawn in.
 var rand_position = Vector2(0, 0)  #Variable that will store a random position. Set to empty Vector2() at start to prevent errors.
 
+onready var player = get_parent().get_node("Player")
+
+
 func _ready():  #Runs this function when the scene is loaded.
 	emit_signal("updated_enemy_health", health)  #Emits a signal to update the enemy's health.
 	$Sprite/AnimationPlayer.play("Run")  #Plays the enemies "Run" animation
@@ -43,6 +46,7 @@ func take_damage():  #Function for applying damage to enemy.
 	health -= 1  #Take away 1 health from enemy.
 	emit_signal("updated_enemy_health", health)  #Emit signal "updated_health" with the current health value.
 	if health == 0:  #If health is 0.
+		player.gain_experience(5)
 		emit_signal("resource_dropped", Wood, randi() % 3, Iron, randi() % 3, spawn_center, spawn_area)  #Emitted signal used for spawning dropped resources.
 		invincible = true  #Sets enemy to invincible so you cannot get more resources than intended from enemy.
 		set_physics_process(false)  #Stops enemy's physics process.

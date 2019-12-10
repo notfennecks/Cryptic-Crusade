@@ -175,7 +175,6 @@ func player_input():  #Checks for player input.
 		$Sprite/JumpRight.emitting = true
 		velocity.y = jump_height
 		jump_count += 1
-		gain_experience(5)
 		print(level)
 		for i in range(2):
 			after_image_count += 1
