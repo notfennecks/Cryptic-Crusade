@@ -53,11 +53,11 @@ func take_damage():  #Function for applying damage to enemy.
 		$Sprite/AnimationPlayer.play("Death")  #Play enemy "Death" animation.
 		
 func _on_AnimationPlayer_animation_finished(anim_name):  #When the animation player finishes an animation.
-	if anim_name == "Death":  #If the animation name is "Death".
+	if anim_name == "Death":  #If the a9nimation name is "Death".
 		queue_free()  #Delete enemy.
 
 func _on_DamageArea_body_entered(body):
-	var target = body
+	var target = body 
 	if target.name == "Player":
 		target.update_health(damage)
 		print(target.name, " took ", damage, " damage!")
