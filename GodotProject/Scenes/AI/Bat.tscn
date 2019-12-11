@@ -1,16 +1,16 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/AI/Bat.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Collectibles/WoodCollectible.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Collectibles/IronCollectible.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/RoyaltyFreeAssets/BatEnemy/BatDie.png" type="Texture" id=4]
 [ext_resource path="res://assets/RoyaltyFreeAssets/BatEnemy/BatFly.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/UI/HealthBar.tscn" type="PackedScene" id=6]
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=1]
 radius = 18.5286
 
-[sub_resource type="Animation" id=1]
-resource_name = "Die"
+[sub_resource type="Animation" id=2]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:texture")
@@ -49,8 +49,7 @@ tracks/2/keys = {
 "values": [ 5 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Fly"
+[sub_resource type="Animation" id=3]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:texture")
@@ -89,7 +88,7 @@ tracks/2/keys = {
 "values": [ 6 ]
 }
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=4]
 radius = 20.1995
 
 [sub_resource type="RectangleShape2D" id=5]
@@ -105,7 +104,7 @@ Iron = ExtResource( 3 )
 [node name="AreaDamage" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDamage"]
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="Bat" type="Sprite" parent="."]
 texture = ExtResource( 4 )
@@ -113,15 +112,22 @@ hframes = 5
 frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Bat"]
-anims/Die = SubResource( 1 )
-anims/Fly = SubResource( 2 )
+anims/Die = SubResource( 2 )
+anims/Fly = SubResource( 3 )
 
 [node name="BatCollision" type="CollisionShape2D" parent="."]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="ResourceSpawnArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ResourceSpawnArea"]
 shape = SubResource( 5 )
+
+[node name="HealthBar" parent="." instance=ExtResource( 6 )]
+margin_left = -8.36243
+margin_top = -30.3688
+margin_right = -8.36243
+margin_bottom = -30.3688
+[connection signal="updated_enemy_health" from="." to="HealthBar" method="_on_Bat_updated_enemy_health"]
 [connection signal="body_entered" from="AreaDamage" to="." method="_on_AreaDamage_body_entered"]
 [connection signal="animation_finished" from="Bat/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

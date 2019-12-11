@@ -24,7 +24,7 @@ func _ready():  #Runs this function when the scene is loaded.
 	$Bat/AnimationPlayer.play("Fly")  #Plays the enemies "Run" animation
 	connect("resource_dropped", level, "drop_resources")  #Connects the "resource_dropped" signal to its parent (Level1-1 tree node).
 	#The signal is connect to Level1-1's "drop_resources" function.
-	connect("updated_enemy_health", $HealthBar, "_on_Slime_updated_enemy_health")
+	connect("updated_enemy_health", $HealthBar, "_on_Bat_updated_enemy_health")
 
 func _physics_process(delta):  #Function that runs every frame to apply the enemy's physics.
 	velocity = move_and_slide(velocity,Vector2(0,-1))  #This is used to apply actual movement of enemy via move_and_slide().

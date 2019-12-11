@@ -14,7 +14,7 @@ script = ExtResource( 1 )
 
 [node name="BatPathFollow" type="PathFollow2D" parent="."]
 position = Vector2( 237.103, 286.15 )
-rotation = -0.442388
+rotation = -0.442365
 
 [node name="Bat" parent="BatPathFollow" instance=ExtResource( 2 )]
 position = Vector2( 11.5759, 9.2843 )
