@@ -11,6 +11,13 @@ var just_landed = false
 var p_direction = "right"
 var invincible = false
 
+var combos = {"1" : false,
+			"2": false,
+			"3": false
+			}
+			
+var punch1 = "right"
+
 export (PackedScene) var AfterImage
 var after_image_count = 0
 
@@ -21,7 +28,7 @@ var can_shoot = true  #If the player can fire an arrow.
 signal shoot  #Signal that tracks if the player shot.
 var angle  #Variable for storing 360 angle in relation between player and mouse.
 
-enum {IDLE, RUN, JUMP, DEAD, HURT}  #Declaring states as enumerated types.
+enum {IDLE, RUN, JUMP, DEAD, HURT, PUNCH}  #Declaring states as enumerated types.
 var state  #Variable state to track current state.
 export (int) var max_health = 100
 var health
@@ -72,6 +79,12 @@ func change_state(new_state):  #Runs function when state needs to be changed. Ta
 			$Hurt.play()
 			$HurtTimer.start()
 			invincible = true
+		PUNCH:
+			$Sprite.animation = "Punch"
+			if punch1 == "right":
+				$Sprite/AnimationPlayer.play("Punch1Right")
+			else:
+				$Sprite/AnimationPlayer.play("Punch1Left")
 
 
 func change_stance(new_stance):  #Runs function when stance needs to be changed. Taking new_stance as argument.
@@ -125,6 +138,11 @@ func _physics_process(delta):  #Function for calculating physics for player.
 	#Moves player along a vector. Refer to move_and_slide_with_snap in manuel.
 	velocity = move_and_slide_with_snap(velocity, Vector2(0, 2), Vector2(0, -1), true, 4, float(deg2rad(45)), true)
 	
+	if $Sprite.flip_h == true:
+		punch1 = "left"
+	else:
+		punch1 = "right"
+	
 func _process(delta):
 	var mouse_pos = get_global_mouse_position()  #Sets the mouse position every frame to a variable.
 	var current_pos = position  #Sets the player position every frame to a variable.
@@ -143,12 +161,12 @@ func player_input():  #Checks for player input.
 
 	#------------------------------------------------
 	#If player wants to run on floor.
-	if right and is_on_floor():
+	if right and is_on_floor() and combos["1"] == false:
 		change_state(RUN)
 		velocity.x += player_speed
 		$Sprite.flip_h = false
 		p_direction = "right"
-	if left and is_on_floor():
+	if left and is_on_floor() and combos["1"] == false:
 		change_state(RUN)
 		velocity.x -= player_speed
 		$Sprite.flip_h = true
@@ -236,6 +254,16 @@ func player_input():  #Checks for player input.
 		change_state(state)
 		can_switch_stance = false
 		t.start()
+	#-------------------------------------------------
+	#Punch states
+	if (state == IDLE || state == RUN) and Input.is_action_pressed("punch"):
+		combos["1"] = true
+		change_state(PUNCH)
+		yield(get_tree().create_timer(.2), "timeout")
+		combos["1"] = false
+		
+		
+	
 
 func after_image():
 	var a = AfterImage.instance()
@@ -314,3 +342,8 @@ func resource_collection(amount, type):  #Function for resource collection and a
 	
 func _on_HurtTimer_timeout():
 	invincible = false
+
+func _on_Sprite_animation_finished():
+	if $Sprite.animation == "Punch":
+		change_state(IDLE)
+	
