@@ -54,4 +54,3 @@ func _on_AreaDamage_body_entered(body):
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Die":
 		queue_free()
-		
