@@ -126,8 +126,6 @@ func _physics_process(delta):  #Function for calculating physics for player.
 	velocity = move_and_slide_with_snap(velocity, Vector2(0, 2), Vector2(0, -1), true, 4, float(deg2rad(45)), true)
 	
 func _process(delta):
-	if invincible == true:
-		print("hurt")
 	var mouse_pos = get_global_mouse_position()  #Sets the mouse position every frame to a variable.
 	var current_pos = position  #Sets the player position every frame to a variable.
 	angle_check(mouse_pos, current_pos)  #Refers to dash_direction function to calculate direction.
