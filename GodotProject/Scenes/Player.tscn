@@ -145,6 +145,7 @@ height = 12.5504
 collision_mask = 31
 script = ExtResource( 1 )
 AfterImage = ExtResource( 2 )
+Bow = true
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )

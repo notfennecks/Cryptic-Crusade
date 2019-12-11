@@ -53,7 +53,6 @@ jump_height = -280
 gravity = 750
 max_jumps = 2
 arrow_rate = 0.1
-Bow = true
 
 [node name="Slime" parent="." instance=ExtResource( 10 )]
 position = Vector2( 208.982, -11.4159 )
@@ -69,6 +68,10 @@ speed = 50
 
 [node name="BatPath" parent="." instance=ExtResource( 11 )]
 position = Vector2( 419, -400 )
+[connection signal="pressed" from="UI/Inventory/TabContainer/Crafting/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="UI/Inventory/TabContainer/Crafting/Button2" to="." method="_on_Button2_pressed"]
 [connection signal="shoot" from="Player" to="." method="_on_Player_shoot"]
+
+[editable path="UI/Inventory"]
 
 [editable path="BatPath"]

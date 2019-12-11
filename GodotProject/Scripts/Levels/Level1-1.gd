@@ -2,6 +2,7 @@ extends Node2D
 
 onready var bar = $ProgressBar
 export (PackedScene) var Arrow
+onready var player = $Player
 
 func _ready():
 	$UI/InventoryScreen.hide()
@@ -10,6 +11,8 @@ func _ready():
 func _process(delta):
 	check_ui_visibility()
 	if Input.is_action_just_pressed("reload"):
+		get_tree().reload_current_scene()
+	if $Player.position.y >= 400:
 		get_tree().reload_current_scene()
 
 func check_ui_visibility():
@@ -43,3 +46,9 @@ func drop_resources(Wood, amount1, Iron, amount2, spawn_center, spawn_area):
 		i.position = rand_position
 		call_deferred("add_child", i)
 		i.apply_central_impulse(Vector2(rand_range(-50, 50), -50))
+
+func _on_Button2_pressed():
+	player.Bow = true
+
+func _on_Button_pressed():
+	player.Sword = true

@@ -125,6 +125,7 @@ margin_bottom = 78.8992
 texture = ExtResource( 3 )
 
 [node name="Button" type="Button" parent="TabContainer/Crafting"]
+visible = false
 margin_left = 378.569
 margin_top = 22.9816
 margin_right = 441.569
@@ -133,6 +134,7 @@ custom_fonts/font = ExtResource( 6 )
 text = "BUY"
 
 [node name="Button2" type="Button" parent="TabContainer/Crafting"]
+visible = false
 margin_left = 379.138
 margin_top = 105.458
 margin_right = 442.138
@@ -169,3 +171,4 @@ custom_fonts/font = ExtResource( 7 )
 text = "x1"
 align = 1
 valign = 1
+[connection signal="pressed" from="TabContainer/Crafting/Button" to="." method="_on_Button_pressed"]
