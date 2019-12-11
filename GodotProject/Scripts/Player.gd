@@ -337,9 +337,9 @@ func gain_experience(amount): #gain experience functiong
 	emit_signal("experience_gained", experience, experience_required) #emit the experience gained signal and pass growth data
 
 func level_up():  #level up function
-#	$Timer.start()
-#	$Label.show()
-#	$LevelUp.play()
+	$Timer.start()
+	$Label.show()
+	$LevelUp.play()
 	level += 1 #add one to level variable
 	experience_required = get_required_experience(level + 1) #set the experience requirement to the next level.
 	emit_signal("level_up", level)
@@ -349,10 +349,9 @@ func resource_collection(amount, type):  #Function for resource collection and a
 	
 func _on_HurtTimer_timeout():
 	invincible = false
-#
-#func _on_Timer_timeout():
-#	$Label.hide()
 
+func _on_Timer_timeout():
+	$Label.hide()
 
 func _on_Sprite_animation_finished():
 	if $Sprite.animation == "SwordAttack":

@@ -7,7 +7,7 @@
 [ext_resource path="res://Scenes/Buttons/QuitButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/Fonts/MenuButtonFont.tres" type="DynamicFont" id=6]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -109,7 +109,7 @@ margin_right = 1920.0
 margin_bottom = 1080.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FadeTransition"]
-anims/Fade = SubResource( 2 )
+anims/Fade = SubResource( 1 )
 [connection signal="pressed" from="Menu/Center/Buttons/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="timeout" from="Menu/Center/Buttons/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="animation_finished" from="FadeTransition/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
