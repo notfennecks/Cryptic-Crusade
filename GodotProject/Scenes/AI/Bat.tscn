@@ -3,8 +3,8 @@
 [ext_resource path="res://Scenes/AI/Bat.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Collectibles/WoodCollectible.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Collectibles/IronCollectible.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/RoyaltyFreeAssets/BatEnemy/BatDie.png" type="Texture" id=4]
-[ext_resource path="res://assets/RoyaltyFreeAssets/BatEnemy/BatFly.png" type="Texture" id=5]
+[ext_resource path="res://assets/RoyaltyFreeAssets/BatEnemy/BatFly.png" type="Texture" id=4]
+[ext_resource path="res://assets/RoyaltyFreeAssets/BatEnemy/BatDie.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/UI/HealthBar.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -22,7 +22,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 4 ) ]
+"values": [ ExtResource( 5 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:frame")
@@ -50,6 +50,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id=3]
+length = 0.5
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:texture")
@@ -61,7 +62,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 5 ) ]
+"values": [ ExtResource( 4 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:frame")
@@ -109,10 +110,10 @@ shape = SubResource( 1 )
 
 [node name="Bat" type="Sprite" parent="."]
 texture = ExtResource( 4 )
-hframes = 5
-frame = 3
+hframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Bat"]
+playback_speed = 2.0
 anims/Die = SubResource( 2 )
 anims/Fly = SubResource( 3 )
 

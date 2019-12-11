@@ -78,7 +78,7 @@ position = Vector2( 419.722, -44.9182 )
 speed = 50
 
 [node name="BatPath" parent="." instance=ExtResource( 10 )]
-position = Vector2( 419, -400 )
+position = Vector2( 329.7, -447.5 )
 [connection signal="pressed" from="UI/Inventory/TabContainer/Crafting/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="UI/Inventory/TabContainer/Crafting/Button2" to="." method="_on_Button2_pressed"]
 [connection signal="shoot" from="Player" to="." method="_on_Player_shoot"]
