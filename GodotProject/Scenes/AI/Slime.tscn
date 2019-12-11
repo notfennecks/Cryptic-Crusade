@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/AI/Slime.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Collectibles/WoodCollectible.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/RoyaltyFreeAssets/SlimeEnemy/SlimeDeath.png" type="Texture" id=4]
 [ext_resource path="res://assets/RoyaltyFreeAssets/SlimeEnemy/SlimeRun.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/UI/HealthBar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Sounds/Squash_Slime.wav" type="AudioStream" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Death"
@@ -145,5 +146,9 @@ margin_bottom = -10.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
 position = Vector2( 0, 8 )
 shape = SubResource( 5 )
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+attenuation = 0.63728
 [connection signal="animation_finished" from="Sprite/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_DamageArea_body_entered"]

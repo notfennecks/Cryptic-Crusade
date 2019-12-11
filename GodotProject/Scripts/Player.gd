@@ -276,6 +276,7 @@ func shoot(cur_pos, dir):  #Function to check for arrow shot.
 		return
 	if can_shoot: #if can shoot is available
 		if Input.is_action_pressed("arrow"): #and if the arrow shoot key is pressed.
+			$Arrow.play()
 			emit_signal("shoot", cur_pos, dir) #emit the shoot signal
 			can_shoot = false #the chaacter can no longer shoot
 			$ArrowTimer.start() #triggers the timer
@@ -305,6 +306,7 @@ func gain_experience(amount): #gain experience functiong
 	emit_signal("experience_gained", experience, experience_required) #emit the experience gained signal and pass growth data
 
 func level_up():  #level up function
+	$LevelUp.play()
 	level += 1 #add one to level variable
 	experience_required = get_required_experience(level + 1) #set the experience requirement to the next level.
 	emit_signal("level_up", level)

@@ -44,6 +44,7 @@ func take_damage():  #Function for applying damage to enemy.
 	spawn_center = $ResourceSpawnArea.global_position  #Sets global position of the node "ResourceSpawnArea" to a variable named "spawn_center".
 	spawn_area = $ResourceSpawnArea/CollisionShape2D.shape.extents  #Sets shape extents to a variable name "spawn_area".
 	health -= 1  #Take away 1 health from enemy.
+	$Hurt.play()
 	emit_signal("updated_enemy_health", health)  #Emit signal "updated_health" with the current health value.
 	if health == 0:  #If health is 0.
 		player.gain_experience(5)
