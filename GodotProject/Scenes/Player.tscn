@@ -1,70 +1,129 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/AfterImage.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/Player/Punch/PlayerPunch1.png" type="Texture" id=3]
-[ext_resource path="res://assets/Player/Punch/PlayerPunch2.png" type="Texture" id=4]
-[ext_resource path="res://assets/Player/Punch/PlayerPunch3.png" type="Texture" id=5]
-[ext_resource path="res://assets/Player/Punch/PlayerPunch4.png" type="Texture" id=6]
-[ext_resource path="res://assets/Player/Punch/PlayerPunch5.png" type="Texture" id=7]
-[ext_resource path="res://assets/Player/Punch/PlayerPunch6.png" type="Texture" id=8]
-[ext_resource path="res://assets/Player/Run/PlayerRun1.png" type="Texture" id=9]
-[ext_resource path="res://assets/Player/Run/PlayerRun2.png" type="Texture" id=10]
-[ext_resource path="res://assets/Player/Run/PlayerRun3.png" type="Texture" id=11]
-[ext_resource path="res://assets/Player/Run/PlayerRun4.png" type="Texture" id=12]
-[ext_resource path="res://assets/Player/Run/PlayerRun5.png" type="Texture" id=13]
-[ext_resource path="res://assets/Player/Run/PlayerRun6.png" type="Texture" id=14]
-[ext_resource path="res://assets/Player/Run/PlayerRun7.png" type="Texture" id=15]
-[ext_resource path="res://assets/Player/Run/PlayerRun8.png" type="Texture" id=16]
-[ext_resource path="res://assets/Player/Run/PlayerRun9.png" type="Texture" id=17]
-[ext_resource path="res://assets/Player/Run/PlayerRun10.png" type="Texture" id=18]
-[ext_resource path="res://assets/Player/Run/PlayerRun11.png" type="Texture" id=19]
-[ext_resource path="res://assets/Player/Run/PlayerRun12.png" type="Texture" id=20]
-[ext_resource path="res://assets/Player/Jump/PlayerJumpDown.png" type="Texture" id=21]
-[ext_resource path="res://assets/Player/Jump/PlayerJumpUp.png" type="Texture" id=22]
-[ext_resource path="res://assets/Player/Idle/PlayerIdle1.png" type="Texture" id=23]
-[ext_resource path="res://assets/Player/Idle/PlayerIdle2.png" type="Texture" id=24]
-[ext_resource path="res://assets/Player/LandRight.tres" type="Material" id=25]
-[ext_resource path="res://assets/Player/JumpRight.tres" type="Material" id=26]
-[ext_resource path="res://assets/Player/JumpLeft.tres" type="Material" id=27]
-[ext_resource path="res://assets/PunchRightParticles.tres" type="Material" id=28]
-[ext_resource path="res://assets/PunchLeftParticles.tres" type="Material" id=29]
-[ext_resource path="res://assets/Player/StanceParticles/DarkParticles.tres" type="Material" id=30]
-[ext_resource path="res://assets/Player/StanceParticles/LightParticles.tres" type="Material" id=31]
-[ext_resource path="res://assets/Player/StanceParticles/FireParticles.tres" type="Material" id=32]
-[ext_resource path="res://assets/Player/StanceParticles/IceParticles.tres" type="Material" id=33]
-[ext_resource path="res://assets/Weapons+Items/Bow.png" type="Texture" id=34]
-[ext_resource path="res://Sounds/Jump.wav" type="AudioStream" id=35]
-[ext_resource path="res://Sounds/CartoonJump.wav" type="AudioStream" id=36]
-[ext_resource path="res://Sounds/Arrow.wav" type="AudioStream" id=37]
-[ext_resource path="res://Sounds/LevelUp.wav" type="AudioStream" id=38]
-[ext_resource path="res://assets/Fonts/ResourceAmountFont.tres" type="DynamicFont" id=39]
+[ext_resource path="res://assets/SwordAir1.png" type="Texture" id=3]
+[ext_resource path="res://assets/SwordAir2.png" type="Texture" id=4]
+[ext_resource path="res://assets/Player/Punch/PlayerPunch1.png" type="Texture" id=5]
+[ext_resource path="res://assets/Player/Punch/PlayerPunch2.png" type="Texture" id=6]
+[ext_resource path="res://assets/Player/Punch/PlayerPunch3.png" type="Texture" id=7]
+[ext_resource path="res://assets/Player/Punch/PlayerPunch4.png" type="Texture" id=8]
+[ext_resource path="res://assets/Player/Punch/PlayerPunch5.png" type="Texture" id=9]
+[ext_resource path="res://assets/Player/Punch/PlayerPunch6.png" type="Texture" id=10]
+[ext_resource path="res://assets/Player/Idle/PlayerIdle1.png" type="Texture" id=11]
+[ext_resource path="res://assets/Player/Idle/PlayerIdle2.png" type="Texture" id=12]
+[ext_resource path="res://assets/Player/Jump/PlayerJumpUp.png" type="Texture" id=13]
+[ext_resource path="res://assets/Player/Jump/PlayerJumpDown.png" type="Texture" id=14]
+[ext_resource path="res://assets/Player/Run/PlayerRun1.png" type="Texture" id=15]
+[ext_resource path="res://assets/Player/Run/PlayerRun2.png" type="Texture" id=16]
+[ext_resource path="res://assets/Player/Run/PlayerRun3.png" type="Texture" id=17]
+[ext_resource path="res://assets/Player/Run/PlayerRun4.png" type="Texture" id=18]
+[ext_resource path="res://assets/Player/Run/PlayerRun5.png" type="Texture" id=19]
+[ext_resource path="res://assets/Player/Run/PlayerRun6.png" type="Texture" id=20]
+[ext_resource path="res://assets/Player/Run/PlayerRun7.png" type="Texture" id=21]
+[ext_resource path="res://assets/Player/Run/PlayerRun8.png" type="Texture" id=22]
+[ext_resource path="res://assets/Player/Run/PlayerRun9.png" type="Texture" id=23]
+[ext_resource path="res://assets/Player/Run/PlayerRun10.png" type="Texture" id=24]
+[ext_resource path="res://assets/Player/Run/PlayerRun11.png" type="Texture" id=25]
+[ext_resource path="res://assets/Player/Run/PlayerRun12.png" type="Texture" id=26]
+[ext_resource path="res://assets/Player/JumpUpSword.png" type="Texture" id=27]
+[ext_resource path="res://assets/Player/JumpDownSword.png" type="Texture" id=28]
+[ext_resource path="res://assets/Player/Sword/PlayerSword4.png" type="Texture" id=29]
+[ext_resource path="res://assets/Player/Sword/PlayerSword1.png" type="Texture" id=30]
+[ext_resource path="res://assets/Player/Sword/PlayerSword2.png" type="Texture" id=31]
+[ext_resource path="res://assets/Player/Sword/PlayerSword3.png" type="Texture" id=32]
+[ext_resource path="res://assets/Player/SwordRun/SwordRun1.png" type="Texture" id=33]
+[ext_resource path="res://assets/Player/SwordRun/SwordRun2.png" type="Texture" id=34]
+[ext_resource path="res://assets/Player/SwordRun/SwordRun3.png" type="Texture" id=35]
+[ext_resource path="res://assets/Player/SwordRun/SwordRun4.png" type="Texture" id=36]
+[ext_resource path="res://assets/Player/SwordRun/SwordRun5.png" type="Texture" id=37]
+[ext_resource path="res://assets/Player/SwordRun/SwordRun6.png" type="Texture" id=38]
+[ext_resource path="res://assets/Player/SwordRun/SwordRun7.png" type="Texture" id=39]
+[ext_resource path="res://assets/Player/SwordRun/SwordRun8.png" type="Texture" id=40]
+[ext_resource path="res://assets/Player/SwordRun/SwordRun9.png" type="Texture" id=41]
+[ext_resource path="res://assets/Player/SwordRun/SwordRun10.png" type="Texture" id=42]
+[ext_resource path="res://assets/Player/SwordRun/SwordRun11.png" type="Texture" id=43]
+[ext_resource path="res://assets/Player/SwordRun/SwordRun12.png" type="Texture" id=44]
+[ext_resource path="res://assets/Player/SwordIdle/SwordIdle1.png" type="Texture" id=45]
+[ext_resource path="res://assets/Player/SwordIdle/SwordIdle2.png" type="Texture" id=46]
+[ext_resource path="res://assets/Player/LandRight.tres" type="Material" id=47]
+[ext_resource path="res://assets/Player/JumpRight.tres" type="Material" id=48]
+[ext_resource path="res://assets/Player/JumpLeft.tres" type="Material" id=49]
+[ext_resource path="res://assets/PunchRightParticles.tres" type="Material" id=50]
+[ext_resource path="res://assets/PunchLeftParticles.tres" type="Material" id=51]
+[ext_resource path="res://assets/Player/StanceParticles/DarkParticles.tres" type="Material" id=52]
+[ext_resource path="res://assets/Player/StanceParticles/LightParticles.tres" type="Material" id=53]
+[ext_resource path="res://assets/Player/StanceParticles/FireParticles.tres" type="Material" id=54]
+[ext_resource path="res://assets/Player/StanceParticles/IceParticles.tres" type="Material" id=55]
+[ext_resource path="res://assets/Weapons+Items/Bow.png" type="Texture" id=56]
+[ext_resource path="res://Sounds/Jump.wav" type="AudioStream" id=57]
+[ext_resource path="res://Sounds/CartoonJump.wav" type="AudioStream" id=58]
+
+[sub_resource type="RectangleShape2D" id=10]
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "SwordAir",
+"speed": 5.0
+} ]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": false,
 "name": "Punch",
 "speed": 6.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"frames": [ ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
-"name": "Run",
-"speed": 14.0
+"name": "Idle",
+"speed": 2.0
 }, {
-"frames": [ ExtResource( 21 ) ],
-"loop": true,
-"name": "JumpDown",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 22 ) ],
+"frames": [ ExtResource( 13 ) ],
 "loop": true,
 "name": "JumpUp",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 23 ), ExtResource( 24 ) ],
+"frames": [ ExtResource( 14 ) ],
 "loop": true,
-"name": "Idle",
+"name": "JumpDown",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ],
+"loop": true,
+"name": "Run",
+"speed": 14.0
+}, {
+"frames": [ ExtResource( 27 ) ],
+"loop": true,
+"name": "JumpUpSword",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 28 ) ],
+"loop": true,
+"name": "JumpDownSword",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 29 ) ],
+"loop": true,
+"name": "SwordAir",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 29 ) ],
+"loop": false,
+"name": "SwordAttack",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ) ],
+"loop": true,
+"name": "SwordRun",
+"speed": 14.0
+}, {
+"frames": [ ExtResource( 45 ), ExtResource( 46 ) ],
+"loop": true,
+"name": "SwordIdle",
 "speed": 2.0
 } ]
 
@@ -153,6 +212,46 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.8, 1.2 ), Vector2( 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=8]
+resource_name = "SwordAir"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../SwordAir:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../SwordAir:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
 [sub_resource type="CapsuleShape2D" id=7]
 radius = 8.05135
 height = 12.5504
@@ -163,12 +262,24 @@ height = 12.5504
 collision_mask = 31
 script = ExtResource( 1 )
 AfterImage = ExtResource( 2 )
-Bow = true
+
+[node name="SwordHitArea" type="Area2D" parent="."]
+
+[node name="SwordHitBox" type="CollisionShape2D" parent="SwordHitArea"]
+position = Vector2( 15.4215, 4.88349 )
+shape = SubResource( 10 )
+disabled = true
+
+[node name="SwordAir" type="AnimatedSprite" parent="."]
+visible = false
+frames = SubResource( 9 )
+animation = "SwordAir"
+frame = 1
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
+rotation = 6.28319
 frames = SubResource( 1 )
-animation = "Punch"
-frame = 3
+animation = "SwordAttack"
 
 [node name="LandRight" type="Particles2D" parent="Sprite"]
 position = Vector2( -9, 15 )
@@ -177,7 +288,7 @@ amount = 6
 lifetime = 0.2
 one_shot = true
 explosiveness = 0.8
-process_material = ExtResource( 25 )
+process_material = ExtResource( 47 )
 
 [node name="LandLeft" type="Particles2D" parent="Sprite"]
 position = Vector2( 9, 15 )
@@ -195,7 +306,7 @@ amount = 6
 lifetime = 0.2
 one_shot = true
 explosiveness = 1.0
-process_material = ExtResource( 26 )
+process_material = ExtResource( 48 )
 
 [node name="JumpLeft" type="Particles2D" parent="Sprite"]
 position = Vector2( 9, 15 )
@@ -204,13 +315,14 @@ amount = 6
 lifetime = 0.2
 one_shot = true
 explosiveness = 1.0
-process_material = ExtResource( 27 )
+process_material = ExtResource( 49 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/Flip = SubResource( 3 )
 anims/Hurt = SubResource( 4 )
 anims/JumpDown = SubResource( 5 )
 anims/JumpUp = SubResource( 6 )
+anims/SwordAir = SubResource( 8 )
 
 [node name="Punch1Right" type="Particles2D" parent="Sprite"]
 position = Vector2( 12, 2 )
@@ -220,7 +332,7 @@ lifetime = 0.6
 one_shot = true
 speed_scale = 1.2
 explosiveness = 1.0
-process_material = ExtResource( 28 )
+process_material = ExtResource( 50 )
 
 [node name="Punch1Left" type="Particles2D" parent="Sprite"]
 position = Vector2( -12, 2 )
@@ -230,7 +342,7 @@ lifetime = 0.6
 one_shot = true
 speed_scale = 1.2
 explosiveness = 1.0
-process_material = ExtResource( 29 )
+process_material = ExtResource( 51 )
 
 [node name="Dark" type="Particles2D" parent="."]
 visible = false
@@ -239,7 +351,7 @@ amount = 50
 lifetime = 0.8
 speed_scale = 1.2
 explosiveness = 0.1
-process_material = ExtResource( 30 )
+process_material = ExtResource( 52 )
 
 [node name="Light" type="Particles2D" parent="."]
 visible = false
@@ -248,7 +360,7 @@ amount = 50
 lifetime = 0.8
 speed_scale = 1.2
 explosiveness = 0.1
-process_material = ExtResource( 31 )
+process_material = ExtResource( 53 )
 
 [node name="Fire" type="Particles2D" parent="."]
 visible = false
@@ -257,7 +369,7 @@ amount = 50
 lifetime = 0.8
 speed_scale = 1.2
 explosiveness = 0.1
-process_material = ExtResource( 32 )
+process_material = ExtResource( 54 )
 
 [node name="Ice" type="Particles2D" parent="."]
 visible = false
@@ -266,7 +378,7 @@ amount = 50
 lifetime = 0.8
 speed_scale = 1.2
 explosiveness = 0.1
-process_material = ExtResource( 33 )
+process_material = ExtResource( 55 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -287,7 +399,7 @@ visible = false
 position = Vector2( -0.0639906, 5.93751 )
 rotation = 1.5708
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 34 )
+texture = ExtResource( 56 )
 
 [node name="ArrowSpawn" type="Position2D" parent="AngleChecker/Bow"]
 position = Vector2( 6, 0 )
@@ -299,36 +411,16 @@ autostart = true
 [node name="ArrowTimer" type="Timer" parent="."]
 
 [node name="Hurt" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 35 )
+stream = ExtResource( 57 )
 attenuation = 0.999999
 
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 36 )
+stream = ExtResource( 58 )
 pitch_scale = 0.5
 
 [node name="HurtTimer" type="Timer" parent="."]
 wait_time = 3.0
-
-[node name="Arrow" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 37 )
-attenuation = 0.933033
-
-[node name="LevelUp" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 38 )
-
-[node name="Label" type="Label" parent="."]
-visible = false
-margin_left = -20.3551
-margin_top = -22.9108
-margin_right = 22.6449
-margin_bottom = -11.9108
-custom_fonts/font = ExtResource( 39 )
-text = "LEVEL UP!"
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
 [connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
 [connection signal="timeout" from="StanceTimer" to="." method="_on_StanceTimer_timeout"]
 [connection signal="timeout" from="ArrowTimer" to="." method="_on_ArrowTimer_timeout"]
 [connection signal="timeout" from="HurtTimer" to="." method="_on_HurtTimer_timeout"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

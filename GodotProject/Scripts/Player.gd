@@ -13,6 +13,7 @@ var invincible = false
 
 export (PackedScene) var AfterImage
 var after_image_count = 0
+var can_turn = true
 
 var pre_angle  #Variable for storing angle before calculation.
 
@@ -21,7 +22,7 @@ var can_shoot = true  #If the player can fire an arrow.
 signal shoot  #Signal that tracks if the player shot.
 var angle  #Variable for storing 360 angle in relation between player and mouse.
 
-enum {IDLE, RUN, JUMP, DEAD, HURT}  #Declaring states as enumerated types.
+enum {IDLE, RUN, JUMP, DEAD, HURT, ATTACK}  #Declaring states as enumerated types.
 var state  #Variable state to track current state.
 export (int) var max_health = 100
 var health
@@ -32,7 +33,7 @@ signal experience_gained #create experience gained signal
 signal level_up
 
 export (bool) var Bow = false
-export (bool) var Sword = false
+export (bool) var Sword = true
 
 enum {NEUTRAL, FIRE, ICE, DARK, LIGHT} #Declaring all possible stances as enumerated types.
 var stance  #Variable for tracking current stance.
@@ -58,10 +59,17 @@ func change_state(new_state):  #Runs function when state needs to be changed. Ta
 	state = new_state  #Sets the state variable to the state it needs to change to.
 	match state:  #Matches the state with its correct name and runs the embedded code.
 		IDLE:
-			$Sprite.animation = "Idle"  #Switches to correct idle animation based on current stance.
+			if Sword:
+				$Sprite.animation = "SwordIdle"
+			else:
+				$Sprite.animation = "Idle"  #Switches to correct idle animation based on current stance.
 			$Sprite.playing = true
+			$SwordHitArea/SwordHitBox.set_deferred("disabled", true)
 		RUN:
-			$Sprite.animation = "Run"
+			if Sword:
+				$Sprite.animation = "SwordRun"
+			else:
+				$Sprite.animation = "Run"
 			$Sprite.playing = true
 		JUMP:
 			print("Jump state")
@@ -72,6 +80,11 @@ func change_state(new_state):  #Runs function when state needs to be changed. Ta
 			$Hurt.play()
 			$HurtTimer.start()
 			invincible = true
+		ATTACK:
+			$Sprite.animation = "SwordAttack"
+			yield(get_tree().create_timer(.3), "timeout")
+			if $Sprite.animation == "SwordAttack":
+				$SwordHitArea/SwordHitBox.disabled = false
 
 
 func change_stance(new_stance):  #Runs function when stance needs to be changed. Taking new_stance as argument.
@@ -143,12 +156,12 @@ func player_input():  #Checks for player input.
 
 	#------------------------------------------------
 	#If player wants to run on floor.
-	if right and is_on_floor():
+	if right and is_on_floor() and can_turn:
 		change_state(RUN)
 		velocity.x += player_speed
 		$Sprite.flip_h = false
 		p_direction = "right"
-	if left and is_on_floor():
+	if left and is_on_floor() and can_turn:
 		change_state(RUN)
 		velocity.x -= player_speed
 		$Sprite.flip_h = true
@@ -181,14 +194,20 @@ func player_input():  #Checks for player input.
 		velocity.y = jump_height
 		jump_count += 1
 		print(level)
-		for i in range(2):
+		for i in range(3):
 			after_image_count += 1
 			after_image()
 			
 	if velocity.y < 0 and !is_on_floor():
-		$Sprite.animation = "JumpUp"
+		if Sword:
+			$Sprite.animation = "JumpUpSword"
+		else:
+			$Sprite.animation = "JumpUp"
 	if velocity.y > 0 and !is_on_floor():
-		$Sprite.animation = "JumpDown"
+		if Sword:
+			$Sprite.animation = "JumpDownSword"
+		else:
+			$Sprite.animation = "JumpDown"
 	if !is_on_floor():
 		just_landed = true
 	if is_on_floor() and just_landed:
@@ -236,7 +255,17 @@ func player_input():  #Checks for player input.
 		change_state(state)
 		can_switch_stance = false
 		t.start()
-
+	#-------------------------------------------------
+	#Sword Attacks
+	if state in [IDLE, RUN] and Input.is_action_just_pressed("attack"):
+		change_state(ATTACK)
+	if !is_on_floor() and Input.is_action_just_pressed("attack"):
+		if $Sprite.flip_h == true:
+			$Sprite/AnimationPlayer.play_backwards("SwordAir")
+		else:
+			$Sprite/AnimationPlayer.play("SwordAir")
+	if is_on_floor():
+		$SwordAir.hide()
 func after_image():
 	var a = AfterImage.instance()
 	if p_direction == "left":
@@ -246,6 +275,8 @@ func after_image():
 		
 	if after_image_count == 1:
 		yield(get_tree().create_timer(.1), "timeout")
+	if after_image_count == 2:
+		yield(get_tree().create_timer(.05), "timeout")
 	a.position = position
 	get_parent().add_child(a)
 	a.fade_away()
@@ -306,9 +337,9 @@ func gain_experience(amount): #gain experience functiong
 	emit_signal("experience_gained", experience, experience_required) #emit the experience gained signal and pass growth data
 
 func level_up():  #level up function
-	$Timer.start()
-	$Label.show()
-	$LevelUp.play()
+#	$Timer.start()
+#	$Label.show()
+#	$LevelUp.play()
 	level += 1 #add one to level variable
 	experience_required = get_required_experience(level + 1) #set the experience requirement to the next level.
 	emit_signal("level_up", level)
@@ -318,6 +349,13 @@ func resource_collection(amount, type):  #Function for resource collection and a
 	
 func _on_HurtTimer_timeout():
 	invincible = false
+#
+#func _on_Timer_timeout():
+#	$Label.hide()
 
-func _on_Timer_timeout():
-	$Label.hide()
+
+func _on_Sprite_animation_finished():
+	if $Sprite.animation == "SwordAttack":
+		change_state(IDLE)
+
+

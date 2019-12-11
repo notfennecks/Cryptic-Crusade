@@ -20,5 +20,5 @@ func _on_Arrow_body_entered(body):
 	if body.is_in_group("enemies") and $CollisionShape2D.disabled == false:
 		if body.invincible == true:
 			return
-		body.take_damage()
+		body.take_damage(1)
 		queue_free()

@@ -40,10 +40,10 @@ func _physics_process(delta):  #Function that runs every frame to apply the enem
 			facing = sign(collision.normal.x)  #Reverse facing variable so enemy moves in opposite x direction.
 			velocity.y = -100  #Turn the y velocity to -100. So the enemy gives a little jump when it reverses direction.
 
-func take_damage():  #Function for applying damage to enemy.
+func take_damage(amount):  #Function for applying damage to enemy.
 	spawn_center = $ResourceSpawnArea.global_position  #Sets global position of the node "ResourceSpawnArea" to a variable named "spawn_center".
 	spawn_area = $ResourceSpawnArea/CollisionShape2D.shape.extents  #Sets shape extents to a variable name "spawn_area".
-	health -= 1  #Take away 1 health from enemy.
+	health -= amount  #Take away 1 health from enemy.
 	$Hurt.play()
 	emit_signal("updated_enemy_health", health)  #Emit signal "updated_health" with the current health value.
 	if health == 0:  #If health is 0.
@@ -62,3 +62,8 @@ func _on_DamageArea_body_entered(body):
 	if target.name == "Player":
 		target.update_health(damage)
 		print(target.name, " took ", damage, " damage!")
+
+
+func _on_DamageArea_area_entered(area):
+	if area.name == "SwordHitArea":
+		take_damage(3)
