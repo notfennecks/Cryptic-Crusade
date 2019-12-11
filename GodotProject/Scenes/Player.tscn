@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
@@ -30,28 +31,73 @@
 [ext_resource path="res://Sounds/CartoonJump.wav" type="AudioStream" id=28]
 [ext_resource path="res://Sounds/Arrow.wav" type="AudioStream" id=29]
 [ext_resource path="res://Sounds/LevelUp.wav" type="AudioStream" id=30]
+=======
+[gd_scene load_steps=46 format=2]
+
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/AfterImage.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/Player/Punch/PlayerPunch1.png" type="Texture" id=3]
+[ext_resource path="res://assets/Player/Punch/PlayerPunch2.png" type="Texture" id=4]
+[ext_resource path="res://assets/Player/Punch/PlayerPunch3.png" type="Texture" id=5]
+[ext_resource path="res://assets/Player/Punch/PlayerPunch4.png" type="Texture" id=6]
+[ext_resource path="res://assets/Player/Punch/PlayerPunch5.png" type="Texture" id=7]
+[ext_resource path="res://assets/Player/Punch/PlayerPunch6.png" type="Texture" id=8]
+[ext_resource path="res://assets/Player/Idle/PlayerIdle1.png" type="Texture" id=9]
+[ext_resource path="res://assets/Player/Idle/PlayerIdle2.png" type="Texture" id=10]
+[ext_resource path="res://assets/Player/Jump/PlayerJumpUp.png" type="Texture" id=11]
+[ext_resource path="res://assets/Player/Jump/PlayerJumpDown.png" type="Texture" id=12]
+[ext_resource path="res://assets/Player/Run/PlayerRun1.png" type="Texture" id=13]
+[ext_resource path="res://assets/Player/Run/PlayerRun2.png" type="Texture" id=14]
+[ext_resource path="res://assets/Player/Run/PlayerRun3.png" type="Texture" id=15]
+[ext_resource path="res://assets/Player/Run/PlayerRun4.png" type="Texture" id=16]
+[ext_resource path="res://assets/Player/Run/PlayerRun5.png" type="Texture" id=17]
+[ext_resource path="res://assets/Player/Run/PlayerRun6.png" type="Texture" id=18]
+[ext_resource path="res://assets/Player/Run/PlayerRun7.png" type="Texture" id=19]
+[ext_resource path="res://assets/Player/Run/PlayerRun8.png" type="Texture" id=20]
+[ext_resource path="res://assets/Player/Run/PlayerRun9.png" type="Texture" id=21]
+[ext_resource path="res://assets/Player/Run/PlayerRun10.png" type="Texture" id=22]
+[ext_resource path="res://assets/Player/Run/PlayerRun11.png" type="Texture" id=23]
+[ext_resource path="res://assets/Player/Run/PlayerRun12.png" type="Texture" id=24]
+[ext_resource path="res://assets/Player/LandRight.tres" type="Material" id=25]
+[ext_resource path="res://assets/Player/JumpRight.tres" type="Material" id=26]
+[ext_resource path="res://assets/Player/JumpLeft.tres" type="Material" id=27]
+[ext_resource path="res://assets/PunchRightParticles.tres" type="Material" id=28]
+[ext_resource path="res://assets/PunchLeftParticles.tres" type="Material" id=29]
+[ext_resource path="res://assets/Player/StanceParticles/DarkParticles.tres" type="Material" id=30]
+[ext_resource path="res://assets/Player/StanceParticles/LightParticles.tres" type="Material" id=31]
+[ext_resource path="res://assets/Player/StanceParticles/FireParticles.tres" type="Material" id=32]
+[ext_resource path="res://assets/Player/StanceParticles/IceParticles.tres" type="Material" id=33]
+[ext_resource path="res://assets/Weapons+Items/Bow.png" type="Texture" id=34]
+[ext_resource path="res://Sounds/Jump.wav" type="AudioStream" id=35]
+[ext_resource path="res://Sounds/CartoonJump.wav" type="AudioStream" id=36]
+>>>>>>> 92609c329aad253cb319e6a4b1f2ca093f549dac
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
-"loop": true,
-"name": "Run",
-"speed": 14.0
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "Punch",
+"speed": 6.0
 }, {
-"frames": [ ExtResource( 15 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 2.0
 }, {
-"frames": [ ExtResource( 17 ) ],
+"frames": [ ExtResource( 11 ) ],
 "loop": true,
 "name": "JumpDown",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 18 ) ],
+"frames": [ ExtResource( 12 ) ],
 "loop": true,
 "name": "JumpUp",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "Run",
+"speed": 14.0
 } ]
 
 [sub_resource type="ParticlesMaterial" id=2]
@@ -139,6 +185,36 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.8, 1.2 ), Vector2( 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=8]
+resource_name = "Punch1Left"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Punch1Left:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Punch1Right"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Punch1Right:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
 [sub_resource type="CapsuleShape2D" id=7]
 radius = 8.05135
 height = 12.5504
@@ -153,7 +229,8 @@ Bow = true
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "JumpUp"
+animation = "Punch"
+frame = 3
 
 [node name="LandRight" type="Particles2D" parent="Sprite"]
 position = Vector2( -9, 15 )
@@ -162,7 +239,7 @@ amount = 6
 lifetime = 0.2
 one_shot = true
 explosiveness = 0.8
-process_material = ExtResource( 19 )
+process_material = ExtResource( 25 )
 
 [node name="LandLeft" type="Particles2D" parent="Sprite"]
 position = Vector2( 9, 15 )
@@ -180,7 +257,7 @@ amount = 6
 lifetime = 0.2
 one_shot = true
 explosiveness = 1.0
-process_material = ExtResource( 20 )
+process_material = ExtResource( 26 )
 
 [node name="JumpLeft" type="Particles2D" parent="Sprite"]
 position = Vector2( 9, 15 )
@@ -189,13 +266,35 @@ amount = 6
 lifetime = 0.2
 one_shot = true
 explosiveness = 1.0
-process_material = ExtResource( 21 )
+process_material = ExtResource( 27 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/Flip = SubResource( 3 )
 anims/Hurt = SubResource( 4 )
 anims/JumpDown = SubResource( 5 )
 anims/JumpUp = SubResource( 6 )
+anims/Punch1Left = SubResource( 8 )
+anims/Punch1Right = SubResource( 9 )
+
+[node name="Punch1Right" type="Particles2D" parent="Sprite"]
+position = Vector2( 12, 2 )
+emitting = false
+amount = 20
+lifetime = 0.6
+one_shot = true
+speed_scale = 1.2
+explosiveness = 1.0
+process_material = ExtResource( 28 )
+
+[node name="Punch1Left" type="Particles2D" parent="Sprite"]
+position = Vector2( -12, 2 )
+emitting = false
+amount = 20
+lifetime = 0.6
+one_shot = true
+speed_scale = 1.2
+explosiveness = 1.0
+process_material = ExtResource( 29 )
 
 [node name="Dark" type="Particles2D" parent="."]
 visible = false
@@ -204,7 +303,7 @@ amount = 50
 lifetime = 0.8
 speed_scale = 1.2
 explosiveness = 0.1
-process_material = ExtResource( 22 )
+process_material = ExtResource( 30 )
 
 [node name="Light" type="Particles2D" parent="."]
 visible = false
@@ -213,7 +312,7 @@ amount = 50
 lifetime = 0.8
 speed_scale = 1.2
 explosiveness = 0.1
-process_material = ExtResource( 23 )
+process_material = ExtResource( 31 )
 
 [node name="Fire" type="Particles2D" parent="."]
 visible = false
@@ -222,7 +321,7 @@ amount = 50
 lifetime = 0.8
 speed_scale = 1.2
 explosiveness = 0.1
-process_material = ExtResource( 24 )
+process_material = ExtResource( 32 )
 
 [node name="Ice" type="Particles2D" parent="."]
 visible = false
@@ -231,7 +330,7 @@ amount = 50
 lifetime = 0.8
 speed_scale = 1.2
 explosiveness = 0.1
-process_material = ExtResource( 25 )
+process_material = ExtResource( 33 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -252,7 +351,7 @@ visible = false
 position = Vector2( -0.0639906, 5.93751 )
 rotation = 1.5708
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 26 )
+texture = ExtResource( 34 )
 
 [node name="ArrowSpawn" type="Position2D" parent="AngleChecker/Bow"]
 position = Vector2( 6, 0 )
@@ -264,21 +363,25 @@ autostart = true
 [node name="ArrowTimer" type="Timer" parent="."]
 
 [node name="Hurt" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 27 )
+stream = ExtResource( 35 )
 attenuation = 0.999999
 
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 28 )
+stream = ExtResource( 36 )
 pitch_scale = 0.5
 
 [node name="HurtTimer" type="Timer" parent="."]
 wait_time = 3.0
+<<<<<<< HEAD
 
 [node name="Arrow" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 29 )
 
 [node name="LevelUp" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 30 )
+=======
+[connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
+>>>>>>> 92609c329aad253cb319e6a4b1f2ca093f549dac
 [connection signal="timeout" from="StanceTimer" to="." method="_on_StanceTimer_timeout"]
 [connection signal="timeout" from="ArrowTimer" to="." method="_on_ArrowTimer_timeout"]
 [connection signal="timeout" from="HurtTimer" to="." method="_on_HurtTimer_timeout"]
