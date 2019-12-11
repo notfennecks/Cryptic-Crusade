@@ -24,6 +24,7 @@ onready var player = get_parent().get_node("Player")
 
 
 func _ready():  #Runs this function when the scene is loaded.
+	health = clamp(health, 0, 3)
 	emit_signal("updated_enemy_health", health)  #Emits a signal to update the enemy's health.
 	$Sprite/AnimationPlayer.play("Run")  #Plays the enemies "Run" animation
 	connect("resource_dropped", get_parent(), "drop_resources")  #Connects the "resource_dropped" signal to its parent (Level1-1 tree node).
@@ -60,7 +61,7 @@ func take_damage(amount):  #Function for applying damage to enemy.
 	health -= amount  #Take away 1 health from enemy.
 	$Hurt.play()
 	emit_signal("updated_enemy_health", health)  #Emit signal "updated_health" with the current health value.
-	if health == 0:  #If health is 0.
+	if health <= 0:  #If health is less than 0.
 		player.gain_experience(5)
 		randomize()
 		emit_signal("resource_dropped", Wood, randi() % 3, Iron, randi() % 3, spawn_center, spawn_area)  #Emitted signal used for spawning dropped resources.

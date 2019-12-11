@@ -40,7 +40,6 @@ visible = true
 visible = false
 
 [node name="Background" type="TileMap" parent="."]
-visible = false
 tile_set = ExtResource( 7 )
 cell_size = Vector2( 32, 32 )
 format = 1
@@ -80,35 +79,35 @@ max_jumps = 2
 arrow_rate = 0.7
 
 [node name="Slime" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1133.35, -144.08 )
+position = Vector2( 1119.61, -144.055 )
 speed = 25
 
 [node name="Slime2" parent="." instance=ExtResource( 9 )]
-position = Vector2( 562.506, -48.0799 )
+position = Vector2( 542.09, -48.1278 )
 speed = 35
 
 [node name="Slime3" parent="." instance=ExtResource( 9 )]
-position = Vector2( 878.006, -80.0799 )
+position = Vector2( 673.244, -80.0982 )
 speed = 45
 
 [node name="Slime4" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1642.68, -240.08 )
+position = Vector2( 1647.27, -240.08 )
 speed = 55
 
 [node name="Slime5" parent="." instance=ExtResource( 9 )]
-position = Vector2( 2426.91, -16.1278 )
+position = Vector2( 2361.91, -16.1278 )
 speed = 65
 
 [node name="Slime6" parent="." instance=ExtResource( 9 )]
-position = Vector2( 3011.08, 143.872 )
+position = Vector2( 3327.17, 143.872 )
 speed = 75
 
 [node name="Slime7" parent="." instance=ExtResource( 9 )]
-position = Vector2( 3288.41, 143.872 )
+position = Vector2( 3032, 143.872 )
 speed = 85
 
 [node name="Slime8" parent="." instance=ExtResource( 9 )]
-position = Vector2( 3768.59, 79.8722 )
+position = Vector2( 3760.7, 79.9201 )
 speed = 95
 
 [node name="Slime9" parent="." instance=ExtResource( 9 )]
@@ -116,11 +115,11 @@ position = Vector2( 4059.92, -16.1278 )
 speed = 120
 
 [node name="Slime10" parent="." instance=ExtResource( 9 )]
-position = Vector2( 4447.23, -144.128 )
+position = Vector2( 4559.77, -144.08 )
 speed = 150
 
 [node name="Slime11" parent="." instance=ExtResource( 9 )]
-position = Vector2( 4498.01, -144.08 )
+position = Vector2( 4441.34, -144.128 )
 speed = 200
 [connection signal="pressed" from="UI/Inventory/TabContainer/Crafting/SwordBuy" to="." method="_on_SwordBuy_pressed"]
 [connection signal="pressed" from="UI/Inventory/TabContainer/Crafting/BowBuy" to="." method="_on_BowBuy_pressed"]
