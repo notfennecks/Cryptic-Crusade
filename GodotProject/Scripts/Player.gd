@@ -29,6 +29,7 @@ var experience_total = 0
 var experience_required = get_required_experience(level + 1) #experience required is determined by the get required experience function
 signal experience_gained #create experience gained signal
 signal level_up
+signal picked_up_wood
 
 export (bool) var Bow = false
 export (bool) var Sword = false

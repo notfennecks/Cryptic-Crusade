@@ -13,5 +13,3 @@ var resources = {
 	}
 	
 var level1_1 = "res://Scenes/Levels/Level1-1.tscn"
-
-onready var player = get_parent().get_node("Player")

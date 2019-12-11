@@ -19,10 +19,10 @@ func check_ui_visibility():
 		else:
 			$UI/InventoryScreen.show()
 	if Input.is_action_just_pressed("crafting"):
-		if $UI/CraftingScreen.visible:
-			$UI/CraftingScreen.hide()
+		if $UI/Inventory.visible:
+			$UI/Inventory.hide()
 		else:
-			$UI/CraftingScreen.show()
+			$UI/Inventory.show()
 
 func _on_Player_shoot(pos, dir):
 	var a = Arrow.instance()
