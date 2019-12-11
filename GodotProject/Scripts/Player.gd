@@ -76,7 +76,7 @@ func change_state(new_state):  #Runs function when state needs to be changed. Ta
 		DEAD:
 			get_tree().reload_current_scene()
 		HURT:
-			$Sprite/AnimationPlayer.play("Hurt")
+#			$Sprite/AnimationPlayer.play("Hurt")
 			$Hurt.play()
 			$HurtTimer.start()
 			invincible = true
@@ -161,11 +161,13 @@ func player_input():  #Checks for player input.
 		velocity.x += player_speed
 		$Sprite.flip_h = false
 		p_direction = "right"
+		$SwordHitArea/SwordHitBox.position = Vector2(15, 5)
 	if left and is_on_floor() and can_turn:
 		change_state(RUN)
 		velocity.x -= player_speed
 		$Sprite.flip_h = true
 		p_direction = "left"
+		$SwordHitArea/SwordHitBox.position = Vector2(-15, 5)
 	#------------------------------------------------
 	#If player wants to run in air.
 	if right and state == JUMP:
@@ -266,6 +268,7 @@ func player_input():  #Checks for player input.
 			$Sprite/AnimationPlayer.play("SwordAir")
 	if is_on_floor():
 		$SwordAir.hide()
+		$SwordHitArea/SwordAirBox.set_deferred("disabled", true)
 func after_image():
 	var a = AfterImage.instance()
 	if p_direction == "left":

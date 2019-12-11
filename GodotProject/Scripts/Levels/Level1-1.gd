@@ -14,6 +14,11 @@ func _process(delta):
 		get_tree().reload_current_scene()
 	if $Player.position.y >= 400:
 		get_tree().reload_current_scene()
+	if Input.is_action_just_pressed("ui_cancel"):
+		if OS.window_fullscreen == true:
+			OS.window_fullscreen = false
+		else:
+			OS.window_fullscreen = true
 
 func check_ui_visibility():
 	if Input.is_action_just_pressed("inventory"):
@@ -47,8 +52,14 @@ func drop_resources(Wood, amount1, Iron, amount2, spawn_center, spawn_area):
 		call_deferred("add_child", i)
 		i.apply_central_impulse(Vector2(rand_range(-50, 50), -50))
 
-func _on_Button2_pressed():
-	player.Bow = true
 
-func _on_Button_pressed():
+
+func _on_SwordBuy_pressed():
+	Global.resources["Wood"] -= 1
+	Global.resources["Iron"] -= 2
 	player.Sword = true
+
+
+func _on_BowBuy_pressed():
+	Global.resources["Wood"] -= 1
+	player.Bow = true
