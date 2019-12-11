@@ -102,6 +102,7 @@ Wood = ExtResource( 2 )
 Iron = ExtResource( 3 )
 
 [node name="AreaDamage" type="Area2D" parent="."]
+scale = Vector2( 2.08, 1.28 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDamage"]
 shape = SubResource( 1 )

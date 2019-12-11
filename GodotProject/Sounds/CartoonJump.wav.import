@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/CartoonJump.wav-1924139d1c4244b0f1959e3a217a8cea.sample"
+
+[deps]
+
+source_file="res://Sounds/CartoonJump.wav"
+dest_files=[ "res://.import/CartoonJump.wav-1924139d1c4244b0f1959e3a217a8cea.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

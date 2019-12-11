@@ -9,6 +9,7 @@ export (int) var level = 1  #Exported variabe for what level the player is in
 var jump_count = 0 #Variable that tracks jump count.
 var just_landed = false
 var p_direction = "right"
+var invincible = false
 
 export (PackedScene) var AfterImage
 var after_image_count = 0
@@ -68,6 +69,9 @@ func change_state(new_state):  #Runs function when state needs to be changed. Ta
 			get_tree().reload_current_scene()
 		HURT:
 			$Sprite/AnimationPlayer.play("Hurt")
+			$Hurt.play()
+			$HurtTimer.start()
+			invincible = true
 
 
 func change_stance(new_stance):  #Runs function when stance needs to be changed. Taking new_stance as argument.
@@ -122,6 +126,8 @@ func _physics_process(delta):  #Function for calculating physics for player.
 	velocity = move_and_slide_with_snap(velocity, Vector2(0, 2), Vector2(0, -1), true, 4, float(deg2rad(45)), true)
 	
 func _process(delta):
+	if invincible == true:
+		print("hurt")
 	var mouse_pos = get_global_mouse_position()  #Sets the mouse position every frame to a variable.
 	var current_pos = position  #Sets the player position every frame to a variable.
 	angle_check(mouse_pos, current_pos)  #Refers to dash_direction function to calculate direction.
@@ -171,6 +177,7 @@ func player_input():  #Checks for player input.
 	#If player wants to jump.
 	if jump and is_on_floor():
 		$Sprite/AnimationPlayer.play("JumpUp")
+		$JumpSound.play()
 		$Sprite/JumpLeft.emitting = true
 		$Sprite/JumpRight.emitting = true
 		velocity.y = jump_height
@@ -307,3 +314,5 @@ func level_up():  #level up function
 func resource_collection(amount, type):  #Function for resource collection and addition to dictionary.
 	Global.resources[type] += amount
 	
+func _on_HurtTimer_timeout():
+	invincible = false
