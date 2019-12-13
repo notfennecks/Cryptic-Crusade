@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://TestResourceDrop.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Collectibles/WoodCollectible.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Collectibles/IronCollectible.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Tilesets/GrassTileSetBasic.tres" type="TileSet" id=4]
+[ext_resource path="res://assets/Slime.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 25, 15 )
+
+[node name="TestResourceDrop" type="Node2D"]
+script = ExtResource( 1 )
+Wood = ExtResource( 2 )
+Iron = ExtResource( 3 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 2
+collision_mask = 16
+format = 1
+tile_data = PoolIntArray( -524286, 1610612737, 0, -524285, 1610612737, 0, -524284, 1610612737, 0, -524283, 1610612737, 0, -524282, 1610612737, 0, -524281, 1610612737, 0, -524280, 1610612737, 0, -524279, 1610612737, 0, -524278, 1610612737, 0, -524277, 1610612737, 0, -524276, 1610612737, 0, -458751, -1610612735, 0, -458739, -1073741823, 0, -393215, -1610612735, 0, -393203, -1073741823, 0, -327679, -1610612735, 0, -327667, -1073741823, 0, -262143, -1610612735, 0, -262131, -1073741823, 0, -196607, -1610612735, 0, -196595, -1073741823, 0, -131071, -1610612735, 0, -131059, -1073741823, 0, -65534, 1, 0, -65533, 1, 0, -65532, 1, 0, -65531, 1, 0, -65530, 1, 0, -65529, 1, 0, -65528, 1, 0, -65527, 1, 0, -65526, 1, 0, -65525, 1, 0, -65524, 1, 0 )
+
+[node name="Slime" type="Sprite" parent="."]
+position = Vector2( 249.329, -47.9159 )
+texture = ExtResource( 5 )
+
+[node name="SpawnArea" type="Area2D" parent="Slime"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slime/SpawnArea"]
+position = Vector2( 0, -6 )
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 237.119, -124.1 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
+[connection signal="resource_dropped" from="." to="." method="_on_TestResourceDrop_resource_dropped"]

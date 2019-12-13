@@ -196,9 +196,6 @@ func player_input():  #Checks for player input.
 		velocity.y = jump_height
 		jump_count += 1
 		print(level)
-		for i in range(3):
-			after_image_count += 1
-			after_image()
 			
 	if velocity.y < 0 and !is_on_floor():
 		if Sword:
@@ -269,21 +266,6 @@ func player_input():  #Checks for player input.
 	if is_on_floor():
 		$SwordAir.hide()
 		$SwordHitArea/SwordAirBox.set_deferred("disabled", true)
-func after_image():
-	var a = AfterImage.instance()
-	if p_direction == "left":
-		a.flip_h = true
-	else:
-		a.flip_h = false
-		
-	if after_image_count == 1:
-		yield(get_tree().create_timer(.1), "timeout")
-	if after_image_count == 2:
-		yield(get_tree().create_timer(.05), "timeout")
-	a.position = position
-	get_parent().add_child(a)
-	a.fade_away()
-	after_image_count = 0
 		
 func angle_check(mouse, pos):  #For determining angle in relation to player and mouse.
 	var x = mouse.x - pos.x  #Stores x difference between mouse_pos Vector and position vector.
@@ -359,5 +341,13 @@ func _on_Timer_timeout():
 func _on_Sprite_animation_finished():
 	if $Sprite.animation == "SwordAttack":
 		change_state(IDLE)
-
-
+		
+func _on_AfterImageTimer_timeout():
+	if state == RUN || state == JUMP:
+		var a = AfterImage.instance()
+		a.texture = $Sprite.frames.get_frame($Sprite.animation, $Sprite.frame)
+		a.flip_h = $Sprite.flip_h
+		a.position = position
+		get_parent().add_child(a)
+		a.fade_away()
+		$AfterImageTimer.start()

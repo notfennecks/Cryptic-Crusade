@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://EnemyAI_jump.tscn" type="PackedScene" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 539.515, 15.2858 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Path2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 369.549, 302.025 )
+
+[node name="Timer" type="Timer" parent="Path2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 524.005, 348.895 )
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 1 )
