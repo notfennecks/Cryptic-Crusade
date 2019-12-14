@@ -77,49 +77,50 @@ jump_height = -280
 gravity = 750
 max_jumps = 2
 arrow_rate = 0.7
+Bow = true
 
 [node name="Slime" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1119.61, -144.055 )
+position = Vector2( 1106.73, -144.08 )
 speed = 25
 
 [node name="Slime2" parent="." instance=ExtResource( 9 )]
-position = Vector2( 542.09, -48.1278 )
+position = Vector2( 553.756, -48.0799 )
 speed = 35
 
 [node name="Slime3" parent="." instance=ExtResource( 9 )]
-position = Vector2( 673.244, -80.0982 )
+position = Vector2( 918.506, -80.0799 )
 speed = 45
 
 [node name="Slime4" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1647.27, -240.08 )
+position = Vector2( 1816.85, -240.128 )
 speed = 55
 
 [node name="Slime5" parent="." instance=ExtResource( 9 )]
-position = Vector2( 2361.91, -16.1278 )
+position = Vector2( 2456.15, -16.1278 )
 speed = 65
 
 [node name="Slime6" parent="." instance=ExtResource( 9 )]
-position = Vector2( 3327.17, 143.872 )
+position = Vector2( 2827.17, 143.92 )
 speed = 75
 
 [node name="Slime7" parent="." instance=ExtResource( 9 )]
-position = Vector2( 3032, 143.872 )
+position = Vector2( 3196.21, 143.872 )
 speed = 85
 
 [node name="Slime8" parent="." instance=ExtResource( 9 )]
-position = Vector2( 3760.7, 79.9201 )
+position = Vector2( 3632.43, 79.9201 )
 speed = 95
 
 [node name="Slime9" parent="." instance=ExtResource( 9 )]
-position = Vector2( 4059.92, -16.1278 )
+position = Vector2( 4065.92, -16.1278 )
 speed = 120
 
 [node name="Slime10" parent="." instance=ExtResource( 9 )]
-position = Vector2( 4559.77, -144.08 )
+position = Vector2( 4507.23, -144.128 )
 speed = 150
 
 [node name="Slime11" parent="." instance=ExtResource( 9 )]
-position = Vector2( 4441.34, -144.128 )
+position = Vector2( 4484.67, -144.128 )
 speed = 200
 [connection signal="pressed" from="UI/Inventory/TabContainer/Crafting/SwordBuy" to="." method="_on_SwordBuy_pressed"]
 [connection signal="pressed" from="UI/Inventory/TabContainer/Crafting/BowBuy" to="." method="_on_BowBuy_pressed"]

@@ -10,6 +10,7 @@ func start(pos, dir):
 
 func _process(delta):
 	position += velocity * delta
+	velocity.y += sin(rand_range(-10, 10))
 
 func _on_Arrow_body_entered(body):
 	if body.name == "Environment":
