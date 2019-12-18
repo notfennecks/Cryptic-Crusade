@@ -348,6 +348,7 @@ func _on_AfterImageTimer_timeout():
 		a.texture = $Sprite.frames.get_frame($Sprite.animation, $Sprite.frame)
 		a.flip_h = $Sprite.flip_h
 		a.position = position
+		a.rotation_degrees = $Sprite.rotation_degrees
 		get_parent().add_child(a)
 		a.fade_away()
 		$AfterImageTimer.start()
